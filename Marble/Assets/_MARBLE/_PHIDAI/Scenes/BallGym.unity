@@ -416,16 +416,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52d7a8569cb03444ea693b47060e93a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xForce: 10
-  zForce: 10
-  yForce: 500
   cameraBase: {fileID: 85705830}
   Horizontal: {fileID: 220491497}
   Vertical: {fileID: 78219715}
   Velocity: {fileID: 771859230}
   Position: {fileID: 29718805}
   FinalDirection: {fileID: 1128739109}
-  gravityAmount: 100
+  gravityAmount: 75
 --- !u!54 &123806353
 Rigidbody:
   m_ObjectHideFlags: 0

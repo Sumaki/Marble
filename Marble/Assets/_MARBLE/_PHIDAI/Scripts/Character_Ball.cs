@@ -8,9 +8,9 @@ public class Character_Ball : MonoBehaviour
 {
     #region Character Varibles
     Rigidbody rb;
-    public float xForce = 10.0f;
-    public float zForce = 10.0f;
-    public float yForce = 500.0f; // jump
+    //public float xForce = 10.0f;
+    //public float zForce = 10.0f;
+    //public float yForce = 500.0f; // jump
     public Transform cameraBase;
 
     private Vector3 gravity = new Vector3(0f, -1000f, 0f);
@@ -61,6 +61,7 @@ public class Character_Ball : MonoBehaviour
     void BallInputs()
     {
 
+
         horizontalMovement = Input.GetAxisRaw("Horizontal");
         verticalMovement = Input.GetAxisRaw("Vertical");
 
@@ -72,13 +73,14 @@ public class Character_Ball : MonoBehaviour
             Vector3 p = transform.position; //our current position
             Vector3 v = rb.velocity; //our current velocity
             force = rb.mass * (pNew - p - v * dt) / (dt); // check          
-
+            
+             Debug.Log("Force: " + force);
             //return force;
             //rb.AddForce(force);
 
 
             Vector3 finalMovement = RotateInput();
-            if (rb.velocity.magnitude <= 30f)
+            if (rb.velocity.magnitude <= 15f)
                 rb.AddForce(finalMovement);
         }
         
@@ -89,7 +91,9 @@ public class Character_Ball : MonoBehaviour
         Vector3 check = new Vector3(horizontalMovement, 0, verticalMovement);
         finalDirection = cameraBase.transform.TransformDirection(check); // check
         finalDirection.Set(finalDirection.x, 0, finalDirection.z);        
-        Vector3 move = finalDirection.normalized * force.magnitude;        
+        Vector3 move = finalDirection.normalized * force.magnitude;
+        Debug.Log("Normalized finalDirection: " + finalDirection.normalized);
+        Debug.Log("Force magnitude: " + force.magnitude);      
         //Debug.Log(finalDirection.normalized * force.magnitude);
         return move;
     }
