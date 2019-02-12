@@ -62,7 +62,7 @@ public class Character_Ball : MonoBehaviour
     {
 
 
-        horizontalMovement = Input.GetAxisRaw("Horizontal");
+        horizontalMovement = Input.GetAxisRaw("Horizontal"); // temp
         verticalMovement = Input.GetAxisRaw("Vertical");
 
         if (horizontalMovement != 0 || verticalMovement != 0)
@@ -72,7 +72,7 @@ public class Character_Ball : MonoBehaviour
                                                                                                                                                   //Debug.Log(pNew);
             Vector3 p = transform.position; //our current position
             Vector3 v = rb.velocity; //our current velocity
-            force = rb.mass * (pNew - p - v * dt) / (dt); // check          
+            force = rb.mass * (pNew - p - v * dt) / (dt);      
             
              Debug.Log("Force: " + force);
             //return force;
@@ -80,7 +80,8 @@ public class Character_Ball : MonoBehaviour
 
 
             Vector3 finalMovement = RotateInput();
-            if (rb.velocity.magnitude <= 15f)
+            Debug.Log("Final Movement Force: " + finalMovement);
+            if (rb.velocity.magnitude <= 15f) // testing limit
                 rb.AddForce(finalMovement);
         }
         
@@ -92,7 +93,7 @@ public class Character_Ball : MonoBehaviour
         finalDirection = cameraBase.transform.TransformDirection(check); // check
         finalDirection.Set(finalDirection.x, 0, finalDirection.z);        
         Vector3 move = finalDirection.normalized * force.magnitude;
-        Debug.Log("Normalized finalDirection: " + finalDirection.normalized);
+        //Debug.Log("Normalized finalDirection: " + finalDirection.normalized);
         Debug.Log("Force magnitude: " + force.magnitude);      
         //Debug.Log(finalDirection.normalized * force.magnitude);
         return move;
