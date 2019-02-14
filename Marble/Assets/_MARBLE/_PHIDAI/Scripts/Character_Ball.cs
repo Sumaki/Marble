@@ -12,6 +12,7 @@ public class Character_Ball : MonoBehaviour
     //public float zForce = 10.0f;
     //public float yForce = 500.0f; // jump
     public Transform cameraBase;
+    public float movementForce = 50f;
 
     private Vector3 gravity = new Vector3(0f, -1000f, 0f);
     #endregion
@@ -69,18 +70,18 @@ public class Character_Ball : MonoBehaviour
         {
             float dt = Time.deltaTime;
             Vector3 pNew = new Vector3(transform.position.x + horizontalMovement, transform.position.y, transform.position.z + verticalMovement); //our new desired position, check
-                                                                                                                                                  //Debug.Log(pNew);
+            Debug.Log("pNEW: " + pNew);
             Vector3 p = transform.position; //our current position
             Vector3 v = rb.velocity; //our current velocity
             force = rb.mass * (pNew - p - v * dt) / (dt);      
             
-             Debug.Log("Force: " + force);
+            //Debug.Log("Force: " + force);
             //return force;
             //rb.AddForce(force);
 
 
             Vector3 finalMovement = RotateInput();
-            Debug.Log("Final Movement Force: " + finalMovement);
+            //Debug.Log("Final Movement Force: " + finalMovement);
             if (rb.velocity.magnitude <= 15f) // testing limit
                 rb.AddForce(finalMovement);
         }
@@ -90,10 +91,14 @@ public class Character_Ball : MonoBehaviour
     Vector3 RotateInput()
     {
         Vector3 check = new Vector3(horizontalMovement, 0, verticalMovement);
+        //Debug.Log("CHECK: " + check);
         finalDirection = cameraBase.transform.TransformDirection(check); // check
-        finalDirection.Set(finalDirection.x, 0, finalDirection.z);        
-        Vector3 move = finalDirection.normalized * force.magnitude;
+        //Debug.Log("FIRST FINAL DIRECTION: " + finalDirection);
+        finalDirection.Set(finalDirection.x, 0, finalDirection.z);
+        Vector3 move = finalDirection.normalized * movementForce; // * force.magnitude; TESTING VALUES INSTEAD
         //Debug.Log("Normalized finalDirection: " + finalDirection.normalized);
+
+        //Debug.Log("finalDirection normalized: " + finalDirection.normalized);
         Debug.Log("Force magnitude: " + force.magnitude);      
         //Debug.Log(finalDirection.normalized * force.magnitude);
         return move;

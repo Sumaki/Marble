@@ -5459,5 +5459,15 @@ PrefabInstance:
       propertyPath: FinalDirection
       value: 
       objectReference: {fileID: 1128739109}
+    - target: {fileID: 7087936789113917996, guid: ef65ec39ccf9759409fb7b6cbd1aee33,
+        type: 3}
+      propertyPath: gravityAmount
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7087936789113917997, guid: ef65ec39ccf9759409fb7b6cbd1aee33,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef65ec39ccf9759409fb7b6cbd1aee33, type: 3}
