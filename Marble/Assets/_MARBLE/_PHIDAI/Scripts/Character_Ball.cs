@@ -12,6 +12,7 @@ public class Character_Ball : MonoBehaviour
     //public float zForce = 10.0f;
     //public float yForce = 500.0f; // jump
     public Transform cameraBase;
+    public float inputSpeed = 1f;
     public float movementForce = 50f;
 
     private Vector3 gravity = new Vector3(0f, -1000f, 0f);
@@ -21,6 +22,7 @@ public class Character_Ball : MonoBehaviour
     private float horizontalMovement;
     private float verticalMovement;
     private Vector3 force = Vector3.zero;
+    private float distToGround;
 
     Vector3 finalDirection = Vector3.zero;
     #endregion
@@ -41,6 +43,7 @@ public class Character_Ball : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         gravity.y = -gravityAmount;
+        distToGround = GetComponent<Collider>().bounds.extents.y;
         
     }
 
@@ -63,8 +66,8 @@ public class Character_Ball : MonoBehaviour
     {
 
 
-        horizontalMovement = Input.GetAxisRaw("Horizontal"); // temp
-        verticalMovement = Input.GetAxisRaw("Vertical");
+        horizontalMovement = Input.GetAxisRaw("Horizontal") * inputSpeed; // temp
+        verticalMovement = Input.GetAxisRaw("Vertical") * inputSpeed;
 
         if (horizontalMovement != 0 || verticalMovement != 0)
         {
@@ -85,6 +88,9 @@ public class Character_Ball : MonoBehaviour
             if (rb.velocity.magnitude <= 15f) // testing limit
                 rb.AddForce(finalMovement);
         }
+
+        //if (!IsGrounded())
+        //    rb.AddForce(gravity * 2f);
         
     }
 
@@ -107,6 +113,11 @@ public class Character_Ball : MonoBehaviour
     void ApplyGravity()
     {
         rb.AddForce(gravity);
+    }
+
+    bool IsGrounded()
+    {
+        return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
     }
 
     void DebugVariables()
