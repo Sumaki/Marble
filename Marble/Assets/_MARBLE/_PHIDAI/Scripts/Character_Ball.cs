@@ -65,11 +65,18 @@ public class Character_Ball : MonoBehaviour
     void BallInputs()
     {
 
+        // limit velocity to set value for movement
+        if (rb.velocity.magnitude > 40f)
+        {
+            Vector3 normalizedVelocity =  Vector3.Normalize(rb.velocity);
+            normalizedVelocity *= 40f;
+            rb.velocity = normalizedVelocity;
+        }
 
         horizontalMovement = Input.GetAxisRaw("Horizontal") * inputSpeed; // temp
         verticalMovement = Input.GetAxisRaw("Vertical") * inputSpeed;
 
-        if (horizontalMovement != 0 || verticalMovement != 0)
+        if (horizontalMovement != 0 || verticalMovement != 0 && IsGrounded()) // one for grounded and one for not grounded
         {
             float dt = Time.deltaTime;
             Vector3 pNew = new Vector3(transform.position.x + horizontalMovement, transform.position.y, transform.position.z + verticalMovement); //our new desired position, check
@@ -89,9 +96,13 @@ public class Character_Ball : MonoBehaviour
                 rb.AddForce(finalMovement);
         }
 
-        //if (!IsGrounded())
-        //    rb.AddForce(gravity * 2f);
-        
+        if (!IsGrounded()) // limit velocity for air time
+        {
+            Vector3 finalMovement = RotateInput();
+            rb.AddForce(finalMovement);
+            // rb.AddForce(gravity * 2f);
+        }
+
     }
 
     Vector3 RotateInput()
