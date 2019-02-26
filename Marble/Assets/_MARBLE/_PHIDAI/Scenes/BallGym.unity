@@ -3547,7 +3547,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4044025199211102, guid: d3f133c9aa9428e4e974019f54880b4c, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4044025199211102, guid: d3f133c9aa9428e4e974019f54880b4c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6071,7 +6071,7 @@ PrefabInstance:
     - target: {fileID: 8932968116514181613, guid: e3d58a6c1fd8f4a4b8e4ffd1a1436a19,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8932968116514181613, guid: e3d58a6c1fd8f4a4b8e4ffd1a1436a19,
         type: 3}
@@ -6369,7 +6369,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2392
+  m_Name: pb_Mesh-1928
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -6696,7 +6696,7 @@ PrefabInstance:
     - target: {fileID: 7087936789113917997, guid: ef65ec39ccf9759409fb7b6cbd1aee33,
         type: 3}
       propertyPath: m_Interpolate
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7087936789113917997, guid: ef65ec39ccf9759409fb7b6cbd1aee33,
         type: 3}

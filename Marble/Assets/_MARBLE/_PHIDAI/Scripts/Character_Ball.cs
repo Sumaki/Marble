@@ -11,9 +11,11 @@ public class Character_Ball : MonoBehaviour
     //public float xForce = 10.0f;
     //public float zForce = 10.0f;
     //public float yForce = 500.0f; // jump
+    [Header ("Character Settings")]
     public Transform cameraBase;
     public float inputSpeed = 1f;
     public float movementForce = 50f;
+    public float gravityAmount;
 
     private Vector3 gravity = new Vector3(0f, -1000f, 0f);
     #endregion
@@ -27,7 +29,9 @@ public class Character_Ball : MonoBehaviour
     Vector3 finalDirection = Vector3.zero;
     #endregion
 
+    [Header("Test Settings")]
     #region Test Display Varibles
+    public bool TEST_VARIABLES;
     public Text Horizontal;
     public Text Vertical;
     public Text Velocity;
@@ -35,9 +39,7 @@ public class Character_Ball : MonoBehaviour
     public Text FinalDirection;
     #endregion
 
-    #region Public Testing Variables
-    public float gravityAmount;
-    #endregion
+
 
     private void Start()
     {
@@ -64,6 +66,8 @@ public class Character_Ball : MonoBehaviour
     /// </summary>
     void BallInputs()
     {
+
+        
 
         // limit velocity to set value for movement
         if (rb.velocity.magnitude > 40f)
@@ -92,16 +96,29 @@ public class Character_Ball : MonoBehaviour
 
             Vector3 finalMovement = RotateInput();
             //Debug.Log("Final Movement Force: " + finalMovement);
-            if (rb.velocity.magnitude <= 15f) // testing limit
+            if (rb.velocity.magnitude <= 15f)
+            { // testing limit
                 rb.AddForce(finalMovement);
+                
+            }
         }
 
         if (!IsGrounded()) // limit velocity for air time
         {
+            if (rb.velocity != Vector3.zero)
+                transform.rotation = Quaternion.LookRotation(rb.velocity);
+
             Vector3 finalMovement = RotateInput();
             rb.AddForce(finalMovement);
+            //rb.AddTorque(finalMovement);
+          
             // rb.AddForce(gravity * 2f);
         }
+
+    }
+
+    void ApplyTorque()
+    {
 
     }
 
@@ -133,11 +150,14 @@ public class Character_Ball : MonoBehaviour
 
     void DebugVariables()
     {
-        Horizontal.text = "Horizontal: " + horizontalMovement.ToString();
-        Vertical.text = "Vertical: " + verticalMovement.ToString();
-        Velocity.text = "Velocity: " + rb.velocity.ToString();
-        Position.text = "Position: " + transform.position.ToString();
-        FinalDirection.text = "FINAL DIRECTION: " + finalDirection.ToString();
+        if (TEST_VARIABLES)
+        {
+            Horizontal.text = "Horizontal: " + horizontalMovement.ToString();
+            Vertical.text = "Vertical: " + verticalMovement.ToString();
+            Velocity.text = "Velocity: " + rb.velocity.ToString();
+            Position.text = "Position: " + transform.position.ToString();
+            FinalDirection.text = "FINAL DIRECTION: " + finalDirection.ToString();
+        }
     }
 
 }
