@@ -8,11 +8,21 @@ ModelImporter:
     100004: Pipe_90_End
     100006: Pipe_End
     100008: //RootNode
+    100010: _OG_Pipe
+    100012: _OG_Pipe_90
+    100014: _OG_Pipe_90_End
+    100016: _OG_Pipe_End
+    100018: _OG_Pipe_T
     400000: Pipe
     400002: Pipe_90
     400004: Pipe_90_End
     400006: Pipe_End
     400008: //RootNode
+    400010: _OG_Pipe
+    400012: _OG_Pipe_90
+    400014: _OG_Pipe_90_End
+    400016: _OG_Pipe_End
+    400018: _OG_Pipe_T
     2100000: 'Material #2'
     2100002: 'Material #4'
     2100004: 'Material #3'
@@ -21,14 +31,29 @@ ModelImporter:
     2300002: Pipe_90
     2300004: Pipe_90_End
     2300006: Pipe_End
+    2300008: _OG_Pipe
+    2300010: _OG_Pipe_90
+    2300012: _OG_Pipe_90_End
+    2300014: _OG_Pipe_End
+    2300016: _OG_Pipe_T
     3300000: Pipe
     3300002: Pipe_90
     3300004: Pipe_90_End
     3300006: Pipe_End
+    3300008: _OG_Pipe
+    3300010: _OG_Pipe_90
+    3300012: _OG_Pipe_90_End
+    3300014: _OG_Pipe_End
+    3300016: _OG_Pipe_T
     4300000: Pipe
     4300002: Pipe_90
     4300004: Pipe_End
     4300006: Pipe_90_End
+    4300008: _OG_Pipe
+    4300010: _OG_Pipe_90
+    4300012: _OG_Pipe_End
+    4300014: _OG_Pipe_90_End
+    4300016: _OG_Pipe_T
   externalObjects: {}
   materials:
     importMaterials: 1
