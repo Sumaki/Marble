@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Character_Ball : MonoBehaviour
 {
     #region Character Varibles
-    Rigidbody rb;
+    
     //public float xForce = 10.0f;
     //public float zForce = 10.0f;
     //public float yForce = 500.0f; // jump
@@ -17,7 +17,9 @@ public class Character_Ball : MonoBehaviour
     public float movementForce = 50f;
     public float gravityAmount;
 
+    // Private Variables
     private Vector3 gravity = new Vector3(0f, -1000f, 0f);
+    Rigidbody rb;
     #endregion
 
     #region Movement Direction
@@ -66,28 +68,28 @@ public class Character_Ball : MonoBehaviour
     /// </summary>
     void BallInputs()
     {
+     
 
-        
 
         // limit velocity to set value for movement
-        if (rb.velocity.magnitude > 40f)
-        {
-            Vector3 normalizedVelocity =  Vector3.Normalize(rb.velocity);
-            normalizedVelocity *= 40f;
-            rb.velocity = normalizedVelocity;
-        }
+        //if (rb.velocity.magnitude > 40f)
+        //{
+        //    Vector3 normalizedVelocity =  Vector3.Normalize(rb.velocity);
+        //    normalizedVelocity *= 40f;
+        //    rb.velocity = normalizedVelocity;
+        //}
 
         horizontalMovement = Input.GetAxisRaw("Horizontal") * inputSpeed; // temp
         verticalMovement = Input.GetAxisRaw("Vertical") * inputSpeed;
 
         if (horizontalMovement != 0 || verticalMovement != 0 && IsGrounded()) // one for grounded and one for not grounded
         {
-            float dt = Time.deltaTime;
-            Vector3 pNew = new Vector3(transform.position.x + horizontalMovement, transform.position.y, transform.position.z + verticalMovement); //our new desired position, check
-            Debug.Log("pNEW: " + pNew);
-            Vector3 p = transform.position; //our current position
-            Vector3 v = rb.velocity; //our current velocity
-            force = rb.mass * (pNew - p - v * dt) / (dt);      
+            //float dt = Time.deltaTime;
+            //Vector3 pNew = new Vector3(transform.position.x + horizontalMovement, transform.position.y, transform.position.z + verticalMovement); //our new desired position, check
+            //Debug.Log("pNEW: " + pNew);
+            //Vector3 p = transform.position; //our current position
+            //Vector3 v = rb.velocity; //our current velocity
+            //force = rb.mass * (pNew - p - v * dt) / (dt);      
             
             //Debug.Log("Force: " + force);
             //return force;
@@ -96,21 +98,25 @@ public class Character_Ball : MonoBehaviour
 
             Vector3 finalMovement = RotateInput();
             //Debug.Log("Final Movement Force: " + finalMovement);
-            if (rb.velocity.magnitude <= 15f)
-            { // testing limit
+           // if (rb.velocity.magnitude <= 15f)
+           // { // testing limit
                 rb.AddForce(finalMovement);
+                //rb.AddTorque(finalMovement);
                 
-            }
+           // }
         }
 
         if (!IsGrounded()) // limit velocity for air time
         {
-            if (rb.velocity != Vector3.zero)
-                transform.rotation = Quaternion.LookRotation(rb.velocity);
+            // temp turning in air
+            //gameObject.transform.right =
+            //Vector3.Slerp(gameObject.transform.right, rb.velocity.normalized, Time.deltaTime);
 
             Vector3 finalMovement = RotateInput();
-            rb.AddForce(finalMovement);
-            //rb.AddTorque(finalMovement);
+            //if (rb.velocity != Vector3.zero)
+            //    transform.rotation = Quaternion.LookRotation(rb.velocity);
+            rb.AddForce(finalMovement); 
+            //rb.AddRelativeTorque(finalMovement);
           
             // rb.AddForce(gravity * 2f);
         }
@@ -133,7 +139,7 @@ public class Character_Ball : MonoBehaviour
         //Debug.Log("Normalized finalDirection: " + finalDirection.normalized);
 
         //Debug.Log("finalDirection normalized: " + finalDirection.normalized);
-        Debug.Log("Force magnitude: " + force.magnitude);      
+        //Debug.Log("Force magnitude: " + force.magnitude);      
         //Debug.Log(finalDirection.normalized * force.magnitude);
         return move;
     }
