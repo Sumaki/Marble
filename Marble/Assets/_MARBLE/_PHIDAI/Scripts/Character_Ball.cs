@@ -18,7 +18,7 @@ public class Character_Ball : MonoBehaviour
     public float gravityAmount;
 
     // Private Variables
-    private Vector3 gravity = new Vector3(0f, -1000f, 0f);
+    public static Vector3 gravity = new Vector3(0f, -1000f, 0f);
     Rigidbody rb;
     #endregion
 
