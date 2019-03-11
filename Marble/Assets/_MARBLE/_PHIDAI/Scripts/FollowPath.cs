@@ -40,7 +40,7 @@ public class FollowPath : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            entered = true;                   
+            entered = true;           
         }
 
     }
@@ -51,8 +51,9 @@ public class FollowPath : MonoBehaviour
 
         if (Vector3.Distance(player.transform.position, pathCreator.path.GetPoint(0.99f)) <= 1f && OneWay)
         {
-            //Debug.Log("TURN OFF TRAVEL STATUS");
-            entered = false;    
+            //Debug.Log("TURN OFF TRAVEL STATUS");            
+            entered = false;
+            
         }
 
         DisablePlayer();
@@ -69,7 +70,8 @@ public class FollowPath : MonoBehaviour
     }
 
     void EnablePlayer()
-    {        
+    {
+        dstTravelled = 0;
         player.GetComponent<Character_Ball>().inputSpeed = 1f;
         player.GetComponent<Character_Ball>().movementForce = 40f;
     }

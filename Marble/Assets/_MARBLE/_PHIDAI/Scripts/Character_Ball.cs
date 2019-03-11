@@ -68,16 +68,16 @@ public class Character_Ball : MonoBehaviour
     /// </summary>
     void BallInputs()
     {
-     
+
 
 
         // limit velocity to set value for movement
-        //if (rb.velocity.magnitude > 40f)
-        //{
-        //    Vector3 normalizedVelocity =  Vector3.Normalize(rb.velocity);
-        //    normalizedVelocity *= 40f;
-        //    rb.velocity = normalizedVelocity;
-        //}
+        if (rb.velocity.magnitude > 40f)
+        {
+            Vector3 normalizedVelocity = Vector3.Normalize(rb.velocity);
+            normalizedVelocity *= 40f;
+            rb.velocity = normalizedVelocity;
+        }
 
         horizontalMovement = Input.GetAxisRaw("Horizontal") * inputSpeed; // temp
         verticalMovement = Input.GetAxisRaw("Vertical") * inputSpeed;
@@ -115,17 +115,21 @@ public class Character_Ball : MonoBehaviour
             Vector3 finalMovement = RotateInput();
             //if (rb.velocity != Vector3.zero)
             //    transform.rotation = Quaternion.LookRotation(rb.velocity);
-            rb.AddForce(finalMovement); 
+            ApplyTorque();
+            rb.AddForce(finalMovement);
             //rb.AddRelativeTorque(finalMovement);
-          
-            // rb.AddForce(gravity * 2f);
+
+            rb.AddForce(gravity * 1.5f);
         }
 
     }
 
+    // Spin when not grounded
     void ApplyTorque()
     {
-
+        Vector3 rbVelocity = rb.velocity;
+        Vector3 correctedAxes = new Vector3(rbVelocity.z, 0, -rbVelocity.x) * 1f;
+        gameObject.transform.Rotate(correctedAxes, Space.World);
     }
 
     Vector3 RotateInput()
