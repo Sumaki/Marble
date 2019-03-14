@@ -7,22 +7,24 @@ public class Character_Humanoid : MonoBehaviour
 {
 
     public Transform cameraBase;
-   
+
 
     CharacterController cc;
     float horizontalMovement;
     float verticalMovement;
-    float gravity = -3f;
+    float globalGravity = -1f;
+    float gravity = -15f;
     [Header("Humanoid Stats")]
-    [Range(0,1)]
+    [Range(1, 10)]
     public float movementSpeed;
     //[Range(0,10)]
     //public float gravityAmount = 9.8f;
-    [Range(0,1)]
-    public float jumpPower = 0.5f;
-    
+    [Range(1,10)]
+    public float jumpPower;
+
     Vector3 finalDirection = Vector3.zero;
     Vector3 movement = Vector3.zero;
+    Vector3 check = Vector3.zero;
 
     // Start is called before the first frame update
     void Start()
@@ -32,64 +34,85 @@ public class Character_Humanoid : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         Inputs();
         DebugColorGrounded();
         //PlayerState();
         ApplyGravity();
-        Debug.Log("Movement Direction: " + movement);
-        Debug.Log("Grounded: " + cc.isGrounded);
+        Debug.Log("Movement Y: " + movement.y);
+        //Debug.Log("Grounded: " + cc.isGrounded);
+        Debug.Log("Global Gravity: " + globalGravity);
     }
 
     void Inputs()
-    {        
+    {
+        
         horizontalMovement = Input.GetAxisRaw("Horizontal");
         verticalMovement = Input.GetAxisRaw("Vertical");
-       
-        
-            movement = RotateInput();
-         if (Input.GetKeyDown(KeyCode.Space) && cc.isGrounded)
-            movement.y = jumpPower;      
-        //finalDirection = new Vector3(horizontalMovement, 0, verticalMovement);
-        cc.Move(movement);       
+
+        if (cc.isGrounded)
+            movement = TestMovement();
+        //if (!cc.isGrounded)           // find midair movement that works with the current movement
+        //    movement = AirMovement();
+
+        if (Input.GetKeyDown(KeyCode.Space) && cc.isGrounded)
+        {
+           movement.y = jumpPower;
+        }
+
+        cc.Move(movement * Time.deltaTime);
     }
 
     void PlayerState()
     {
 
-    }                                                                           
+    }
 
     Vector3 RotateInput()
     {
-        if (cc.isGrounded)
-        {
-            Vector3 check = new Vector3(horizontalMovement, 0, verticalMovement);
-            finalDirection = cameraBase.transform.TransformDirection(check);
-            finalDirection.Set(finalDirection.x, -1 * Time.deltaTime, finalDirection.z);
-            Vector3 move = finalDirection.normalized * movementSpeed;
-            return move;
-        }
-        if (!cc.isGrounded)
-        {
-            Vector3 check = new Vector3(horizontalMovement, 0, verticalMovement);
-            finalDirection = cameraBase.transform.TransformDirection(check);
-            finalDirection.Set(finalDirection.x,gravity * Time.deltaTime, finalDirection.z);
-            Vector3 move = finalDirection.normalized * movementSpeed;
-            return move;
-        }
-
-        return Vector3.zero;
+        check = new Vector3(horizontalMovement, 0, verticalMovement);
+        finalDirection = cameraBase.transform.TransformDirection(check);       
+        finalDirection.Set(finalDirection.x, 0, finalDirection.z);       
+        Vector3 move = finalDirection.normalized * movementSpeed;
+        return move;
+  
     }
 
-    void ApplyGravity()
+    Vector3 TestMovement()
     {
-        //Debug.Log("APPLYING GRAVITY"); 
-        //if (cc.isGrounded)
-        //    movement.y += -1f;
-        if (!cc.isGrounded)
-            movement.y += gravity * Time.deltaTime;
+        check = new Vector3(horizontalMovement, 0, verticalMovement);
+        finalDirection = cameraBase.transform.TransformDirection(check);
+        finalDirection.Set(finalDirection.x, -1, finalDirection.z);
+        finalDirection *= movementSpeed;
+        return finalDirection;
 
+    }
+
+    Vector3 AirMovement()
+    {
+        check = new Vector3(horizontalMovement, 0, verticalMovement);
+        finalDirection = cameraBase.transform.TransformDirection(check);
+        finalDirection.Set(finalDirection.x, AirGravity(), finalDirection.z);
+        finalDirection *= movementSpeed;
+        return finalDirection;
+    }
+
+
+    void ApplyGravity()
+    {              
+           Debug.Log("APPLYING GRAVITY");
+           movement.y += gravity * Time.deltaTime;       
+    }
+
+    float AirGravity()
+    {
+        if (!cc.isGrounded)
+        {
+            return movement.y += gravity * Time.deltaTime;
+        }
+        return 0f;
+            
     }
 
     void DebugColorGrounded()
