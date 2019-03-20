@@ -14,6 +14,7 @@ public class Character_Humanoid : MonoBehaviour
     float verticalMovement;
     float globalGravity = -1f;
     float gravity = -15f;
+    bool enableScript = true;   
     [Header("Humanoid Stats")]
     [Range(1, 10)]
     public float movementSpeed;
@@ -36,13 +37,16 @@ public class Character_Humanoid : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        Inputs();
-        DebugColorGrounded();
-        //PlayerState();
-        ApplyGravity();
-        Debug.Log("Movement Y: " + movement.y);
-        //Debug.Log("Grounded: " + cc.isGrounded);
-        Debug.Log("Global Gravity: " + globalGravity);
+        if (enableScript)
+        {
+            Inputs();
+            DebugColorGrounded();
+            //PlayerState();
+            ApplyGravity();
+            Debug.Log("Movement Y: " + movement.y);
+            //Debug.Log("Grounded: " + cc.isGrounded);
+            Debug.Log("Global Gravity: " + globalGravity);
+        }
     }
 
     void Inputs()
@@ -58,7 +62,7 @@ public class Character_Humanoid : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && cc.isGrounded)
         {
-           movement.y = jumpPower;
+           movement.y = jumpPower;          
         }
 
         cc.Move(movement * Time.deltaTime);
@@ -109,7 +113,7 @@ public class Character_Humanoid : MonoBehaviour
     {
         if (!cc.isGrounded)
         {
-            return movement.y += gravity * Time.deltaTime;
+            return movement.y = gravity * Time.deltaTime;
         }
         return 0f;
             

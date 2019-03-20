@@ -14,12 +14,16 @@ public class MorphManager : MonoBehaviour
     public GameObject camera_;
     public GameObject ballCamera;
     public GameObject humanoidCamera;
+    [Header("Player's Scripts Object")]
+    public GameObject playerObjScripts;
     #region Morph Private Varibles
     SkinnedMeshRenderer smr_;
     bool morph = false;
     bool doneMorph;
-    enum MorphState { ball, humanoid }
-    MorphState state = MorphState.humanoid  ;
+    Quaternion startRotation;
+    public enum MorphState { ball, humanoid }
+    [Header("State of the Character")]
+    public MorphState state;
     float t = 0.0f;
     #endregion
 
@@ -28,6 +32,8 @@ public class MorphManager : MonoBehaviour
     {
         smr_ = blendObject.GetComponent<SkinnedMeshRenderer>();
         doneMorph = true;
+        startRotation = blendObject.transform.rotation;
+        CheckStartStatus();
     }
 
     
@@ -36,6 +42,19 @@ public class MorphManager : MonoBehaviour
         //Debug.Log("Morph Status: " + morph);
         GlobalInput();
         Morph();
+    }
+
+    void CheckStartStatus()
+    {
+        switch (state)
+        {
+            case MorphState.ball:
+                BallProperties();
+                break;
+            case MorphState.humanoid:
+                HumanoidProperties();              
+                break;
+        }
     }
 
     void GlobalInput()
@@ -65,17 +84,24 @@ public class MorphManager : MonoBehaviour
         }
 
         if (state == MorphState.ball && !doneMorph && morph)
-        {          
+        {
+            DisableWhileMorphing();
+            blendObject.transform.rotation = startRotation;
             smr_.SetBlendShapeWeight(0, Mathf.Lerp(0, 100, t));
             t += 1f * Time.deltaTime;
-                if(smr_.GetBlendShapeWeight(0) == 100) { doneMorph = true; state = MorphState.humanoid; ChangeMesh(state); }
+            if(smr_.GetBlendShapeWeight(0) == 100) {
+            doneMorph = true; state = MorphState.humanoid; HumanoidProperties();
+            }
         }
 
         if (state == MorphState.humanoid && !doneMorph && morph)
         {
+            DisableWhileMorphing();
             smr_.SetBlendShapeWeight(0, Mathf.Lerp(100, 0, t));
             t += 1f * Time.deltaTime;
-            if (smr_.GetBlendShapeWeight(0) == 0) { doneMorph = true; state = MorphState.ball; ChangeMesh(state); }
+            if (smr_.GetBlendShapeWeight(0) == 0) { 
+                doneMorph = true; state = MorphState.ball; BallProperties();
+            }
         }
     }
 
@@ -84,45 +110,82 @@ public class MorphManager : MonoBehaviour
 
     }
 
-    void ChangeMesh(MorphState state)
+    //void ChangeMesh(MorphState state)
+    //{
+    //    switch (state)
+    //    {
+    //        case MorphState.ball:
+    //            //disable humanoid gameobject, enable ball gameobject
+    //            DisableObject(playerHumanoid);
+    //            EnableObject(playerBall,playerHumanoid);
+    //            ChangeCameraTarget(ballCamera, playerBall);
+    //            break;
+    //        case MorphState.humanoid:
+    //            //disable ball gameobject, enable humanoid gameobject
+    //            DisableObject(playerBall);
+    //            EnableObject(playerHumanoid,playerBall);
+    //            ChangeCameraTarget(humanoidCamera, playerHumanoid);
+    //            break;
+    //    }
+    //}
+
+    //void EnableObject(GameObject obj, GameObject obj2)
+    //{
+    //    // enable
+    //    obj.transform.position = obj2.transform.position; // temp
+    //    obj.SetActive(true);
+
+    //}
+
+    //void DisableObject(GameObject obj)
+    //{
+    //    // disable
+    //    obj.SetActive(false);
+    //}
+
+    //void ChangeCameraTarget(GameObject cameraObj, GameObject playerObj)
+    //{
+    //    // switch camera targets
+    //    camera_.GetComponent<CameraFollow>().cameraFollowObj = cameraObj;
+    //    camera_.GetComponent<CameraFollow>().playerObj = playerObj;
+    //}
+
+    void BallProperties()
     {
-        switch (state)
-        {
-            case MorphState.ball:
-                //disable humanoid gameobject, enable ball gameobject
-                DisableObject(playerHumanoid);
-                EnableObject(playerBall,playerHumanoid);
-                ChangeCameraTarget(ballCamera, playerBall);
-                break;
-            case MorphState.humanoid:
-                //disable ball gameobject, enable humanoid gameobject
-                DisableObject(playerBall);
-                EnableObject(playerHumanoid,playerBall);
-                ChangeCameraTarget(humanoidCamera, playerHumanoid);
-                break;
-        }
+        playerObjScripts.GetComponent<Character_Ball>().enabled = true;
+        playerObjScripts.GetComponent<SphereCollider>().enabled = true;
+        playerObjScripts.GetComponent<Rigidbody>().isKinematic = false;
+        playerObjScripts.GetComponent<Rigidbody>().detectCollisions = true;
+        playerObjScripts.GetComponent<Character_Humanoid>().enabled = false;
+        playerObjScripts.GetComponent<CharacterController>().enabled = false;
+
     }
 
-    void EnableObject(GameObject obj, GameObject obj2)
+    void HumanoidProperties()
     {
-        // enable
-        obj.transform.position = obj2.transform.position;
-        obj.SetActive(true);
+        playerObjScripts.GetComponent<Character_Ball>().enabled = false;
+        playerObjScripts.GetComponent<Rigidbody>().isKinematic = true;
+        playerObjScripts.GetComponent<Rigidbody>().detectCollisions = false;
+        playerObjScripts.GetComponent<Character_Humanoid>().enabled = true;
+        playerObjScripts.GetComponent<CharacterController>().enabled = true;
+        playerObjScripts.GetComponent<SphereCollider>().enabled = false;
 
     }
 
-    void DisableObject(GameObject obj)
+    /// <summary>
+    /// Make sure to rotate the object to match it's forward upwards so that it animates and morphs into the form that we need (ball to humanoid)
+    /// </summary>
+    void RotateBallToMatchHumanoid()
     {
-        // disable
-        obj.SetActive(false);
+        playerBall.transform.rotation = startRotation;
     }
 
-    void ChangeCameraTarget(GameObject cameraObj, GameObject playerObj)
+    void DisableWhileMorphing()
     {
-        // switch camera targets
-        camera_.GetComponent<CameraFollow>().cameraFollowObj = cameraObj;
-        camera_.GetComponent<CameraFollow>().playerObj = playerObj;
+        // also stop ball from rolling
+        playerObjScripts.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        playerObjScripts.GetComponent<Character_Ball>().enabled = false;
+        playerObjScripts.GetComponent<Character_Humanoid>().enabled = false;
+        
     }
-
-
 }

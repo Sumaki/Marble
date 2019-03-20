@@ -16,6 +16,7 @@ public class Character_Ball : MonoBehaviour
     public float inputSpeed = 1f;
     public float movementForce = 50f;
     public float gravityAmount;
+    bool enableScript = true;
 
     // Private Variables
     public static Vector3 gravity = new Vector3(0f, -1000f, 0f);
@@ -47,8 +48,7 @@ public class Character_Ball : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         gravity.y = -gravityAmount;
-        distToGround = GetComponent<Collider>().bounds.extents.y;
-        
+        distToGround = GetComponent<Collider>().bounds.extents.y;        
     }
 
     private void Update()
@@ -57,9 +57,12 @@ public class Character_Ball : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {       
-        BallInputs();
-        ApplyGravity();
+    {
+        if (enableScript)
+        {
+            BallInputs();
+            ApplyGravity();     
+        }
     }
 
 
