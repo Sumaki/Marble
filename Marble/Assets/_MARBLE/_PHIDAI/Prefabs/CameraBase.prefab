@@ -95,9 +95,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2833d0396542a146a016351a7ee6c9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minDistance: 1
-  maxDistance: 4
-  smooth: 10
+  minDistance: 7
+  maxDistance: 10
+  smooth: 5
   dollyDirAdjusted: {x: 0, y: 0, z: 0}
   distance: 0
 --- !u!1 &1892183061037200

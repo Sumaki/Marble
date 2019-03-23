@@ -6,14 +6,14 @@ public class MorphManager : MonoBehaviour
 {
     [Header("Morph Model")]
     public GameObject blendObject;
-    [Header("Ball Model")]
-    public GameObject playerBall;
-    [Header("Humanoid Model")]
-    public GameObject playerHumanoid;
-    [Header("Camera")]
-    public GameObject camera_;
-    public GameObject ballCamera;
-    public GameObject humanoidCamera;
+    //[Header("Ball Model")]
+    //public GameObject playerBall;
+    //[Header("Humanoid Model")]
+    //public GameObject playerHumanoid;
+    //[Header("Camera")]
+    //public GameObject camera_;
+    //public GameObject ballCamera;
+    //public GameObject humanoidCamera;
     [Header("Player's Scripts Object")]
     public GameObject playerObjScripts;
     #region Morph Private Varibles
@@ -155,6 +155,7 @@ public class MorphManager : MonoBehaviour
 
     void BallProperties()
     {
+      
         playerObjScripts.GetComponent<Character_Ball>().enabled = true;
         playerObjScripts.GetComponent<SphereCollider>().enabled = true;
         playerObjScripts.GetComponent<Rigidbody>().isKinematic = false;
@@ -162,11 +163,12 @@ public class MorphManager : MonoBehaviour
         playerObjScripts.GetComponent<Character_Humanoid>().enabled = false;
        // playerObjScripts.GetComponent<CharacterController>().enabled = false;
         playerObjScripts.GetComponent<CharacterController>().detectCollisions = false;
-        playerObjScripts.GetComponent<CharacterController>().transform.rotation = Quaternion.Euler(0, 0, 0);
+        //playerObjScripts.GetComponent<CharacterController>().transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     void HumanoidProperties()
     {
+  
         playerObjScripts.GetComponent<Character_Ball>().enabled = false;
         playerObjScripts.GetComponent<SphereCollider>().enabled = false;
         playerObjScripts.GetComponent<Rigidbody>().isKinematic = true;
@@ -181,7 +183,7 @@ public class MorphManager : MonoBehaviour
     /// </summary>
     void RotateBallToMatchHumanoid()
     {
-        playerBall.transform.rotation = startRotation;
+        playerObjScripts.transform.rotation = startRotation;
     }
 
     void DisableWhileMorphing()
