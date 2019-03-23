@@ -19,8 +19,8 @@ ModelImporter:
     3300002: Door_4x4_L
     3300004: Door_4x4_R
     4300000: Door_4x4
-    4300002: Door_4x4_R
-    4300004: Door_4x4_L
+    4300002: Door_4x4_L
+    4300004: Door_4x4_R
   externalObjects: {}
   materials:
     importMaterials: 1
