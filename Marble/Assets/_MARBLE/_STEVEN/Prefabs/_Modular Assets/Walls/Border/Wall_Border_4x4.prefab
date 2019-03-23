@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8513901909506335816}
   - component: {fileID: 8513901909505041446}
   - component: {fileID: 8513901909503911526}
+  - component: {fileID: 8585666888775138880}
   m_Layer: 0
   m_Name: Wall_Border_4x4
   m_TagString: Untagged
@@ -77,3 +78,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &8585666888775138880
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8513901909506177064}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300008, guid: ad9c9000fa6961d43ac3acbba4b45cda, type: 3}

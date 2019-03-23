@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 181205344814049164}
   - component: {fileID: 181205344817473466}
   - component: {fileID: 181205344816342522}
+  - component: {fileID: 7531012556025981536}
   m_Layer: 0
   m_Name: Lever_Switch
   m_TagString: Untagged
@@ -77,6 +78,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &7531012556025981536
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181205344814152620}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300202, guid: 0f8f06f61aba2564abc6d4758733ca4b, type: 3}
 --- !u!1 &181205344814152622
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,6 +103,7 @@ GameObject:
   - component: {fileID: 181205344814049166}
   - component: {fileID: 181205344817473468}
   - component: {fileID: 181205344816342524}
+  - component: {fileID: 257836918957276828}
   m_Layer: 0
   m_Name: Lever
   m_TagString: Untagged
@@ -155,3 +171,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &257836918957276828
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181205344814152622}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300200, guid: 0f8f06f61aba2564abc6d4758733ca4b, type: 3}

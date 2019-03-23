@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4949350405354992122}
   - component: {fileID: 4949350405355794942}
   - component: {fileID: 4949350405356893118}
+  - component: {fileID: 4804512990953664917}
   m_Layer: 0
   m_Name: Ramp_x4_80
   m_TagString: Untagged
@@ -77,3 +78,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &4804512990953664917
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4949350405354630426}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300150, guid: 0f8f06f61aba2564abc6d4758733ca4b, type: 3}

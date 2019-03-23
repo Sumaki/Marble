@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6119336077647750866}
   - component: {fileID: 6119336077646456512}
   - component: {fileID: 6119336077645325440}
+  - component: {fileID: 2287735069988539187}
   m_Layer: 0
   m_Name: Pillar_x4_LP
   m_TagString: Untagged
@@ -77,3 +78,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &2287735069988539187
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6119336077647592242}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300218, guid: 0f8f06f61aba2564abc6d4758733ca4b, type: 3}

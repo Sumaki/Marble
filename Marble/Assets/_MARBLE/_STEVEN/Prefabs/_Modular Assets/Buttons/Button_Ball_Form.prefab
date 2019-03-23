@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7260130827369335588}
   - component: {fileID: 7260130827365911300}
   - component: {fileID: 7260130827367041476}
+  - component: {fileID: 9045715429351672256}
   m_Layer: 0
   m_Name: Button_Ball_Form
   m_TagString: Untagged
@@ -79,6 +80,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &9045715429351672256
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7260130827369043716}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300196, guid: 0f8f06f61aba2564abc6d4758733ca4b, type: 3}
 --- !u!1 &7260130827369043740
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,6 +105,7 @@ GameObject:
   - component: {fileID: 7260130827369335612}
   - component: {fileID: 7260130827365911324}
   - component: {fileID: 7260130827367041500}
+  - component: {fileID: 3112155128743956355}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -156,3 +172,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &3112155128743956355
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7260130827369043740}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300198, guid: 0f8f06f61aba2564abc6d4758733ca4b, type: 3}

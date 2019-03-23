@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4587841596758335441}
   - component: {fileID: 4587841596761759729}
   - component: {fileID: 4587841596760759601}
+  - component: {fileID: 3561497232495380053}
   m_Layer: 0
   m_Name: Door_4x4_R
   m_TagString: Untagged
@@ -77,3 +78,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &3561497232495380053
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4587841596758492145}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300038, guid: ad9c9000fa6961d43ac3acbba4b45cda, type: 3}

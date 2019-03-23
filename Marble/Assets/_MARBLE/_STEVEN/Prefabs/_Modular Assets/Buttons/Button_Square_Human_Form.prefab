@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1942408885028388495}
   - component: {fileID: 1942408885027061423}
   - component: {fileID: 1942408885025963119}
+  - component: {fileID: 7947129718232359379}
   m_Layer: 0
   m_Name: Button_Square_Human_Form
   m_TagString: Untagged
@@ -78,6 +79,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &7947129718232359379
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1942408885028151983}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300212, guid: 0f8f06f61aba2564abc6d4758733ca4b, type: 3}
 --- !u!1 &1942408885028151991
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,6 +104,7 @@ GameObject:
   - component: {fileID: 1942408885028388503}
   - component: {fileID: 1942408885027061431}
   - component: {fileID: 1942408885025963127}
+  - component: {fileID: 3215539731435167779}
   m_Layer: 0
   m_Name: Button 3
   m_TagString: Untagged
@@ -155,3 +171,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &3215539731435167779
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1942408885028151991}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300214, guid: 0f8f06f61aba2564abc6d4758733ca4b, type: 3}

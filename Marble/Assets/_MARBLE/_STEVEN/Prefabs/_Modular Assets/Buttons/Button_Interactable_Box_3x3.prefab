@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2856130393416809036}
   - component: {fileID: 2856130393419709036}
   - component: {fileID: 2856130393418709164}
+  - component: {fileID: 4038840037390545427}
   m_Layer: 0
   m_Name: Button 2
   m_TagString: Untagged
@@ -77,6 +78,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &4038840037390545427
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2856130393416509036}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300210, guid: 0f8f06f61aba2564abc6d4758733ca4b, type: 3}
 --- !u!1 &2856130393416509044
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,6 +103,7 @@ GameObject:
   - component: {fileID: 2856130393416809044}
   - component: {fileID: 2856130393419709044}
   - component: {fileID: 2856130393418709172}
+  - component: {fileID: 1552360356843666398}
   m_Layer: 0
   m_Name: Button_Interactable_Box_3x3
   m_TagString: Untagged
@@ -155,3 +171,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &1552360356843666398
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2856130393416509044}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300208, guid: 0f8f06f61aba2564abc6d4758733ca4b, type: 3}

@@ -1,16 +1,53 @@
 fileFormatVersion: 2
-guid: 31a1174ca74e2b840802f66db07c91f6
+guid: 85835a0b4d76c8241a9eb33300f6e3be
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Stair_x2_two_sides
-    100002: //RootNode
-    400000: Stair_x2_two_sides
-    400002: //RootNode
+    100000: Door
+    100002: Door 1
+    100004: Door_1x1
+    100006: Door_1x3
+    100008: //RootNode
+    100010: Pipe_END_START
+    100012: Wall_Border_Door_1x1
+    100014: Wall_Border_Door_1x3
+    100016: Wall_Border_Tube_1x1
+    400000: Door
+    400002: Door 1
+    400004: Door_1x1
+    400006: Door_1x3
+    400008: //RootNode
+    400010: Pipe_END_START
+    400012: Wall_Border_Door_1x1
+    400014: Wall_Border_Door_1x3
+    400016: Wall_Border_Tube_1x1
     2100000: No Name
-    2300000: Stair_x2_two_sides
-    3300000: Stair_x2_two_sides
-    4300000: Stair_x2_two_sides
+    2100002: 'Material #2'
+    2100004: 'Material #3'
+    2300000: Door
+    2300002: Door 1
+    2300004: Door_1x1
+    2300006: Door_1x3
+    2300008: Pipe_END_START
+    2300010: Wall_Border_Door_1x1
+    2300012: Wall_Border_Door_1x3
+    2300014: Wall_Border_Tube_1x1
+    3300000: Door
+    3300002: Door 1
+    3300004: Door_1x1
+    3300006: Door_1x3
+    3300008: Pipe_END_START
+    3300010: Wall_Border_Door_1x1
+    3300012: Wall_Border_Door_1x3
+    3300014: Wall_Border_Tube_1x1
+    4300000: Wall_Border_Door_1x1
+    4300002: Door_1x1
+    4300004: Door
+    4300006: Wall_Border_Door_1x3
+    4300008: Door_1x3
+    4300010: Door
+    4300012: Wall_Border_Tube_1x1
+    4300014: Pipe_END_START
   externalObjects: {}
   materials:
     importMaterials: 1

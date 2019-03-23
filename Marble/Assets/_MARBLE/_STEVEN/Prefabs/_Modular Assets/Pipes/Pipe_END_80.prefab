@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7248390763997755039}
   - component: {fileID: 7248390764000622227}
   - component: {fileID: 7248390763999655251}
+  - component: {fileID: 5288858923786077884}
   m_Layer: 0
   m_Name: Pipe_END_80
   m_TagString: Untagged
@@ -78,3 +79,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &5288858923786077884
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7248390763997391615}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300078, guid: 0f8f06f61aba2564abc6d4758733ca4b, type: 3}
