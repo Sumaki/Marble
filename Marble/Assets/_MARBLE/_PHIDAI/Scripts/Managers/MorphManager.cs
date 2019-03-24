@@ -14,8 +14,10 @@ public class MorphManager : MonoBehaviour
     //public GameObject camera_;
     //public GameObject ballCamera;
     //public GameObject humanoidCamera;
-    [Header("Player's Scripts Object")]
-    public GameObject playerObjScripts;
+    [Header("Player's Ball Scripts Object")]
+    public GameObject ballObjScripts;
+    [Header("Player's Humanoid Scripts Object")]
+    public GameObject humanoidObjScripts;
     #region Morph Private Varibles
     SkinnedMeshRenderer smr_;
     bool morph = false;
@@ -23,7 +25,7 @@ public class MorphManager : MonoBehaviour
     Quaternion startRotation;
     public enum MorphState { ball, humanoid }
     [Header("State of the Character")]
-    public MorphState state;
+    public static MorphState state = MorphState.ball;
     float t = 0.0f;
     #endregion
 
@@ -34,17 +36,23 @@ public class MorphManager : MonoBehaviour
         doneMorph = true;
         startRotation = blendObject.transform.rotation;
         CheckStartStatus();
+
+        //Collider[] cols = GameObject.FindGameObjectWithTag("Player").GetComponents<Collider>();
+        //foreach (Collider c in cols)
+        //    Physics.IgnoreCollision(playerObjScripts.GetComponent<CharacterController>(), c);
     }
 
     
     void Update()
     {
-        Debug.Log(playerObjScripts.GetComponent<CharacterController>().detectCollisions);
+        //Debug.Log(playerObjScripts.GetComponent<CharacterController>().detectCollisions);
         //Debug.Log("Morph Status: " + morph);
         GlobalInput();
         Morph();
         IgnoreCollisionBetweenPlayerCollider();
-        
+        //humanoidObjScripts.transform.rotation = Quaternion.identity;
+
+  
     }
 
     void CheckStartStatus()
@@ -100,6 +108,7 @@ public class MorphManager : MonoBehaviour
         if (state == MorphState.humanoid && !doneMorph && morph)
         {
             DisableWhileMorphing();
+            //blendObject.transform.rotation = startRotation;
             smr_.SetBlendShapeWeight(0, Mathf.Lerp(100, 0, t));
             t += 3f * Time.deltaTime;
             if (smr_.GetBlendShapeWeight(0) == 0) { 
@@ -155,27 +164,27 @@ public class MorphManager : MonoBehaviour
 
     void BallProperties()
     {
-      
-        playerObjScripts.GetComponent<Character_Ball>().enabled = true;
-        playerObjScripts.GetComponent<SphereCollider>().enabled = true;
-        playerObjScripts.GetComponent<Rigidbody>().isKinematic = false;
-        playerObjScripts.GetComponent<Rigidbody>().detectCollisions = true;
-        playerObjScripts.GetComponent<Character_Humanoid>().enabled = false;
-       // playerObjScripts.GetComponent<CharacterController>().enabled = false;
-        playerObjScripts.GetComponent<CharacterController>().detectCollisions = false;
-        //playerObjScripts.GetComponent<CharacterController>().transform.rotation = Quaternion.Euler(0, 0, 0);
+       
+        ballObjScripts.GetComponent<Character_Ball>().enabled = true;
+        ballObjScripts.GetComponent<SphereCollider>().enabled = true;
+        ballObjScripts.GetComponent<Rigidbody>().isKinematic = false;
+        ballObjScripts.GetComponent<Rigidbody>().detectCollisions = true;
+        humanoidObjScripts.GetComponent<Character_Humanoid>().enabled = false;
+        // playerObjScripts.GetComponent<CharacterController>().enabled = false;
+        humanoidObjScripts.GetComponent<CharacterController>().detectCollisions = false;
+        //humanoidObjScripts.GetComponent<CharacterController>().transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     void HumanoidProperties()
     {
-  
-        playerObjScripts.GetComponent<Character_Ball>().enabled = false;
-        playerObjScripts.GetComponent<SphereCollider>().enabled = false;
-        playerObjScripts.GetComponent<Rigidbody>().isKinematic = true;
-        playerObjScripts.GetComponent<Rigidbody>().detectCollisions = false;
-        playerObjScripts.GetComponent<Character_Humanoid>().enabled = true;
-       // playerObjScripts.GetComponent<CharacterController>().enabled = true;
-       playerObjScripts.GetComponent<CharacterController>().detectCollisions = true;
+       // humanoidObjScripts.transform.position = ballObjScripts.transform.position;
+        ballObjScripts.GetComponent<Character_Ball>().enabled = false;
+        ballObjScripts.GetComponent<SphereCollider>().enabled = false;
+        ballObjScripts.GetComponent<Rigidbody>().isKinematic = true;
+        ballObjScripts.GetComponent<Rigidbody>().detectCollisions = false;
+        humanoidObjScripts.GetComponent<Character_Humanoid>().enabled = true;
+        // playerObjScripts.GetComponent<CharacterController>().enabled = true;
+        humanoidObjScripts.GetComponent<CharacterController>().detectCollisions = true;
     }
 
     /// <summary>
@@ -183,19 +192,20 @@ public class MorphManager : MonoBehaviour
     /// </summary>
     void RotateBallToMatchHumanoid()
     {
-        playerObjScripts.transform.rotation = startRotation;
+        ballObjScripts.transform.rotation = startRotation;
     }
 
     void DisableWhileMorphing()
     {
         // also stop ball from rolling
-        playerObjScripts.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        playerObjScripts.GetComponent<Character_Ball>().enabled = false;
-        playerObjScripts.GetComponent<Character_Humanoid>().enabled = false;        
+        ballObjScripts.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        ballObjScripts.GetComponent<Character_Ball>().enabled = false;
+        humanoidObjScripts.GetComponent<Character_Humanoid>().enabled = false;        
     }
 
     void IgnoreCollisionBetweenPlayerCollider()
     {   
-        Physics.IgnoreCollision(playerObjScripts.GetComponent<CharacterController>(), playerObjScripts.GetComponent<Collider>());
+        Physics.IgnoreCollision(humanoidObjScripts.GetComponent<CharacterController>(), ballObjScripts.GetComponent<SphereCollider>(),true);       
     }
+
 }

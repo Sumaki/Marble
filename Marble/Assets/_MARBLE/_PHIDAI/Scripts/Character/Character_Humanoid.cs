@@ -40,7 +40,7 @@ public class Character_Humanoid : MonoBehaviour
         if (enableScript)
         {
             Inputs();
-            DebugColorGrounded();
+           // DebugColorGrounded();
             //PlayerState();
             ApplyGravity();
             Debug.Log("Movement Y: " + movement.y);
@@ -119,8 +119,16 @@ public class Character_Humanoid : MonoBehaviour
             
     }
 
-    void DebugColorGrounded()
-    {
-        gameObject.GetComponent<Renderer>().material.color = GetComponent<CharacterController>().isGrounded ? Color.green : Color.red;
-    }
+    //void DebugColorGrounded()
+    //{
+    //    gameObject.GetComponent<Renderer>().material.color = GetComponent<CharacterController>().isGrounded ? Color.green : Color.red;
+    //}
+
+    //private void OnControllerColliderHit(ControllerColliderHit hit)
+    //{
+    //    if(hit.gameObject.tag == "Player")
+    //    {
+    //        Physics.IgnoreCollision(cc, hit.gameObject.GetComponent<Collider>());
+    //    }
+    //}
 }
