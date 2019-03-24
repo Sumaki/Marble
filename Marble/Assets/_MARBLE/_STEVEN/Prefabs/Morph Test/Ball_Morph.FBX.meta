@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: b633e3cc45fba554a8360329fc9a1d0d
+guid: eb8f8e83b60f42144964dc1a4a1d733e
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: Ball
     100002: //RootNode
-    100004: Character
+    100004: Humanoid
     400000: Ball
     400002: //RootNode
-    400004: Character
+    400004: Humanoid
     2100000: No Name
-    2300000: Character
-    3300000: Character
+    2300000: Humanoid
+    3300000: Humanoid
     4300000: Ball
-    4300002: Character
+    4300002: Humanoid
     9500000: //RootNode
     13700000: Ball
   externalObjects: {}
