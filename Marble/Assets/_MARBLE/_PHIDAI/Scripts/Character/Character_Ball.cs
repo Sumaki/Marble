@@ -17,7 +17,6 @@ public class Character_Ball : MonoBehaviour
     public float movementForce = 50f;
     public float gravityAmount;
     bool enableScript = true;
-
     // Private Variables
     public static Vector3 gravity = new Vector3(0f, -1000f, 0f);
     Rigidbody rb;
@@ -53,7 +52,7 @@ public class Character_Ball : MonoBehaviour
 
     private void Update()
     {
-        DebugVariables();
+        DebugVariables();         
     }
 
     private void FixedUpdate()
@@ -61,7 +60,7 @@ public class Character_Ball : MonoBehaviour
         if (enableScript)
         {
             BallInputs();
-            ApplyGravity();     
+            ApplyGravity();          
         }
     }
 

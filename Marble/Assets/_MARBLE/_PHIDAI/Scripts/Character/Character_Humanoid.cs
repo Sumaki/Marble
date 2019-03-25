@@ -5,9 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class Character_Humanoid : MonoBehaviour
 {
-
+    
     public Transform cameraBase;
-
 
     CharacterController cc;
     float horizontalMovement;
@@ -24,13 +23,13 @@ public class Character_Humanoid : MonoBehaviour
     public float jumpPower;
 
     Vector3 finalDirection = Vector3.zero;
-    Vector3 movement = Vector3.zero;
+    Vector3 movement;
     Vector3 check = Vector3.zero;
 
     // Start is called before the first frame update
     void Start()
     {
-        cc = GetComponent<CharacterController>();
+         cc = GetComponent<CharacterController>();
         //gravity.y = -gravityAmount;
     }
 
