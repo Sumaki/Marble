@@ -52,7 +52,9 @@ public class Character_Ball : MonoBehaviour
 
     private void Update()
     {
-        DebugVariables();         
+        DebugVariables();
+        //Debug.Log("Velocity: " + rb.velocity.magnitude);    
+        Debug.Log("On Ground: " + IsGrounded());
     }
 
     private void FixedUpdate()
@@ -74,10 +76,10 @@ public class Character_Ball : MonoBehaviour
 
 
         // limit velocity to set value for movement
-        if (rb.velocity.magnitude > 40f)
+        if (rb.velocity.magnitude > 70f)
         {
             Vector3 normalizedVelocity = Vector3.Normalize(rb.velocity);
-            normalizedVelocity *= 40f;
+            normalizedVelocity *= 70f;
             rb.velocity = normalizedVelocity;
         }
 
@@ -114,14 +116,15 @@ public class Character_Ball : MonoBehaviour
             //gameObject.transform.right =
             //Vector3.Slerp(gameObject.transform.right, rb.velocity.normalized, Time.deltaTime);
 
-            Vector3 finalMovement = RotateInput();
+            Vector3 finalMovement = RotateInput() / 2;
             //if (rb.velocity != Vector3.zero)
             //    transform.rotation = Quaternion.LookRotation(rb.velocity);
             ApplyTorque();
             rb.AddForce(finalMovement);
             //rb.AddRelativeTorque(finalMovement);
-
-            rb.AddForce(gravity * 1.5f);
+            //if(horizontalMovement != 0 && verticalMovement !=0)
+            //     rb.velocity = 30 * (rb.velocity.normalized);
+            rb.AddForce(gravity * 2f);
         }
 
     }
