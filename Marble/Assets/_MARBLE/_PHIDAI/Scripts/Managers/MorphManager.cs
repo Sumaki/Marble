@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class MorphManager : MonoBehaviour
 {
-    [Header("Morph Model")]
-    public GameObject blendObject;
+    [Header("Morph Model Ball")]
+    public GameObject blendObjectBall;
+    [Header("Morph Model Humanoid")]
+    public GameObject blendObjectHumanoid;
     //[Header("Ball Model")]
     //public GameObject playerBall;
     //[Header("Humanoid Model")]
@@ -33,9 +35,9 @@ public class MorphManager : MonoBehaviour
    
     void Start()
     {
-        smr_ =  blendObject.GetComponent<SkinnedMeshRenderer>();
+        smr_ =  blendObjectBall.GetComponent<SkinnedMeshRenderer>();
         doneMorph = true;
-        startRotation = blendObject.transform.rotation;
+        startRotation = blendObjectBall.transform.rotation;
         CheckStartStatus();
 
         //Collider[] cols = GameObject.FindGameObjectWithTag("Player").GetComponents<Collider>();
@@ -100,10 +102,10 @@ public class MorphManager : MonoBehaviour
         {
             DisableWhileMorphing();
             ballObjScripts.transform.rotation = startRotation;
-            smr_.SetBlendShapeWeight(0, Mathf.Lerp(0, 100, t));
+            smr_.SetBlendShapeWeight(0, Mathf.Lerp(100, 0, t));
             t += 3f * Time.deltaTime;
-            if(smr_.GetBlendShapeWeight(0) == 100) {
-                ChangeMesh(MorphState.humanoid); smr_.SetBlendShapeWeight(0,0);
+            if(smr_.GetBlendShapeWeight(0) == 0) {
+                ChangeMesh(MorphState.humanoid); smr_.SetBlendShapeWeight(0,100);
             state = MorphState.humanoid;  HumanoidProperties(); doneMorph = true;
             }
         }
@@ -112,10 +114,10 @@ public class MorphManager : MonoBehaviour
         {
             DisableWhileMorphing();
             //blendObject.transform.rotation = startRotation;
-            smr_.SetBlendShapeWeight(0, Mathf.Lerp(100, 0, t));
+            smr_.SetBlendShapeWeight(0, Mathf.Lerp(0, 100, t));
             t += 3f * Time.deltaTime;
-            if (smr_.GetBlendShapeWeight(0) == 0) {
-                ChangeMesh(MorphState.ball); smr_.SetBlendShapeWeight(0, 100);
+            if (smr_.GetBlendShapeWeight(0) == 100) {
+                ChangeMesh(MorphState.ball); smr_.SetBlendShapeWeight(0, 0);
                 state = MorphState.ball;  BallProperties(); doneMorph = true;
             }
         }
@@ -126,10 +128,10 @@ public class MorphManager : MonoBehaviour
         switch (state)
         {
             case MorphState.ball:
-                smr_ = ballObjScripts.GetComponent<SkinnedMeshRenderer>();
+                smr_ = blendObjectBall.GetComponent<SkinnedMeshRenderer>();
                 break;
             case MorphState.humanoid:
-                smr_ = humanoidObjScripts.GetComponent<SkinnedMeshRenderer>();
+                smr_ = blendObjectHumanoid.GetComponent<SkinnedMeshRenderer>();
                 break;
         }
     }

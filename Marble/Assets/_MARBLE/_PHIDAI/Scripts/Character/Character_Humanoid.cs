@@ -42,7 +42,7 @@ public class Character_Humanoid : MonoBehaviour
         if (enableScript)
         {
             Inputs();
-            DebugColorGrounded();
+          //  DebugColorGrounded();
             //PlayerState();
      
             ApplyGravity();
@@ -152,8 +152,10 @@ public class Character_Humanoid : MonoBehaviour
         Rigidbody body = hit.collider.attachedRigidbody;
         if (body != null && !body.isKinematic)
         {
+            if (hit.moveDirection.y < -0.3)
+                return; 
             Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
-            body.velocity = pushDir * pushingPower;
+            body.velocity = pushDir * pushingPower ;
         }
     }
 }

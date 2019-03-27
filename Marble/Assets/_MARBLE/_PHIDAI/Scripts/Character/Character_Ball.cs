@@ -21,7 +21,7 @@ public class Character_Ball : MonoBehaviour
     public float gravityAmount;
     bool enableScript = true;
     // Private Variables
-    public static Vector3 gravity = new Vector3(0f, -100f, 0f);
+    public static Vector3 gravity = new Vector3(0f, -1000f, 0f);
     Rigidbody rb;
     #endregion
 
@@ -58,7 +58,7 @@ public class Character_Ball : MonoBehaviour
     {
         DebugVariables();
         Debug.Log("Velocity: " + rb.velocity.magnitude);    
-        //Debug.Log("On Ground: " + IsGrounded());
+        Debug.Log("On Ground: " + IsGrounded());
        // Debug.Log("Movement Force: " + movementForce);
     }
 
@@ -83,13 +83,13 @@ public class Character_Ball : MonoBehaviour
         // limit velocity to set value for movement
         //if (IsGrounded())
         //{
-            if (rb.velocity.magnitude > 100f)
-            {
-                Vector3 normalizedVelocity = Vector3.Normalize(rb.velocity);
-                normalizedVelocity *= 100f;
-                rb.velocity = normalizedVelocity;
-            }
-    //    }
+        if (rb.velocity.magnitude > 100f)
+        {
+            Vector3 normalizedVelocity = Vector3.Normalize(rb.velocity);
+            normalizedVelocity *= 100f;
+            rb.velocity = normalizedVelocity;
+        }
+        //    }
 
         //if (!IsGrounded())
         //{
@@ -123,7 +123,7 @@ public class Character_Ball : MonoBehaviour
             //Debug.Log("Final Movement Force: " + finalMovement);
            // if (rb.velocity.magnitude <= 15f)
            // { // testing limit
-                rb.AddForce(finalMovement * rb.mass);
+                rb.AddForce(finalMovement);
                 //rb.AddTorque(finalMovement);
                 
            // }
@@ -137,13 +137,13 @@ public class Character_Ball : MonoBehaviour
             //Vector3.Slerp(gameObject.transform.right, rb.velocity.normalized, Time.deltaTime);
 
             Vector3 finalMovement = AirRoll();
-         //   Debug.Log("AIR MOVEMENT: " + finalMovement);
+            //   Debug.Log("AIR MOVEMENT: " + finalMovement);
             //if (rb.velocity != Vector3.zero)
             //    transform.rotation = Quaternion.LookRotation(rb.velocity);
             ApplyTorque();
-            rb.AddForce(finalMovement * rb.mass);
+            rb.AddForce(finalMovement);
             //rb.AddRelativeTorque(finalMovement);
-             //   rb.velocity = 30 * (rb.velocity.normalized);
+            //   rb.velocity = 30 * (rb.velocity.normalized);
             // rb.AddForce(gravity * 2f);
         }
 
@@ -179,7 +179,7 @@ public class Character_Ball : MonoBehaviour
         Vector3 check = new Vector3(horizontalMovement, 0, verticalMovement);
         finalDirection = cameraBase.transform.TransformDirection(check);
         finalDirection.Set(finalDirection.x, 0, finalDirection.z);
-        Debug.Log("Air force: " + airMovementForce);
+       // Debug.Log("Air force: " + airMovementForce);
         Vector3 move = (finalDirection.normalized * airMovementForce);
         return move;
     }
