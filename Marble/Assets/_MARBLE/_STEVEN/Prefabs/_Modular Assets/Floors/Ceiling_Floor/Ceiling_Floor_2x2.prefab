@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1109081459791676239}
   - component: {fileID: 1109081459792970607}
   - component: {fileID: 1109081459794100655}
-  - component: {fileID: 7995001689455087971}
+  - component: {fileID: 5936151328646162662}
   m_Layer: 0
   m_Name: Ceiling_Floor_2x2
   m_TagString: Untagged
@@ -78,8 +78,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7995001689455087971
-MeshCollider:
+--- !u!65 &5936151328646162662
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -88,7 +88,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300004, guid: 184d8ce01e365fb4f8d92f275048b5e7, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 1.9999999, y: 1, z: 1.9999999}
+  m_Center: {x: 1, y: 0.5, z: -1}

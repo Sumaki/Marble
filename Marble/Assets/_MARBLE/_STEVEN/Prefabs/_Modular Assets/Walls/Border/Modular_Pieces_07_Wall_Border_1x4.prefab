@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 400716974229215638}
   - component: {fileID: 400716974227888566}
   - component: {fileID: 400716974226922358}
+  - component: {fileID: 6945003483271325203}
   m_Layer: 0
   m_Name: Modular_Pieces_07_Wall_Border_1x4
   m_TagString: Untagged
@@ -77,3 +78,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &6945003483271325203
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400716974228850102}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 4, z: 1}
+  m_Center: {x: 0.5, y: 2, z: -0.38}

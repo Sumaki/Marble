@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7998623814947109751}
   - component: {fileID: 7998623814945782617}
   - component: {fileID: 7998623814944815513}
-  - component: {fileID: 5708830726931053853}
+  - component: {fileID: 2518518431609818496}
   m_Layer: 0
   m_Name: Wall_Corner_IN_x4
   m_TagString: Untagged
@@ -78,7 +78,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &5708830726931053853
+--- !u!64 &2518518431609818496
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
