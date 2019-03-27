@@ -60,8 +60,7 @@ public class Character_Humanoid : MonoBehaviour
         verticalMovement = Input.GetAxisRaw("Vertical");
 
         if (cc.isGrounded)
-        {
-            airGravity = -1f;
+        { 
             movement = TestMovement();
         }
         if (!cc.isGrounded)
