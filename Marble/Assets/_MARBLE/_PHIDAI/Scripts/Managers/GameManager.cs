@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("PlayerParent");
+        player = GameObject.FindGameObjectWithTag("Player");
         player.transform.position = currentRespawn.position;
     }
 

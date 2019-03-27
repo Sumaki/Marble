@@ -152,6 +152,7 @@ public class Character_Humanoid : MonoBehaviour
             Physics.IgnoreCollision(cc, hit.gameObject.GetComponent<Collider>());
         }
 
+
         Rigidbody body = hit.collider.attachedRigidbody;
         Vector3 force;
         if (body != null && !body.isKinematic)
@@ -164,9 +165,9 @@ public class Character_Humanoid : MonoBehaviour
             {
                 force = hit.controller.velocity * pushingPower;
             }
-            //Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
-            //body.velocity = pushDir * pushingPower ;
-            body.AddForceAtPosition(force, hit.point);
+            Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
+            body.velocity = pushDir * pushingPower;
+           // body.AddForceAtPosition(force, hit.point);
         }
     }
 }
