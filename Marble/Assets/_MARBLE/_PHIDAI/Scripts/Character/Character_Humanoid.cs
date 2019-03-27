@@ -41,7 +41,7 @@ public class Character_Humanoid : MonoBehaviour
         if (enableScript)
         {
             Inputs();
-           // DebugColorGrounded();
+            DebugColorGrounded();
             //PlayerState();
      
             ApplyGravity();
@@ -93,7 +93,7 @@ public class Character_Humanoid : MonoBehaviour
     {
         check = new Vector3(horizontalMovement, 0, verticalMovement);
         finalDirection = cameraBase.transform.TransformDirection(check);
-        finalDirection.Set(finalDirection.x, 0, finalDirection.z);
+        finalDirection.Set(finalDirection.x, -1, finalDirection.z);
         if (horizontalMovement != 0 || verticalMovement != 0)
             transform.forward = Vector3.Normalize(new Vector3(finalDirection.x, 0, finalDirection.z));
         finalDirection *= movementSpeed;
