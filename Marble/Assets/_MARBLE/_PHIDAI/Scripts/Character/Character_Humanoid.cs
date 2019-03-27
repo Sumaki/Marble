@@ -26,6 +26,7 @@ public class Character_Humanoid : MonoBehaviour
     Vector3 finalDirection = Vector3.zero;
     Vector3 movement;
     Vector3 check = Vector3.zero;
+    bool jump;
     float airGravity = -1f;
 
     // Start is called before the first frame update
@@ -52,6 +53,14 @@ public class Character_Humanoid : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Submit_A")) && cc.isGrounded && !jump)
+        {
+            jump = true;
+        }
+    }
+
 
     void Inputs()
     {
@@ -60,7 +69,8 @@ public class Character_Humanoid : MonoBehaviour
         verticalMovement = Input.GetAxisRaw("Vertical");
 
         if (cc.isGrounded)
-        { 
+        {
+           
             movement = TestMovement();
         }
         if (!cc.isGrounded)
@@ -80,9 +90,10 @@ public class Character_Humanoid : MonoBehaviour
             //movement *= movementSpeed;
         }
 
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Submit_A")) && cc.isGrounded)
+        if (jump)
         {
-           movement.y = jumpPower;          
+            movement.y = jumpPower;
+            jump = false;
         }
 
         cc.Move(movement * Time.deltaTime);
