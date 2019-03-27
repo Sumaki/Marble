@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5634606726763170321}
   - component: {fileID: 5634606726762170577}
   - component: {fileID: 5634606726766213297}
+  - component: {fileID: 8895491022730917913}
   m_Layer: 0
   m_Name: Door_4x4_R
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5634606726759912977}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2, y: 1.5820999, z: -0.25000054}
+  m_LocalPosition: {x: 2, y: 1.5821, z: -0.2500005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5634606726759746101}
@@ -92,6 +93,25 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300004, guid: 4841f248aa73fec4f9bed8a9095ff16d, type: 3}
+--- !u!95 &8895491022730917913
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5634606726759912977}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a3c42ad6b7624b444a21e0efb4d3563a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5634606726759912981
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,8 +124,9 @@ GameObject:
   - component: {fileID: 5634606726763170325}
   - component: {fileID: 5634606726762170581}
   - component: {fileID: 5634606726766213301}
+  - component: {fileID: 1633126340702116124}
   m_Layer: 0
-  m_Name: Door_4x4 1
+  m_Name: Door_4x4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -186,6 +207,25 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 4841f248aa73fec4f9bed8a9095ff16d, type: 3}
+--- !u!95 &1633126340702116124
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5634606726759912981}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 44418485cc2810b4f860d431b9447b95, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5634606726759912983
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,6 +238,7 @@ GameObject:
   - component: {fileID: 5634606726763170327}
   - component: {fileID: 5634606726762170583}
   - component: {fileID: 5634606726766213303}
+  - component: {fileID: 4500706175424080040}
   m_Layer: 0
   m_Name: Door_4x4_L
   m_TagString: Untagged
@@ -213,7 +254,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5634606726759912983}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2, y: 1.5815487, z: -0.25000077}
+  m_LocalPosition: {x: 2, y: 1.581549, z: -0.2500008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5634606726759746101}
@@ -278,3 +319,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300002, guid: 4841f248aa73fec4f9bed8a9095ff16d, type: 3}
+--- !u!95 &4500706175424080040
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5634606726759912983}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 51ac0acae3897b3488d9809887242e39, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

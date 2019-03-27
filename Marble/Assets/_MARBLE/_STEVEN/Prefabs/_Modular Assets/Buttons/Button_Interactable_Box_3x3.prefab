@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4470165190473524321}
   - component: {fileID: 4470165190470132801}
   - component: {fileID: 4470165190471100033}
-  - component: {fileID: 4470165190467000033}
+  - component: {fileID: 7230141062733254578}
   m_Layer: 0
   m_Name: Button_Interactable_Box_3x3
   m_TagString: Untagged
@@ -79,20 +79,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4470165190467000033
-MeshCollider:
+--- !u!65 &7230141062733254578
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4470165190473300033}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300102, guid: f3504cba79d10fe45b9f05f3d9c820ba, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 3, y: 0.49066168, z: 3}
+  m_Center: {x: 1.5000048, y: 0.07761186, z: -1.4999988}
 --- !u!1 &4470165190473300057
 GameObject:
   m_ObjectHideFlags: 0
