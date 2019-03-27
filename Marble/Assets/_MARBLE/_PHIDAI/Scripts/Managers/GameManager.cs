@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        player.transform.position = currentRespawn.position;
     }
 
     // Update is called once per frame
