@@ -53,6 +53,8 @@ public class FollowPath : MonoBehaviour
         {
             //Debug.Log("TURN OFF TRAVEL STATUS");            
             entered = false;
+            // keep the rigidbody velocity set to the speed of the travel?
+            //player.GetComponent<Rigidbody>().velocity = 
             
         }
 
