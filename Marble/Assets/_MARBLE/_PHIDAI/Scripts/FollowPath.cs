@@ -18,9 +18,11 @@ public class FollowPath : MonoBehaviour
 
     #region Private Variables
     GameObject player;
+    GameObject otherObj;
     float dstTravelled;
     Vector3 finishedPathPoint;
     bool entered = false;
+    bool isPlayer = false;
     #endregion
 
     private void Start()
@@ -29,9 +31,13 @@ public class FollowPath : MonoBehaviour
     }
 
     void Update()
-    {     
-        if (entered)
+    {
+        if (entered && isPlayer)
             StartTravel(player);
+
+        if (entered && !isPlayer)
+            StartTravel(otherObj);
+       
         if (!entered)
             EnablePlayer();          
     }
@@ -40,7 +46,15 @@ public class FollowPath : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            entered = true;           
+            entered = true;
+            isPlayer = true;        
+        }
+
+        if(other.gameObject.tag == "Pushable")
+        {
+            entered = true;
+            isPlayer = false;
+            otherObj = other.gameObject;
         }
 
     }
@@ -58,7 +72,8 @@ public class FollowPath : MonoBehaviour
             
         }
 
-        DisablePlayer();
+        if(isPlayer)
+            DisablePlayer();
 
         dstTravelled += speed * Time.deltaTime;
         player.transform.position = pathCreator.path.GetPointAtDistance(dstTravelled,end);
