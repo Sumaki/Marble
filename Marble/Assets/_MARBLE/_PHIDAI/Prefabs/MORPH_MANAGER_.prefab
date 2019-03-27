@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 242865830317017032}
   - component: {fileID: 242865830317017033}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MORPH_MANAGER_
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,8 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3195a057671cf04daf97477536888d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blendObject: {fileID: 7790736768970134114, guid: a0edfbbe64992df4ba3fc4c00a0e55d9,
-    type: 3}
-  playerObjScripts: {fileID: 7790736768970134114, guid: a0edfbbe64992df4ba3fc4c00a0e55d9,
-    type: 3}
-  state: 0
+  blendObjectBall: {fileID: 0}
+  blendObjectHumanoid: {fileID: 0}
+  camera_: {fileID: 0}
+  ballCamera: {fileID: 0}
+  humanoidCamera: {fileID: 0}
+  ballObjScripts: {fileID: 0}
+  humanoidObjScripts: {fileID: 0}
