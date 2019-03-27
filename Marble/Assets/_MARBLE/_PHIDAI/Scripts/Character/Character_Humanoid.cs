@@ -68,11 +68,18 @@ public class Character_Humanoid : MonoBehaviour
         horizontalMovement = Input.GetAxisRaw("Horizontal");
         verticalMovement = Input.GetAxisRaw("Vertical");
 
-        if (cc.isGrounded)
+        if (cc.isGrounded && (horizontalMovement !=0 || verticalMovement !=0))
         {
            
             movement = TestMovement();
         }
+
+        if(cc.isGrounded && horizontalMovement == 0 && verticalMovement == 0)
+        {
+            movement = Vector3.zero;
+        }
+
+      
         if (!cc.isGrounded)
         {       // find midair movement that works with the current movement and camera
                 //movement.y += gravity * Time.deltaTime;

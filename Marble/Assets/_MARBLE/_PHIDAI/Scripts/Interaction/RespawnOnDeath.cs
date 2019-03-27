@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class RespawnOnDeath : MonoBehaviour
 {
-    GameObject player;
+    public GameObject player;
+    public GameManager playerHumanoid;
     GameObject gm_;
 
     private void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player");
+    {      
         gm_ = GameObject.Find("GameManager");
     }
 
@@ -31,6 +31,7 @@ public class RespawnOnDeath : MonoBehaviour
         {
             Debug.Log("I died");
             player.transform.position = gm_.GetComponent<GameManager>().currentRespawn.position;
+            playerHumanoid.transform.position = gm_.GetComponent<GameManager>().currentRespawn.position;
             player.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
     }
