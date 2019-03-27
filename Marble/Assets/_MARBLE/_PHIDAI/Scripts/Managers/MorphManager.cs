@@ -72,7 +72,7 @@ public class MorphManager : MonoBehaviour
 
     void GlobalInput()
     {
-        if (Input.GetKeyDown(KeyCode.E)) // temp input
+        if (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Submit_B")) // temp input
         {
             if (doneMorph && !morph)
             {

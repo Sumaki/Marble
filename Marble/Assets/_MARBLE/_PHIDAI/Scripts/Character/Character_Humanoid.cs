@@ -81,7 +81,7 @@ public class Character_Humanoid : MonoBehaviour
             //movement *= movementSpeed;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && cc.isGrounded)
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Submit_A")) && cc.isGrounded)
         {
            movement.y = jumpPower;          
         }
@@ -140,7 +140,7 @@ public class Character_Humanoid : MonoBehaviour
         }
 
         Rigidbody body = hit.collider.attachedRigidbody;
-        if(body != null && !body.isKinematic)
+        if (body != null && !body.isKinematic)
         {
             Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
             body.velocity = pushDir * pushingPower;
