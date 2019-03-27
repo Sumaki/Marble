@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4208979559375162267}
   - component: {fileID: 4208979559373835195}
   - component: {fileID: 4208979559372736891}
+  - component: {fileID: 8602807409799423080}
   m_Layer: 0
   m_Name: Modular_Pieces_09_Pillar_x16
   m_TagString: Untagged
@@ -77,3 +78,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &8602807409799423080
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4208979559374673851}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 7943646c5f2a0d54b82c6846b8ea701d, type: 3}
