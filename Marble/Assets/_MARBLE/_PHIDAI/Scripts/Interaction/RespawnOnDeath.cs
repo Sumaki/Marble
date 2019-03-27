@@ -14,9 +14,20 @@ public class RespawnOnDeath : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if(other.gameObject.tag == "PlayerParent" || other.gameObject.tag == "Player")
+    //    {
+    //        Debug.Log("I died");
+    //        player.transform.position = gm_.GetComponent<GameManager>().currentRespawn.position;
+    //        player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+    //    }
+    //}
+
+    private void OnCollisionEnter(Collision collision)
     {
-        if(other.gameObject.tag == "PlayerParent" || other.gameObject.tag == "Player")
+
+        if (collision.gameObject.tag == "PlayerParent" || collision.gameObject.tag == "Player")
         {
             Debug.Log("I died");
             player.transform.position = gm_.GetComponent<GameManager>().currentRespawn.position;

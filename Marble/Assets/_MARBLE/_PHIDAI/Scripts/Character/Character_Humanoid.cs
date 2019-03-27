@@ -144,18 +144,29 @@ public class Character_Humanoid : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
+        
+
+
         if (hit.gameObject.tag == "Player")
         {
             Physics.IgnoreCollision(cc, hit.gameObject.GetComponent<Collider>());
         }
 
         Rigidbody body = hit.collider.attachedRigidbody;
+        Vector3 force;
         if (body != null && !body.isKinematic)
         {
             if (hit.moveDirection.y < -0.3)
-                return; 
-            Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
-            body.velocity = pushDir * pushingPower ;
+            {
+                force = new Vector3(0, -0.5f, 0) * gravity * 6.0f;
+            }
+            else
+            {
+                force = hit.controller.velocity * pushingPower;
+            }
+            //Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
+            //body.velocity = pushDir * pushingPower ;
+            body.AddForceAtPosition(force, hit.point);
         }
     }
 }
