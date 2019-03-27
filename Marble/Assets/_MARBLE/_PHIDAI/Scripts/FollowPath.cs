@@ -23,15 +23,19 @@ public class FollowPath : MonoBehaviour
     Vector3 finishedPathPoint;
     bool entered = false;
     bool isPlayer = false;
+    float initialMovement;
     #endregion
 
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
+        initialMovement = player.GetComponent<Character_Ball>().movementForce;
     }
 
     void Update()
     {
+        
+
         if (entered && isPlayer)
             StartTravel(player);
 
@@ -68,12 +72,12 @@ public class FollowPath : MonoBehaviour
             //Debug.Log("TURN OFF TRAVEL STATUS");            
             entered = false;
             // keep the rigidbody velocity set to the speed of the travel?
-            //player.GetComponent<Rigidbody>().velocity = 
+           // player.GetComponent<Rigidbody>().velocity = Vector3.forward * 10; // use object's forward?
             
         }
 
-        if(isPlayer)
-            DisablePlayer();
+        //if(isPlayer)
+        //    DisablePlayer();
 
         dstTravelled += speed * Time.deltaTime;
         player.transform.position = pathCreator.path.GetPointAtDistance(dstTravelled,end);
@@ -90,6 +94,6 @@ public class FollowPath : MonoBehaviour
     {
         dstTravelled = 0;
         player.GetComponent<Character_Ball>().inputSpeed = 1f;
-        player.GetComponent<Character_Ball>().movementForce = 40f;
+        player.GetComponent<Character_Ball>().movementForce = initialMovement;
     }
 }
