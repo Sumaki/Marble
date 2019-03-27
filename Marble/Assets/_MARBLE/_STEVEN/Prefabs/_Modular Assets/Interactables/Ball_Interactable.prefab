@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 4153155135567254273}
   - component: {fileID: 4153155135568548641}
   - component: {fileID: 4153155135569547745}
-  - component: {fileID: 4153155135573647745}
+  - component: {fileID: 2294715989522249457}
+  - component: {fileID: 5411930954150387011}
   m_Layer: 0
   m_Name: Ball_Interactable
   m_TagString: Untagged
@@ -78,8 +79,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4153155135573647745
-MeshCollider:
+--- !u!135 &2294715989522249457
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -88,7 +89,22 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300004, guid: f3504cba79d10fe45b9f05f3d9c820ba, type: 3}
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: -0.000000029802322, y: 0.5, z: 0.000000074505806}
+--- !u!54 &5411930954150387011
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4153155135567351585}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 7
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
