@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FallingBlock
   - Pushable
+  - PlayerParent
   layers:
   - Default
   - TransparentFX
