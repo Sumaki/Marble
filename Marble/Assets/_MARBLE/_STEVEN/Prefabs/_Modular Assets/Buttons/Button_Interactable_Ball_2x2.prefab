@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 784881740021969121}
   - component: {fileID: 784881740019101889}
   - component: {fileID: 784881740020068865}
-  - component: {fileID: 2925453792124113867}
+  - component: {fileID: 714423463158652600}
   m_Layer: 0
   m_Name: Button 1
   m_TagString: Untagged
@@ -79,20 +79,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &2925453792124113867
-CapsuleCollider:
+--- !u!64 &714423463158652600
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 784881740022066369}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.49681777
-  m_Height: 0.1279403
-  m_Direction: 1
-  m_Center: {x: -0.0000038146973, y: 0.042471923, z: -0.0000005364418}
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300100, guid: f3504cba79d10fe45b9f05f3d9c820ba, type: 3}
 --- !u!1 &784881740022066393
 GameObject:
   m_ObjectHideFlags: 0
