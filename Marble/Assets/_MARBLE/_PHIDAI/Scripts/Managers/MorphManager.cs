@@ -80,6 +80,7 @@ public class MorphManager : MonoBehaviour
             {
                 doneMorph = false;
                 morph = true;
+                
             }
         }
     }
