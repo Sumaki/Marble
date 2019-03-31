@@ -13,10 +13,13 @@ public class Character_Ball : MonoBehaviour
     //public float yForce = 500.0f; // jump
     [Header ("Character Settings")]
     public Transform cameraBase;
-    public float inputSpeed = 1f;
-    public float movementForce = 50f;
-    public float gravityAmount;
+    public float inputSpeed;
 
+    public float movementForce;
+    [SerializeField]
+    float airMovementForce;
+    public float gravityAmount;
+    bool enableScript = true;
     // Private Variables
     public static Vector3 gravity = new Vector3(0f, -1000f, 0f);
     Rigidbody rb;
@@ -48,18 +51,24 @@ public class Character_Ball : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         gravity.y = -gravityAmount;
         distToGround = GetComponent<Collider>().bounds.extents.y;
-        
+        airMovementForce =  1f;
     }
 
     private void Update()
     {
         DebugVariables();
+        Debug.Log("Velocity: " + rb.velocity.magnitude);    
+        Debug.Log("On Ground: " + IsGrounded());
+       // Debug.Log("Movement Force: " + movementForce);
     }
 
     private void FixedUpdate()
-    {       
-        BallInputs();
-        ApplyGravity();
+    {
+        if (enableScript)
+        {
+            BallInputs();
+            ApplyGravity();          
+        }
     }
 
 
@@ -72,17 +81,30 @@ public class Character_Ball : MonoBehaviour
 
 
         // limit velocity to set value for movement
-        if (rb.velocity.magnitude > 40f)
+        //if (IsGrounded())
+        //{
+        if (rb.velocity.magnitude > 100f)
         {
             Vector3 normalizedVelocity = Vector3.Normalize(rb.velocity);
-            normalizedVelocity *= 40f;
+            normalizedVelocity *= 100f;
             rb.velocity = normalizedVelocity;
         }
+        //    }
+
+        //if (!IsGrounded())
+        //{
+        //    if (rb.velocity.magnitude > 10f)
+        //    {
+        //        Vector3 normalizedVelocity = Vector3.Normalize(rb.velocity);
+        //        normalizedVelocity *= 10f;
+        //        rb.velocity = normalizedVelocity;
+        //    }
+        //}
 
         horizontalMovement = Input.GetAxisRaw("Horizontal") * inputSpeed; // temp
         verticalMovement = Input.GetAxisRaw("Vertical") * inputSpeed;
 
-        if (horizontalMovement != 0 || verticalMovement != 0 && IsGrounded()) // one for grounded and one for not grounded
+        if ((horizontalMovement != 0 || verticalMovement != 0) && IsGrounded()) // one for grounded and one for not grounded
         {
             //float dt = Time.deltaTime;
             //Vector3 pNew = new Vector3(transform.position.x + horizontalMovement, transform.position.y, transform.position.z + verticalMovement); //our new desired position, check
@@ -97,6 +119,7 @@ public class Character_Ball : MonoBehaviour
 
 
             Vector3 finalMovement = RotateInput();
+           // Debug.Log("GROUNDED MOVEMENT: " + finalMovement);
             //Debug.Log("Final Movement Force: " + finalMovement);
            // if (rb.velocity.magnitude <= 15f)
            // { // testing limit
@@ -108,18 +131,20 @@ public class Character_Ball : MonoBehaviour
 
         if (!IsGrounded()) // limit velocity for air time
         {
+
             // temp turning in air
             //gameObject.transform.right =
             //Vector3.Slerp(gameObject.transform.right, rb.velocity.normalized, Time.deltaTime);
 
-            Vector3 finalMovement = RotateInput();
+            Vector3 finalMovement = AirRoll();
+            //   Debug.Log("AIR MOVEMENT: " + finalMovement);
             //if (rb.velocity != Vector3.zero)
             //    transform.rotation = Quaternion.LookRotation(rb.velocity);
             ApplyTorque();
             rb.AddForce(finalMovement);
             //rb.AddRelativeTorque(finalMovement);
-
-            rb.AddForce(gravity * 1.5f);
+            //   rb.velocity = 30 * (rb.velocity.normalized);
+            // rb.AddForce(gravity * 2f);
         }
 
     }
@@ -148,6 +173,17 @@ public class Character_Ball : MonoBehaviour
         return move;
     }
 
+    Vector3 AirRoll()
+    {
+       
+        Vector3 check = new Vector3(horizontalMovement, 0, verticalMovement);
+        finalDirection = cameraBase.transform.TransformDirection(check);
+        finalDirection.Set(finalDirection.x, 0, finalDirection.z);
+       // Debug.Log("Air force: " + airMovementForce);
+        Vector3 move = (finalDirection.normalized * airMovementForce);
+        return move;
+    }
+
     void ApplyGravity()
     {
         rb.AddForce(gravity);
@@ -169,5 +205,7 @@ public class Character_Ball : MonoBehaviour
             FinalDirection.text = "FINAL DIRECTION: " + finalDirection.ToString();
         }
     }
+
+
 
 }

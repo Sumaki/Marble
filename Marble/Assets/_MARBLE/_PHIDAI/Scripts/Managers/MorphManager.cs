@@ -4,43 +4,77 @@ using UnityEngine;
 
 public class MorphManager : MonoBehaviour
 {
-    [Header("Morph Model")]
-    public GameObject blendObject;
-    [Header("Ball Model")]
-    public GameObject playerBall;
-    [Header("Humanoid Model")]
-    public GameObject playerHumanoid;
+    [Header("Morph Model Ball")]
+    public GameObject blendObjectBall;
+    [Header("Morph Model Humanoid")]
+    public GameObject blendObjectHumanoid;
+    //[Header("Ball Model")]
+    //public GameObject playerBall;
+    //[Header("Humanoid Model")]
+    //public GameObject playerHumanoid;
     [Header("Camera")]
     public GameObject camera_;
     public GameObject ballCamera;
     public GameObject humanoidCamera;
+    [Header("Player's Ball Scripts Object")]
+    public GameObject ballObjScripts;
+    [Header("Player's Humanoid Scripts Object")]
+    public GameObject humanoidObjScripts;
     #region Morph Private Varibles
     SkinnedMeshRenderer smr_;
+    SkinnedMeshRenderer smr_humanoid;
     bool morph = false;
     bool doneMorph;
-    enum MorphState { ball, humanoid }
-    MorphState state = MorphState.humanoid  ;
+    Quaternion startRotation;
+    public enum MorphState { ball, humanoid }
+    [Header("State of the Character")]
+    public static MorphState state = MorphState.ball;
     float t = 0.0f;
     #endregion
 
    
     void Start()
     {
-        smr_ = blendObject.GetComponent<SkinnedMeshRenderer>();
+        smr_ =  blendObjectBall.GetComponent<SkinnedMeshRenderer>();
         doneMorph = true;
+        startRotation = blendObjectBall.transform.rotation;
+        CheckStartStatus();
+
+        //Collider[] cols = GameObject.FindGameObjectWithTag("Player").GetComponents<Collider>();
+        //foreach (Collider c in cols)
+        //    Physics.IgnoreCollision(playerObjScripts.GetComponent<CharacterController>(), c);
     }
 
     
     void Update()
     {
+        //Debug.Log(playerObjScripts.GetComponent<CharacterController>().detectCollisions);
         //Debug.Log("Morph Status: " + morph);
         GlobalInput();
-        Morph();
+        MorphChecker(state);
+        Morph(); 
+        IgnoreCollisionBetweenPlayerCollider();
+        //humanoidObjScripts.transform.rotation = Quaternion.identity;
+       
+  
+    }
+
+    void CheckStartStatus()
+    {
+        switch (state)
+        {
+            case MorphState.ball:
+                BallProperties();               
+                break;
+            case MorphState.humanoid:
+                HumanoidProperties();              
+                break;
+        }
     }
 
     void GlobalInput()
     {
-        if (Input.GetKeyDown(KeyCode.E)) // temp input
+        if (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Submit_B")) // temp input
         {
             if (doneMorph && !morph)
             {
@@ -65,17 +99,40 @@ public class MorphManager : MonoBehaviour
         }
 
         if (state == MorphState.ball && !doneMorph && morph)
-        {          
-            smr_.SetBlendShapeWeight(0, Mathf.Lerp(0, 100, t));
-            t += 1f * Time.deltaTime;
-                if(smr_.GetBlendShapeWeight(0) == 100) { doneMorph = true; state = MorphState.humanoid; ChangeMesh(state); }
+        {
+            DisableWhileMorphing();
+            ballObjScripts.transform.rotation = startRotation;
+            smr_.SetBlendShapeWeight(0, Mathf.Lerp(100, 0, t));
+            t += 3f * Time.deltaTime;
+            if(smr_.GetBlendShapeWeight(0) == 0) {
+                ChangeMesh(MorphState.humanoid); smr_.SetBlendShapeWeight(0,100);
+            state = MorphState.humanoid;  HumanoidProperties(); doneMorph = true;
+            }
         }
 
         if (state == MorphState.humanoid && !doneMorph && morph)
         {
-            smr_.SetBlendShapeWeight(0, Mathf.Lerp(100, 0, t));
-            t += 1f * Time.deltaTime;
-            if (smr_.GetBlendShapeWeight(0) == 0) { doneMorph = true; state = MorphState.ball; ChangeMesh(state); }
+            DisableWhileMorphing();
+            //blendObject.transform.rotation = startRotation;
+            smr_.SetBlendShapeWeight(0, Mathf.Lerp(0, 100, t));
+            t += 3f * Time.deltaTime;
+            if (smr_.GetBlendShapeWeight(0) == 100) {
+                ChangeMesh(MorphState.ball); smr_.SetBlendShapeWeight(0, 0);
+                state = MorphState.ball;  BallProperties(); doneMorph = true;
+            }
+        }
+    }
+
+    void MorphChecker(MorphState state)
+    {
+        switch (state)
+        {
+            case MorphState.ball:
+                smr_ = blendObjectBall.GetComponent<SkinnedMeshRenderer>();
+                break;
+            case MorphState.humanoid:
+                smr_ = blendObjectHumanoid.GetComponent<SkinnedMeshRenderer>();
+                break;
         }
     }
 
@@ -90,15 +147,17 @@ public class MorphManager : MonoBehaviour
         {
             case MorphState.ball:
                 //disable humanoid gameobject, enable ball gameobject
-                DisableObject(playerHumanoid);
-                EnableObject(playerBall,playerHumanoid);
-                ChangeCameraTarget(ballCamera, playerBall);
+               
+                EnableObject(ballObjScripts, humanoidObjScripts);
+                DisableObject(humanoidObjScripts);
+                ChangeCameraTarget(ballCamera, ballObjScripts);
                 break;
             case MorphState.humanoid:
                 //disable ball gameobject, enable humanoid gameobject
-                DisableObject(playerBall);
-                EnableObject(playerHumanoid,playerBall);
-                ChangeCameraTarget(humanoidCamera, playerHumanoid);
+                 
+                EnableObject(humanoidObjScripts, ballObjScripts);
+               DisableObject(ballObjScripts);
+               ChangeCameraTarget(humanoidCamera, humanoidObjScripts);
                 break;
         }
     }
@@ -106,7 +165,7 @@ public class MorphManager : MonoBehaviour
     void EnableObject(GameObject obj, GameObject obj2)
     {
         // enable
-        obj.transform.position = obj2.transform.position;
+        obj.transform.position = obj2.transform.position; // temp
         obj.SetActive(true);
 
     }
@@ -124,5 +183,50 @@ public class MorphManager : MonoBehaviour
         camera_.GetComponent<CameraFollow>().playerObj = playerObj;
     }
 
+    void BallProperties()
+    {
+       
+        ballObjScripts.GetComponent<Character_Ball>().enabled = true;
+        ballObjScripts.GetComponent<SphereCollider>().enabled = true;
+        ballObjScripts.GetComponent<Rigidbody>().isKinematic = false;
+        ballObjScripts.GetComponent<Rigidbody>().detectCollisions = true;
+        humanoidObjScripts.GetComponent<Character_Humanoid>().enabled = false;
+        // playerObjScripts.GetComponent<CharacterController>().enabled = false;
+        humanoidObjScripts.GetComponent<CharacterController>().detectCollisions = false;
+        //humanoidObjScripts.GetComponent<CharacterController>().transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
+
+    void HumanoidProperties()
+    {
+       // humanoidObjScripts.transform.position = ballObjScripts.transform.position;
+        ballObjScripts.GetComponent<Character_Ball>().enabled = false;
+        ballObjScripts.GetComponent<SphereCollider>().enabled = false;
+        ballObjScripts.GetComponent<Rigidbody>().isKinematic = true;
+        ballObjScripts.GetComponent<Rigidbody>().detectCollisions = false;
+        humanoidObjScripts.GetComponent<Character_Humanoid>().enabled = true;
+        // playerObjScripts.GetComponent<CharacterController>().enabled = true;
+        humanoidObjScripts.GetComponent<CharacterController>().detectCollisions = true;
+    }
+
+    /// <summary>
+    /// Make sure to rotate the object to match it's forward upwards so that it animates and morphs into the form that we need (ball to humanoid)
+    /// </summary>
+    void RotateBallToMatchHumanoid()
+    {
+        ballObjScripts.transform.rotation = startRotation;
+    }
+
+    void DisableWhileMorphing()
+    {
+        // also stop ball from rolling
+        ballObjScripts.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        ballObjScripts.GetComponent<Character_Ball>().enabled = false;
+        humanoidObjScripts.GetComponent<Character_Humanoid>().enabled = false;        
+    }
+
+    void IgnoreCollisionBetweenPlayerCollider()
+    {   
+        Physics.IgnoreCollision(humanoidObjScripts.GetComponent<CharacterController>(), ballObjScripts.GetComponent<SphereCollider>(),true);       
+    }
 
 }
