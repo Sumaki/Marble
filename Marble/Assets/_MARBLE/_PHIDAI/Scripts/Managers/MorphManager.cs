@@ -76,6 +76,7 @@ public class MorphManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Submit_B")) // temp input
         {
+            //humanoidObjScripts.GetComponent<CharacterAnimationState>().state = CharacterAnimationState.CharacterState.morphHumanoid;
             if (doneMorph && !morph)
             {
                 doneMorph = false;

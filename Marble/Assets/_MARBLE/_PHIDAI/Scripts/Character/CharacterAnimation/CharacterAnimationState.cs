@@ -17,6 +17,7 @@ public class CharacterAnimationState : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("Character Animation State: " + state);
         TrackState();   
     }
 

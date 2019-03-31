@@ -11019,6 +11019,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorTriggerHold
       objectReference: {fileID: 0}
+    - target: {fileID: 1727821361891807792, guid: fab23f4cf5c30fc43a94d7706c54781e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1727821361891807807, guid: fab23f4cf5c30fc43a94d7706c54781e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11207,6 +11212,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2336336150570451420, guid: 81e5c9f1979f5484e9fb2b2e682b1e9e,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 7645af6f56087a94585727cbde9a09b9, type: 2}
+    - target: {fileID: 2336336150570451420, guid: 81e5c9f1979f5484e9fb2b2e682b1e9e,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2336336151641288614, guid: 81e5c9f1979f5484e9fb2b2e682b1e9e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11282,16 +11297,6 @@ PrefabInstance:
       propertyPath: cameraBase
       value: 
       objectReference: {fileID: 1484339759}
-    - target: {fileID: 2336336150570451420, guid: 81e5c9f1979f5484e9fb2b2e682b1e9e,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 7645af6f56087a94585727cbde9a09b9, type: 2}
-    - target: {fileID: 2336336150570451420, guid: 81e5c9f1979f5484e9fb2b2e682b1e9e,
-        type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81e5c9f1979f5484e9fb2b2e682b1e9e, type: 3}
 --- !u!1001 &2604860029982438045
@@ -11448,6 +11453,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DoorTriggerOpen
+      objectReference: {fileID: 0}
+    - target: {fileID: 4244088657017382949, guid: 976ec9c8d9ade4d4ba4869983e71d69d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4244088657017382974, guid: 976ec9c8d9ade4d4ba4869983e71d69d,
         type: 3}
