@@ -1841,8 +1841,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraBase: {fileID: 0}
-  movementSpeed: 5
-  jumpPower: 5
+  movementSpeed: 7
+  jumpPower: 6
   pushingPower: 2.5
 --- !u!114 &1585266015
 MonoBehaviour:
