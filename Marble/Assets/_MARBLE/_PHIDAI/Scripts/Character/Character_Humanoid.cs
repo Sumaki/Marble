@@ -7,8 +7,10 @@ public class Character_Humanoid : MonoBehaviour
 {
     
     public Transform cameraBase;
-
+   // public Animator ani;
+    
     CharacterController cc;
+    CharacterAnimationState characterState;
     float horizontalMovement;
     float verticalMovement;
     float globalGravity = -1f;
@@ -33,6 +35,7 @@ public class Character_Humanoid : MonoBehaviour
     void Start()
     {
          cc = GetComponent<CharacterController>();
+        characterState = GetComponent<CharacterAnimationState>();
         //gravity.y = -gravityAmount;
     }
 
@@ -57,8 +60,13 @@ public class Character_Humanoid : MonoBehaviour
     {
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Submit_A")) && cc.isGrounded && !jump)
         {
-            jump = true;
+            jump = true;           
         }
+
+        if (cc.isGrounded && (horizontalMovement != 0 || verticalMovement != 0)) { characterState.state = CharacterAnimationState.CharacterState.walk; }
+        if (cc.isGrounded && horizontalMovement == 0 && verticalMovement == 0) { characterState.state = CharacterAnimationState.CharacterState.idle; }
+
+
     }
 
 
@@ -72,10 +80,12 @@ public class Character_Humanoid : MonoBehaviour
         {
            
             movement = TestMovement();
+            
+
         }
 
         if(cc.isGrounded && horizontalMovement == 0 && verticalMovement == 0)
-        {
+        {           
             movement = Vector3.zero;
         }
 
@@ -99,6 +109,7 @@ public class Character_Humanoid : MonoBehaviour
 
         if (jump)
         {
+
             movement.y = jumpPower;
             jump = false;
         }
