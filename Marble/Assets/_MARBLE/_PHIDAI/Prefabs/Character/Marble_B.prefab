@@ -1681,7 +1681,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f7b290ced10bc994fac17c0bfbc78b70, type: 3}
+  - {fileID: 2100000, guid: fe4a49a2f18470e44b3806b1b4b2296f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1939,7 +1939,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f7b290ced10bc994fac17c0bfbc78b70, type: 3}
+  - {fileID: 2100000, guid: fe4a49a2f18470e44b3806b1b4b2296f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2505,7 +2505,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2336336150950110796}
   m_LocalRotation: {x: 0.50000036, y: -0.49999967, z: -0.49999967, w: 0.50000036}
-  m_LocalPosition: {x: 35.500004, y: 0.00004959107, z: -28.5}
+  m_LocalPosition: {x: 35.000004, y: 0.000047683723, z: 24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2336336150950542302}
@@ -2528,7 +2528,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f7b290ced10bc994fac17c0bfbc78b70, type: 3}
+  - {fileID: 2100000, guid: 7f93b70952bbc3e4da15bb0a1aac35d5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4317,7 +4317,7 @@ GameObject:
   - component: {fileID: 2336336149895212706}
   m_Layer: 0
   m_Name: Bip001
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
