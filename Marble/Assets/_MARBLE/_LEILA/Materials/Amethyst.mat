@@ -8,17 +8,21 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Amethyst
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP _SPECULARHIGHLIGHTS_OFF
+  m_Shader: {fileID: 4800000, guid: b45a6274d9f9db54a9e7d90bcb6c0814, type: 3}
+  m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _METALLICSPECGLOSSMAP _NORMALMAP _SPECULARHIGHLIGHTS_OFF
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
+  m_DoubleSidedGI: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_7B540824:
+        m_Texture: {fileID: 2800000, guid: 4889829efd9664c47985e5ab79309d46, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 2800000, guid: 4f44b418f40cec94c92ac753743e3eb0, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -55,8 +59,55 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_2255BA_Out:
+        m_Texture: {fileID: 2800000, guid: 4889829efd9664c47985e5ab79309d46, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_24DFA164_Out:
+        m_Texture: {fileID: 2800000, guid: 4889829efd9664c47985e5ab79309d46, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_2E358AD8_Out:
+        m_Texture: {fileID: 2800000, guid: d15775028b685c141870d8c093862fce, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_6E27E360_Out:
+        m_Texture: {fileID: 2800000, guid: 96d4c791eb7bff941a6df91b086e33e1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_964C61E9_Out:
+        m_Texture: {fileID: 2800000, guid: 4f44b418f40cec94c92ac753743e3eb0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_995B177A_Out:
+        m_Texture: {fileID: 2800000, guid: 96d4c791eb7bff941a6df91b086e33e1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_A7B4B5E7_Out:
+        m_Texture: {fileID: 2800000, guid: 4f44b418f40cec94c92ac753743e3eb0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_C1CADA24_Out:
+        m_Texture: {fileID: 2800000, guid: c75a83e5a958d4244848e095eb181a48, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_D2C502AC_Out:
+        m_Texture: {fileID: 2800000, guid: d15775028b685c141870d8c093862fce, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_F5C419C8_Out:
+        m_Texture: {fileID: 2800000, guid: 4889829efd9664c47985e5ab79309d46, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _AlphaClip: 0
+    - _Blend: 0
     - _BumpScale: 1
+    - _Cull: 2
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -67,11 +118,18 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _ReceiveShadows: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 0
     - _SrcBlend: 1
+    - _Surface: 0
     - _UVSec: 0
+    - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_5771E3DC: {r: 0.5654229, g: 0, b: 0.8113208, a: 1}
+    - Color_74DE5AE3: {r: 0.9811321, g: 0.30239138, b: 0.1804913, a: 0}
+    - Color_D744C239: {r: 2.828427, g: 0.7098798, b: 2.684233, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
