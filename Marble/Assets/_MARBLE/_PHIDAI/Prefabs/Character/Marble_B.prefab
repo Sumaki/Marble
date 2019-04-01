@@ -1766,9 +1766,10 @@ GameObject:
   - component: {fileID: 2336336150570451420}
   - component: {fileID: 2336336151352464678}
   - component: {fileID: 2336336151352464676}
+  - component: {fileID: 1585266015}
   m_Layer: 0
   m_Name: Marble_B_Humanoid
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1800,10 +1801,10 @@ Animator:
   m_GameObject: {fileID: 2336336150563042218}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: f7b290ced10bc994fac17c0bfbc78b70, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7645af6f56087a94585727cbde9a09b9, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -1843,6 +1844,20 @@ MonoBehaviour:
   movementSpeed: 5
   jumpPower: 5
   pushingPower: 2.5
+--- !u!114 &1585266015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2336336150563042218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fcfc6177e6a5be4db163871a4feb19f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ani: {fileID: 2336336150570451420}
+  state: 0
 --- !u!1 &2336336150563042220
 GameObject:
   m_ObjectHideFlags: 0
@@ -2337,7 +2352,7 @@ Animator:
   m_Controller: {fileID: 0}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -2477,7 +2492,7 @@ GameObject:
   - component: {fileID: 2336336150955322110}
   m_Layer: 0
   m_Name: Marble Hips
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4417,7 +4432,7 @@ GameObject:
   - component: {fileID: 2336336151641288614}
   m_Layer: 0
   m_Name: Marble_B
-  m_TagString: Untagged
+  m_TagString: PlayerParent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
