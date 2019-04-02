@@ -71,7 +71,7 @@ public class Character_Humanoid : MonoBehaviour
         if (cc.isGrounded && (horizontalMovement != 0 || verticalMovement != 0)) { characterState.state = CharacterAnimationState.CharacterState.walk; }
         if (cc.isGrounded && horizontalMovement == 0 && verticalMovement == 0) { characterState.state = CharacterAnimationState.CharacterState.idle; }
 
-        //RaycastCheck();
+        RaycastCheck();
 
         if (Input.GetKey(KeyCode.LeftShift) && grab)
         {
@@ -207,7 +207,7 @@ public class Character_Humanoid : MonoBehaviour
             Vector3 d = transform.position - obj.position;
             float dist = d.magnitude;
             Vector3 pullDir = d.normalized;
-            Debug.Log("Distance between player and obj: " + dist);
+            Debug.Log("Pull direction: " + pullDir);
             if (dist > 50) obj = null;
             else if (dist > 0.1f)
             {
@@ -243,7 +243,7 @@ public class Character_Humanoid : MonoBehaviour
             }
             Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
             body.velocity = pushDir * pushingPower;
-            // body.AddForceAtPosition(force, hit.point);
+            //body.AddForceAtPosition(force, hit.point);
         }
     }
 }

@@ -51,14 +51,14 @@ public class Character_Ball : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         gravity.y = -gravityAmount;
         distToGround = GetComponent<Collider>().bounds.extents.y;
-        airMovementForce =  1f;
+       // airMovementForce =  1f;
     }
 
     private void Update()
     {
         DebugVariables();
-        Debug.Log("Velocity: " + rb.velocity.magnitude);    
-        Debug.Log("On Ground: " + IsGrounded());
+        //Debug.Log("Velocity: " + rb.velocity.magnitude);    
+        //Debug.Log("On Ground: " + IsGrounded());
        // Debug.Log("Movement Force: " + movementForce);
     }
 
@@ -123,7 +123,10 @@ public class Character_Ball : MonoBehaviour
             //Debug.Log("Final Movement Force: " + finalMovement);
            // if (rb.velocity.magnitude <= 15f)
            // { // testing limit
-                rb.AddForce(finalMovement);
+                rb.AddForce(finalMovement, ForceMode.Force);
+            Debug.Log("Velocity Y: " + rb.velocity.y);
+            if (rb.velocity.y < -10 && IsGrounded())
+                rb.velocity *= 1.15f;
                 //rb.AddTorque(finalMovement);
                 
            // }
@@ -137,11 +140,12 @@ public class Character_Ball : MonoBehaviour
             //Vector3.Slerp(gameObject.transform.right, rb.velocity.normalized, Time.deltaTime);
 
             Vector3 finalMovement = AirRoll();
+           // rb.angularDrag = 0;
             //   Debug.Log("AIR MOVEMENT: " + finalMovement);
             //if (rb.velocity != Vector3.zero)
             //    transform.rotation = Quaternion.LookRotation(rb.velocity);
             ApplyTorque();
-            rb.AddForce(finalMovement);
+            //rb.AddForce(finalMovement, ForceMode.Force);
             //rb.AddRelativeTorque(finalMovement);
             //   rb.velocity = 30 * (rb.velocity.normalized);
             // rb.AddForce(gravity * 2f);
