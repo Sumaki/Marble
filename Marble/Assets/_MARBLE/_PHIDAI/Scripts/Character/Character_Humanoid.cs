@@ -229,7 +229,7 @@ public class Character_Humanoid : MonoBehaviour
         {
             Physics.IgnoreCollision(cc, hit.gameObject.GetComponent<Collider>());
         }
-
+        Rigidbody body = hit.collider.attachedRigidbody;
         Vector3 force;
         if (body != null && !body.isKinematic)
         {
