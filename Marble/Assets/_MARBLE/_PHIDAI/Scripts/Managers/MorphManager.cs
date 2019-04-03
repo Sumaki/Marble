@@ -78,7 +78,7 @@ public class MorphManager : MonoBehaviour
         {
             if(state == MorphState.ball)
                 humanoidObjScripts.GetComponent<CharacterAnimationState>().state = CharacterAnimationState.CharacterState.morphHumanoid;
-            if (state == MorphState.humanoid)
+            if (state == MorphState.humanoid)   
                 humanoidObjScripts.GetComponent<CharacterAnimationState>().state = CharacterAnimationState.CharacterState.morphBall;
             if (doneMorph && !morph)
             {
@@ -224,9 +224,9 @@ public class MorphManager : MonoBehaviour
     void DisableWhileMorphing()
     {
         // also stop ball from rolling
-        ballObjScripts.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        ballObjScripts.GetComponent<Character_Ball>().enabled = false;
-        humanoidObjScripts.GetComponent<Character_Humanoid>().enabled = false;        
+       // ballObjScripts.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        //ballObjScripts.GetComponent<Character_Ball>().enabled = false;
+        //humanoidObjScripts.GetComponent<Character_Humanoid>().enabled = false;        
     }
 
     void IgnoreCollisionBetweenPlayerCollider()

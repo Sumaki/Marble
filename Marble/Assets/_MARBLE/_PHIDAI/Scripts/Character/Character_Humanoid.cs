@@ -229,6 +229,12 @@ public class Character_Humanoid : MonoBehaviour
         {
             Physics.IgnoreCollision(cc, hit.gameObject.GetComponent<Collider>());
         }
+
+        if(hit.gameObject.name == "DeathRespawn")
+        {
+            hit.gameObject.GetComponent<RespawnOnDeath>().dead = true;
+        }
+
         Rigidbody body = hit.collider.attachedRigidbody;
         Vector3 force;
         if (body != null && !body.isKinematic)

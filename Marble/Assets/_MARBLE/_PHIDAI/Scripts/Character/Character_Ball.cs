@@ -83,12 +83,13 @@ public class Character_Ball : MonoBehaviour
         // limit velocity to set value for movement
         //if (IsGrounded())
         //{
-        if (rb.velocity.magnitude > 100f)
+        if (rb.velocity.magnitude > 80f)
         {
             Vector3 normalizedVelocity = Vector3.Normalize(rb.velocity);
-            normalizedVelocity *= 100f;
+            normalizedVelocity *= 80f;
             rb.velocity = normalizedVelocity;
         }
+
         //    }
 
         //if (!IsGrounded())
@@ -124,12 +125,11 @@ public class Character_Ball : MonoBehaviour
            // if (rb.velocity.magnitude <= 15f)
            // { // testing limit
                 rb.AddForce(finalMovement, ForceMode.Force);
-            Debug.Log("Velocity Y: " + rb.velocity.y);
-            if (rb.velocity.y < -10 && IsGrounded())
+           // Debug.Log("Velocity Y: " + rb.velocity.y);
+            //rb.AddTorque(finalMovement);
+            if (rb.velocity.y < -10)
                 rb.velocity *= 1.15f;
-                //rb.AddTorque(finalMovement);
-                
-           // }
+            // }
         }
 
         if (!IsGrounded()) // limit velocity for air time
@@ -139,13 +139,13 @@ public class Character_Ball : MonoBehaviour
             //gameObject.transform.right =
             //Vector3.Slerp(gameObject.transform.right, rb.velocity.normalized, Time.deltaTime);
 
-            Vector3 finalMovement = AirRoll();
+            Vector3 finalMovement = RotateInput();
            // rb.angularDrag = 0;
             //   Debug.Log("AIR MOVEMENT: " + finalMovement);
             //if (rb.velocity != Vector3.zero)
             //    transform.rotation = Quaternion.LookRotation(rb.velocity);
             ApplyTorque();
-            //rb.AddForce(finalMovement, ForceMode.Force);
+            //rb.AddForce(finalMovement);
             //rb.AddRelativeTorque(finalMovement);
             //   rb.velocity = 30 * (rb.velocity.normalized);
             // rb.AddForce(gravity * 2f);
@@ -184,7 +184,7 @@ public class Character_Ball : MonoBehaviour
         finalDirection = cameraBase.transform.TransformDirection(check);
         finalDirection.Set(finalDirection.x, 0, finalDirection.z);
        // Debug.Log("Air force: " + airMovementForce);
-        Vector3 move = (finalDirection.normalized * airMovementForce);
+        Vector3 move = (finalDirection.normalized * movementForce) * 0.5f;
         return move;
     }
 
