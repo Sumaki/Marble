@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
         // If stuck
         if (Input.GetKeyDown(KeyCode.R))
         {
+            player.GetComponent<Rigidbody>().velocity = Vector3.zero;
             player.transform.position = currentRespawn.position;
             playerHumanoid.GetComponent<CharacterController>().enabled = false;
             playerHumanoid.transform.position = currentRespawn.position;

@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Character_Humanoid_MAT
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: 4800000, guid: b45a6274d9f9db54a9e7d90bcb6c0814, type: 3}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _METALLICSPECGLOSSMAP _NORMALMAP _OCCLUSIONMAP
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
@@ -59,6 +59,26 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_2255BA_Out:
+        m_Texture: {fileID: 2800000, guid: b50f8d6862318b3469e6ef54c9d90495, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_24DFA164_Out:
+        m_Texture: {fileID: 2800000, guid: b50f8d6862318b3469e6ef54c9d90495, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_964C61E9_Out:
+        m_Texture: {fileID: 2800000, guid: 4f44b418f40cec94c92ac753743e3eb0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_C1CADA24_Out:
+        m_Texture: {fileID: 2800000, guid: c75a83e5a958d4244848e095eb181a48, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_D2C502AC_Out:
+        m_Texture: {fileID: 2800000, guid: d15775028b685c141870d8c093862fce, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - _AlphaClip: 0
     - _Blend: 0
@@ -83,6 +103,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_5771E3DC: {r: 0.6792453, g: 0.1249555, b: 0.584522, a: 1}
+    - Color_74DE5AE3: {r: 0.6708726, g: 0.08018869, b: 1, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
