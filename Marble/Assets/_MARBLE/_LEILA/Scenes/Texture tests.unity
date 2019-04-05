@@ -137,12 +137,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 49822847}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.2522308, y: 0.6605904, z: 0.6605904, w: 0.2522308}
+  m_LocalPosition: {x: -1.103, y: 0, z: 0.682}
+  m_LocalScale: {x: 0.073633224, y: 0.07363318, z: 0.07363315}
   m_Children: []
-  m_Father: {fileID: 748837822}
-  m_RootOrder: 2
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &49822849
 BoxCollider:
@@ -155,8 +155,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 12.894066, y: 16.56575, z: 25.546177}
-  m_Center: {x: -0.7272048, y: 0.14951317, z: 12.27344}
+  m_Size: {x: 89.16552, y: 116.472496, z: 109.92428}
+  m_Center: {x: 4.7859974, y: 7.918842, z: 24.443096}
 --- !u!114 &49822850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1538,12 +1538,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 9.797626, y: 15.430923, z: 24.867382}
   m_Center: {x: -0.06744831, y: 0.008487403, z: 12.292669}
---- !u!4 &748837822 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400116, guid: 0a24629ace1f2ce4bbb0e21c7c739aeb,
-    type: 3}
-  m_PrefabInstance: {fileID: 748837819}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &767905706
 GameObject:
   m_ObjectHideFlags: 0
@@ -2281,6 +2275,7 @@ GameObject:
   - component: {fileID: 1495822312}
   - component: {fileID: 1495822311}
   - component: {fileID: 1495822310}
+  - component: {fileID: 1495822313}
   m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2345,13 +2340,73 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1495822309}
-  m_LocalRotation: {x: -0.2307842, y: 0.35641858, z: -0.091304496, w: -0.90075964}
-  m_LocalPosition: {x: 1.3042066, y: 2.2223456, z: -0.8272847}
+  m_LocalRotation: {x: 0.14941697, y: -0.15343314, z: 0.02333244, w: 0.9765185}
+  m_LocalPosition: {x: -0.9089813, y: 1.6967759, z: 0.18242133}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 65.295006, y: 5.431, z: 0.92300004}
+--- !u!114 &1495822313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495822309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 49822848}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 1
+  antialiasingMode: 0
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
 --- !u!1 &1515098842
 GameObject:
   m_ObjectHideFlags: 0
@@ -2803,7 +2858,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -2823,14 +2878,14 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
-  m_ShadowAngle: 0
+  m_ShadowAngle: 34.5
 --- !u!4 &1816805484
 Transform:
   m_ObjectHideFlags: 0
