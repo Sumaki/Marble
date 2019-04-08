@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1180983784767348342}
   - component: {fileID: 1180983784770215506}
   - component: {fileID: 1180983784769117586}
-  - component: {fileID: 1180983784773414384}
+  - component: {fileID: 9217972332257433629}
   m_Layer: 0
   m_Name: Railing_Corner
   m_TagString: Untagged
@@ -78,8 +78,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1180983784773414384
-MeshCollider:
+--- !u!65 &9217972332257433629
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -88,7 +88,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300148, guid: 9c73ca0e8f4043e4aaf4f2f03a91d95f, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 1.5302722, y: 2.2, z: 0.6802776}
+  m_Center: {x: 0.7651297, y: 1.1, z: -0.15990593}
