@@ -42,11 +42,11 @@ public class RespawnOnDeath : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
 
-        if (collision.gameObject == player || collision.gameObject == playerHumanoid)
+        if (collision.gameObject == player)
         {
             Debug.Log("I died");
             player.transform.position = gm_.GetComponent<GameManager>().currentRespawn.position;
-            playerHumanoid.transform.position = gm_.GetComponent<GameManager>().currentRespawn.position;
+            // playerHumanoid.transform.position = gm_.GetComponent<GameManager>().currentRespawn.position;
             player.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
     }
@@ -54,13 +54,14 @@ public class RespawnOnDeath : MonoBehaviour
     void OnDeath()
     {
         if (dead)
-        {
-            dead = false;
+        {            
             Debug.Log("I died");
-            player.transform.position = gm_.GetComponent<GameManager>().currentRespawn.position;
-            playerHumanoid.transform.position = gm_.GetComponent<GameManager>().currentRespawn.position;
-            player.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            //StartCoroutine(RespawnTime());
+            //player.transform.position = gm_.GetComponent<GameManager>().currentRespawn.position;
+            CharacterController cc = playerHumanoid.GetComponent<CharacterController>();
+            Vector3 dist = gm_.GetComponent<GameManager>().currentRespawn.position - playerHumanoid.transform.position;
+            if(dist.magnitude > .1f)
+                cc.Move(dist);            
+            StartCoroutine(RespawnTime());
         }
     }
 

@@ -7,8 +7,9 @@ public class Character_Humanoid : MonoBehaviour
 {
     
     public Transform cameraBase;
-   // public Animator ani;
-    
+    // public Animator ani;
+
+    #region Character Movement Variables
     CharacterController cc;
     CharacterAnimationState characterState;
     float horizontalMovement;
@@ -19,6 +20,7 @@ public class Character_Humanoid : MonoBehaviour
     [Header("Humanoid Stats")]
     [Range(1, 100)]
     public float movementSpeed;
+    #endregion
     //[Range(0,10)]
     //public float gravityAmount = 9.8f;
     [Range(1,100)]
@@ -28,9 +30,15 @@ public class Character_Humanoid : MonoBehaviour
     Vector3 finalDirection = Vector3.zero;
     Vector3 movement;
     Vector3 check = Vector3.zero;
+
+    #region Character Check Values
     bool jump;
     bool grab = false;
+    bool touchedDeath = false;
     Transform thingToPull = null;
+    #endregion
+
+
     float airGravity = -1f;
 
     // Start is called before the first frame update
@@ -61,7 +69,7 @@ public class Character_Humanoid : MonoBehaviour
     private void Update()
     {
 
-        Debug.Log("Grab state: " + grab);
+      //  Debug.Log("Grab state: " + grab);
 
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Submit_A")) && cc.isGrounded && !jump)
         {
@@ -98,8 +106,9 @@ public class Character_Humanoid : MonoBehaviour
         }
 
         if(cc.isGrounded && horizontalMovement == 0 && verticalMovement == 0)
-        {           
-            movement = Vector3.zero;
+        {    
+               
+                movement = Vector3.zero;
         }
 
       
@@ -127,7 +136,8 @@ public class Character_Humanoid : MonoBehaviour
             jump = false;
         }
 
-        cc.Move(movement * Time.deltaTime);
+     
+            cc.Move(movement * Time.deltaTime); 
     }
 
     Vector3 TestMovement()
@@ -180,7 +190,7 @@ public class Character_Humanoid : MonoBehaviour
         if(Physics.Raycast(transform.position,transform.TransformDirection(Vector3.forward),out hit, 1f))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-            Debug.Log("Hit something: " + hit.transform.name);
+          //  Debug.Log("Hit something: " + hit.transform.name);
             if (hit.transform.tag == "Pushable")
             {
                 grab = true;
@@ -190,7 +200,7 @@ public class Character_Humanoid : MonoBehaviour
         else
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
-            Debug.Log("Hit nothing");
+          //  Debug.Log("Hit nothing");
             grab = false;
             thingToPull = null;
         }
@@ -207,7 +217,7 @@ public class Character_Humanoid : MonoBehaviour
             Vector3 d = transform.position - obj.position;
             float dist = d.magnitude;
             Vector3 pullDir = d.normalized;
-            Debug.Log("Pull direction: " + pullDir);
+           // Debug.Log("Pull direction: " + pullDir);
             if (dist > 50) obj = null;
             else if (dist > 0.1f)
             {
@@ -230,9 +240,11 @@ public class Character_Humanoid : MonoBehaviour
             Physics.IgnoreCollision(cc, hit.gameObject.GetComponent<Collider>());
         }
 
-        if(hit.gameObject.name == "DeathRespawn")
+        if(hit.gameObject.name == "DeathRespawn" && !touchedDeath)
         {
             hit.gameObject.GetComponent<RespawnOnDeath>().dead = true;
+            touchedDeath = true;
+            StartCoroutine(DetectionResetTimer());
         }
 
         Rigidbody body = hit.collider.attachedRigidbody;
@@ -251,5 +263,11 @@ public class Character_Humanoid : MonoBehaviour
             body.velocity = pushDir * pushingPower;
             //body.AddForceAtPosition(force, hit.point);
         }
+    }
+
+    IEnumerator DetectionResetTimer()
+    {
+        yield return new WaitForSeconds(1f);
+        touchedDeath = false;
     }
 }
