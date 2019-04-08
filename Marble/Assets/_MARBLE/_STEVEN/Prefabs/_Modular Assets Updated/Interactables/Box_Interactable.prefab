@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3408700571394446406}
   - component: {fileID: 3408700571393676392}
   - component: {fileID: 3408700571392546472}
+  - component: {fileID: 5339802321190555984}
   - component: {fileID: 3408700571396646600}
   m_Layer: 0
   m_Name: Box_Interactable
@@ -78,6 +79,22 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!54 &5339802321190555984
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3408700571394541670}
+  serializedVersion: 2
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 10
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!64 &3408700571396646600
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -89,6 +106,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
-  m_Mesh: {fileID: 4300002, guid: 9c73ca0e8f4043e4aaf4f2f03a91d95f, type: 3}
+  m_Mesh: {fileID: 4300000, guid: df1187a18003f6b41ad979b705ab5dd2, type: 3}

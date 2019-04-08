@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1590054195107473804}
   - component: {fileID: 1590054195108604876}
   - component: {fileID: 1590054195112958818}
+  - component: {fileID: 4819513470457532169}
   m_Layer: 0
   m_Name: Door_4x4
   m_TagString: Untagged
@@ -94,6 +95,25 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300008, guid: 9c73ca0e8f4043e4aaf4f2f03a91d95f, type: 3}
+--- !u!95 &4819513470457532169
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590054195110868352}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 44418485cc2810b4f860d431b9447b95, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1590054195110868356
 GameObject:
   m_ObjectHideFlags: 0
