@@ -592,6 +592,123 @@ ModelImporter:
     4300228: Pillar_x16_LP
     4300230: Box_Interactable_HP
     4300232: Box_Falling_Collider
+    6400000: Ball_Interactable
+    6400002: Box_Falling
+    6400004: Box_Falling_Collider
+    6400006: Box_Interactable
+    6400008: Box_Interactable_HP
+    6400010: Button
+    6400012: Button 1
+    6400014: Button 2
+    6400016: Button 3
+    6400018: Button_Ball_Form
+    6400020: Button_Interactable_Ball_2x2
+    6400022: Button_Interactable_Box_3x3
+    6400024: Button_Lever
+    6400026: Button_Lever_Switch
+    6400028: Button_Square_Human_Form
+    6400030: Ceiling_Floor_1x1
+    6400032: Ceiling_Floor_2x2
+    6400034: Ceiling_Floor_4x4
+    6400036: Ceiling_Floor_4x4_Hole
+    6400038: Door
+    6400040: Door_4x4
+    6400042: Door_4x4_L
+    6400044: Door_4x4_R
+    6400046: Floor_1x1
+    6400048: Floor_2x2
+    6400050: Floor_4x4
+    6400052: Floor_4x4_Hole
+    6400054: Pillar_x10_LP
+    6400056: Pillar_x16_LP
+    6400058: Pipe_0
+    6400060: Pipe_0 1
+    6400062: Pipe_10
+    6400064: Pipe_15
+    6400066: Pipe_20
+    6400068: Pipe_25
+    6400070: Pipe_30
+    6400072: Pipe_35
+    6400074: Pipe_40
+    6400076: Pipe_45
+    6400078: Pipe_5
+    6400080: Pipe_50
+    6400082: Pipe_55
+    6400084: Pipe_60
+    6400086: Pipe_65
+    6400088: Pipe_70
+    6400090: Pipe_75
+    6400092: Pipe_80
+    6400094: Pipe_85
+    6400096: Pipe_90
+    6400098: Pipe_END_0
+    6400100: Pipe_END_10
+    6400102: Pipe_END_15
+    6400104: Pipe_END_20
+    6400106: Pipe_END_25
+    6400108: Pipe_END_30
+    6400110: Pipe_END_35
+    6400112: Pipe_END_40
+    6400114: Pipe_END_45
+    6400116: Pipe_END_5
+    6400118: Pipe_END_50
+    6400120: Pipe_END_55
+    6400122: Pipe_END_60
+    6400124: Pipe_END_65
+    6400126: Pipe_END_70
+    6400128: Pipe_END_75
+    6400130: Pipe_END_80
+    6400132: Pipe_END_85
+    6400134: Pipe_END_90
+    6400136: Pipe_END_START
+    6400138: Railing_Corner
+    6400140: Railing_End
+    6400142: Railing_End_only
+    6400144: Railing_Middle
+    6400146: Shrine
+    6400148: Shrine_Eye
+    6400150: Stair_2x2
+    6400152: Stair_2x4
+    6400154: Stair_x2_one_side
+    6400156: Stair_x2_two_sides
+    6400158: Stair_x4_one_side
+    6400160: Stair_x4_two_sides
+    6400162: Straight_Ramp_x4
+    6400164: Straight_Ramp_x4_one_side
+    6400166: Trap_Door
+    6400168: Tube_Door_1x1
+    6400170: Wall_1x1
+    6400172: Wall_1x4
+    6400174: Wall_1x4_noback
+    6400176: Wall_2x2
+    6400178: Wall_2x4
+    6400180: Wall_2x4_noback
+    6400182: Wall_4x4
+    6400184: Wall_4x4_noback
+    6400186: Wall_Border_1x4
+    6400188: Wall_Border_2x4
+    6400190: Wall_Border_4x4
+    6400192: Wall_Border_Corner_IN_x4
+    6400194: Wall_Border_Corner_OUT_x4
+    6400196: Wall_Border_Corner_Rounded_IN_x4
+    6400198: Wall_Border_Corner_Rounded_OUT_x4
+    6400200: Wall_Corner_IN_x1
+    6400202: Wall_Corner_IN_x2
+    6400204: Wall_Corner_IN_x4
+    6400206: Wall_Corner_IN_x4_noback
+    6400208: Wall_Corner_OUT_x1
+    6400210: Wall_Corner_OUT_x2
+    6400212: Wall_Corner_OUT_x4
+    6400214: Wall_Corner_OUT_x4_noback
+    6400216: Wall_Corner_Rounded_IN_x1
+    6400218: Wall_Corner_Rounded_IN_x2
+    6400220: Wall_Corner_Rounded_IN_x4
+    6400222: Wall_Corner_Rounded_IN_x4_noback
+    6400224: Wall_Corner_Rounded_OUT_x1
+    6400226: Wall_Corner_Rounded_OUT_x2
+    6400228: Wall_Corner_Rounded_OUT_x4
+    6400230: Wall_Corner_Rounded_OUT_x4_noback
+    6400232: Wall_Tube_Hole
     9500000: //RootNode
     13700000: Door
   externalObjects: {}
@@ -627,7 +744,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
@@ -639,7 +756,7 @@ ModelImporter:
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
-    preserveHierarchy: 0
+    preserveHierarchy: 1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
