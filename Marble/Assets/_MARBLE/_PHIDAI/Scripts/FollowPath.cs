@@ -87,7 +87,8 @@ public class FollowPath : MonoBehaviour
             entered = false;
             mm_.canMorph = true;
             // keep the rigidbody velocity set to the speed of the travel?
-            //player.GetComponent<Rigidbody>().velocity = Vector3.forward * speed; // use object's forward?
+            //player.GetComponent<Rigidbody>().AddForce(player.transform.forward); // use object's forward?
+            player.GetComponent<Rigidbody>().velocity = player.transform.forward * speed;
             
         }
 

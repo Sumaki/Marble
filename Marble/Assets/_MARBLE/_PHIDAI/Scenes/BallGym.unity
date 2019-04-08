@@ -7653,6 +7653,41 @@ PrefabInstance:
       propertyPath: cameraBase
       value: 
       objectReference: {fileID: 85705830}
+    - target: {fileID: 2336336149895212706, guid: 81e5c9f1979f5484e9fb2b2e682b1e9e,
+        type: 3}
+      propertyPath: TEST_VARIABLES
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2336336149895212706, guid: 81e5c9f1979f5484e9fb2b2e682b1e9e,
+        type: 3}
+      propertyPath: Horizontal
+      value: 
+      objectReference: {fileID: 220491497}
+    - target: {fileID: 2336336149895212706, guid: 81e5c9f1979f5484e9fb2b2e682b1e9e,
+        type: 3}
+      propertyPath: Vertical
+      value: 
+      objectReference: {fileID: 78219715}
+    - target: {fileID: 2336336149895212706, guid: 81e5c9f1979f5484e9fb2b2e682b1e9e,
+        type: 3}
+      propertyPath: Velocity
+      value: 
+      objectReference: {fileID: 771859230}
+    - target: {fileID: 2336336149895212706, guid: 81e5c9f1979f5484e9fb2b2e682b1e9e,
+        type: 3}
+      propertyPath: Position
+      value: 
+      objectReference: {fileID: 29718805}
+    - target: {fileID: 2336336149895212706, guid: 81e5c9f1979f5484e9fb2b2e682b1e9e,
+        type: 3}
+      propertyPath: FinalDirection
+      value: 
+      objectReference: {fileID: 1128739109}
+    - target: {fileID: 2336336150950110792, guid: 81e5c9f1979f5484e9fb2b2e682b1e9e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81e5c9f1979f5484e9fb2b2e682b1e9e, type: 3}
 --- !u!1 &1902514634
@@ -8222,6 +8257,21 @@ PrefabInstance:
         type: 3}
       propertyPath: editorData._bezierPath.bounds.m_Extent.z
       value: 5.2543106
+      objectReference: {fileID: 0}
+    - target: {fileID: 4961017761131741037, guid: 3c3b4757f400c974e967a9b58fffb782,
+        type: 3}
+      propertyPath: editorData.showPathBounds
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4961017761131741037, guid: 3c3b4757f400c974e967a9b58fffb782,
+        type: 3}
+      propertyPath: editorData.showNormals
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4961017761131741037, guid: 3c3b4757f400c974e967a9b58fffb782,
+        type: 3}
+      propertyPath: editorData._bezierPath.flipNormals
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c3b4757f400c974e967a9b58fffb782, type: 3}
