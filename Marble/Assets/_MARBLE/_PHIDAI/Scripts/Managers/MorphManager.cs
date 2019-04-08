@@ -25,6 +25,7 @@ public class MorphManager : MonoBehaviour
     SkinnedMeshRenderer smr_humanoid;
     bool morph = false;
     bool doneMorph;
+    public bool canMorph = true;
     Quaternion startRotation;
     public enum MorphState { ball, humanoid }
     [Header("State of the Character")]
@@ -74,7 +75,7 @@ public class MorphManager : MonoBehaviour
 
     void GlobalInput()
     {
-        if (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Submit_B")) // temp input
+        if ((Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Submit_B")) && canMorph) // temp input
         {
             if(state == MorphState.ball)
                 humanoidObjScripts.GetComponent<CharacterAnimationState>().state = CharacterAnimationState.CharacterState.morphHumanoid;
