@@ -55,11 +55,12 @@ public class RespawnOnDeath : MonoBehaviour
     {
         if (dead)
         {
+            dead = false;
             Debug.Log("I died");
             player.transform.position = gm_.GetComponent<GameManager>().currentRespawn.position;
             playerHumanoid.transform.position = gm_.GetComponent<GameManager>().currentRespawn.position;
             player.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            StartCoroutine(RespawnTime());
+            //StartCoroutine(RespawnTime());
         }
     }
 
