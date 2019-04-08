@@ -59,12 +59,12 @@ MonoBehaviour:
     overrideState: 0
     value: 0
   dirtTexture:
-    overrideState: 0
-    value: {fileID: 2800000, guid: 91b72cbe53df2b14fa26f08e3348792e, type: 3}
+    overrideState: 1
+    value: {fileID: 2800000, guid: a8b206adc39eba8419570bb80edb99ff, type: 3}
     defaultState: 1
   dirtIntensity:
-    overrideState: 0
-    value: 26.6
+    overrideState: 1
+    value: 1.2
 --- !u!114 &114022430348905736
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -77,13 +77,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6050e2d5de785ce4d931e4dbdbf2d755, type: 3}
   m_Name: ChromaticAberration
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
   spectralLut:
     overrideState: 1
-    value: {fileID: 0}
+    value: {fileID: 2800000, guid: 91b72cbe53df2b14fa26f08e3348792e, type: 3}
     defaultState: 1
   intensity:
     overrideState: 1
@@ -1436,13 +1436,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b77c5407dc277943b591ade9e6b18c5, type: 3}
   m_Name: LensDistortion
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
     value: 1
   intensity:
-    overrideState: 1
-    value: 0
+    overrideState: 0
+    value: -100
   intensityX:
     overrideState: 0
     value: 1
@@ -1456,5 +1456,5 @@ MonoBehaviour:
     overrideState: 0
     value: 0
   scale:
-    overrideState: 1
-    value: 1.83
+    overrideState: 0
+    value: 1.28
