@@ -21,24 +21,7 @@ public class RespawnOnDeath : MonoBehaviour
         if(dead)
             OnDeath();
     }
-
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject  == player || other.gameObject == player)
-    //    {
-
-    //        //Debug.Log("I died");
-    //        //player.transform.position = gm_.GetComponent<GameManager>().currentRespawn.position;
-    //        //player.GetComponent<Rigidbody>().velocity = Vector3.zero;
-
-    //        Debug.Log("I died");
-    //        player.transform.position = gm_.GetComponent<GameManager>().currentRespawn.position;
-    //        playerHumanoid.transform.position = gm_.GetComponent<GameManager>().currentRespawn.position;
-    //        player.GetComponent<Rigidbody>().velocity = Vector3.zero;
-    //    }
-    //}
-
+ 
     private void OnCollisionEnter(Collision collision)
     {
 
@@ -46,7 +29,6 @@ public class RespawnOnDeath : MonoBehaviour
         {
             Debug.Log("I died");
             player.transform.position = gm_.GetComponent<GameManager>().currentRespawn.position;
-            // playerHumanoid.transform.position = gm_.GetComponent<GameManager>().currentRespawn.position;
             player.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
     }
@@ -55,19 +37,12 @@ public class RespawnOnDeath : MonoBehaviour
     {
         if (dead)
         {            
-            Debug.Log("I died");
-            //player.transform.position = gm_.GetComponent<GameManager>().currentRespawn.position;
+            Debug.Log("I died");         
             CharacterController cc = playerHumanoid.GetComponent<CharacterController>();
-            Vector3 dist = gm_.GetComponent<GameManager>().currentRespawn.position - playerHumanoid.transform.position;
-            if(dist.magnitude > .1f)
-                cc.Move(dist);            
-            StartCoroutine(RespawnTime());
+            cc.enabled = false;
+            cc.transform.position = gm_.GetComponent<GameManager>().currentRespawn.position;
+            cc.enabled = true;                       
+            dead = false;
         }
-    }
-
-    IEnumerator RespawnTime()
-    {
-        yield return new WaitForSeconds(1f);
-        dead = false;
     }
 }
