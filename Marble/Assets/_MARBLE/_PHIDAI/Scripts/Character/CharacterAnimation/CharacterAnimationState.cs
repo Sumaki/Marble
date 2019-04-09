@@ -51,7 +51,7 @@ public class CharacterAnimationState : MonoBehaviour
         ani.SetBool("Idle", true);
         ani.SetBool("Walk", false);
         //ani.SetBool("Run", false);
-        //ani.SetBool("Jump", false);
+        ani.SetBool("Jump", false);
         ani.SetBool("MorphBall", false);
         ani.SetBool("MorphHumanoid", false);
     }
@@ -61,7 +61,7 @@ public class CharacterAnimationState : MonoBehaviour
         ani.SetBool("Idle", false);
         ani.SetBool("Walk", true);
         //ani.SetBool("Run", false);
-        //ani.SetBool("Jump", false);
+        ani.SetBool("Jump", false);
         ani.SetBool("MorphBall", false);
         ani.SetBool("MorphHumanoid", false);
     }
@@ -71,7 +71,7 @@ public class CharacterAnimationState : MonoBehaviour
         ani.SetBool("Idle", false);
         ani.SetBool("Walk", false);
         //ani.SetBool("Run", true);
-        //ani.SetBool("Jump", false);
+        ani.SetBool("Jump", false);
         ani.SetBool("MorphBall", false);
         ani.SetBool("MorphHumanoid", false);
     }
@@ -81,7 +81,7 @@ public class CharacterAnimationState : MonoBehaviour
         ani.SetBool("Idle", false);
         ani.SetBool("Walk", false);
         //ani.SetBool("Run", false);
-        //ani.SetBool("Jump", true);
+        ani.SetBool("Jump", true);
         ani.SetBool("MorphBall", false);
         ani.SetBool("MorphHumanoid", false);
     }
@@ -91,7 +91,7 @@ public class CharacterAnimationState : MonoBehaviour
         ani.SetBool("Idle", false);
         ani.SetBool("Walk", false);
         //ani.SetBool("Run", false);
-        //ani.SetBool("Jump", false);     
+        ani.SetBool("Jump", false);     
         ani.SetBool("MorphBall", true);
         ani.SetBool("MorphHumanoid", false);
     }
@@ -101,7 +101,7 @@ public class CharacterAnimationState : MonoBehaviour
         ani.SetBool("Idle", false);
         ani.SetBool("Walk", false);
         //ani.SetBool("Run", false);
-        //ani.SetBool("Jump", false);
+        ani.SetBool("Jump", false);
         ani.SetBool("MorphBall", false);
         ani.SetBool("MorphHumanoid", true);
     }

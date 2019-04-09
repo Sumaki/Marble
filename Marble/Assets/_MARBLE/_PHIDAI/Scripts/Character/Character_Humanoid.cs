@@ -73,11 +73,16 @@ public class Character_Humanoid : MonoBehaviour
 
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Submit_A")) && cc.isGrounded && !jump)
         {
-            jump = true;           
+            
+            jump = true;
+                     
         }
 
-        if (cc.isGrounded && (horizontalMovement != 0 || verticalMovement != 0)) { characterState.state = CharacterAnimationState.CharacterState.walk; }
-        if (cc.isGrounded && horizontalMovement == 0 && verticalMovement == 0) { characterState.state = CharacterAnimationState.CharacterState.idle; }
+        if(Input.GetKeyDown(KeyCode.Space))
+            characterState.state = CharacterAnimationState.CharacterState.jump; // fix later
+
+        if (cc.isGrounded && !jump && (horizontalMovement != 0 || verticalMovement != 0)) { characterState.state = CharacterAnimationState.CharacterState.walk; }
+        if (cc.isGrounded && !jump && horizontalMovement == 0 && verticalMovement == 0) { characterState.state = CharacterAnimationState.CharacterState.idle; }
 
         RaycastCheck();
 
