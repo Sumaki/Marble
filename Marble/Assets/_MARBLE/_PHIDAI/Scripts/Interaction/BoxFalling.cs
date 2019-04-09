@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BoxFalling : MonoBehaviour
 {
+    public Animator ani;
     public float waitTime = 1f;
     public float respawnBoxTimer = 2f;
 
@@ -27,11 +28,14 @@ public class BoxFalling : MonoBehaviour
     IEnumerator FallTimer(GameObject obj)
     {
         yield return new WaitForSeconds(waitTime);
-        obj.gameObject.GetComponent<Rigidbody>().isKinematic = false;
-        obj.gameObject.GetComponent<Rigidbody>().useGravity = true;
+        
+        ani.SetBool("Fall",true);
+       // obj.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+       // obj.gameObject.GetComponent<Rigidbody>().useGravity = true;
         yield return new WaitForSeconds(respawnBoxTimer);
+        ani.SetBool("Fall", false);
         obj.transform.position = startPosition;
-        obj.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-        obj.gameObject.GetComponent<Rigidbody>().useGravity = false;
+      //  obj.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+      //  obj.gameObject.GetComponent<Rigidbody>().useGravity = false;
     }
 }

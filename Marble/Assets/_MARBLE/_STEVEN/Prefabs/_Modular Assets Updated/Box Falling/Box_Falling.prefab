@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 703781295037996612}
   - component: {fileID: 703781295038962820}
   - component: {fileID: 703781295034871012}
-  - component: {fileID: 6516414357752870094}
   - component: {fileID: 2344665798089949005}
+  - component: {fileID: 1583836635}
   m_Layer: 0
   m_Name: Box_Falling
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 703781295041151554}
-  m_LocalRotation: {x: 0.00000008146034, y: 0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -56.999996, y: 20.254, z: 0.2201761}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -94,22 +94,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300232, guid: 9c73ca0e8f4043e4aaf4f2f03a91d95f, type: 3}
---- !u!54 &6516414357752870094
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 703781295041151554}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &2344665798089949005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,5 +106,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 364f276d14405474aacc506987321eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ani: {fileID: 1583836635}
   waitTime: 0.1
   respawnBoxTimer: 2
+--- !u!95 &1583836635
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703781295041151554}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1f608a8e99c880f4e826807d0bc27b1d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

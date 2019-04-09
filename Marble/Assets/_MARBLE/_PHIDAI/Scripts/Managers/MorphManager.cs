@@ -195,6 +195,7 @@ public class MorphManager : MonoBehaviour
         ballObjScripts.GetComponent<Character_Ball>().enabled = true;
         ballObjScripts.GetComponent<SphereCollider>().enabled = true;
         ballObjScripts.GetComponent<Rigidbody>().isKinematic = false;
+        ballObjScripts.GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         ballObjScripts.GetComponent<Rigidbody>().detectCollisions = true;
         humanoidObjScripts.GetComponent<Character_Humanoid>().enabled = false;
         // playerObjScripts.GetComponent<CharacterController>().enabled = false;
