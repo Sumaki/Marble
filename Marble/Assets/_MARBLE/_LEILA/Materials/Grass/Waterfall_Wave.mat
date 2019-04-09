@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WaterFall
-  m_Shader: {fileID: 4800000, guid: 827a3f05c8cc6d74e9748e45e4025ef2, type: 3}
+  m_Name: Waterfall_Wave
+  m_Shader: {fileID: 4800000, guid: bab48692e764bc247ad8a1e10762e864, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,18 +19,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_6551DF28:
-        m_Texture: {fileID: 2800000, guid: 5c4e41120ee2e874688c990125f4e380, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_74F2C99:
-        m_Texture: {fileID: 2800000, guid: 1acff59769ef27240b813292d0adcc0d, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_A1D04611:
-        m_Texture: {fileID: 2800000, guid: 1acff59769ef27240b813292d0adcc0d, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -51,32 +39,18 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_2DFFFEF0_Texture:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_D7711B96_Texture:
-        m_Texture: {fileID: 2800000, guid: 3e9b5196b54a77f488cb8ac6534a24cc, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Texture2DAsset_3D439313_Out:
-        m_Texture: {fileID: 2800000, guid: 1acff59769ef27240b813292d0adcc0d, type: 3}
+    - _Texture2DAsset_57CD854A_Out:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_2D684B37: 0.5
-    - Vector1_79374009: 1
-    - Vector1_862C0940: 0
-    - Vector1_A0BA08E3: 0.2
-    - Vector1_A33D1448: 0.24
-    - Vector1_B336CBB0: 0.129
-    - Vector1_CD47A461: 33.1
-    - Vector1_CF5E8670: 0.38
-    - Vector1_D1B60C89: 0.451
+    - Vector1_53EB1154: 0.04
+    - Vector1_B7FD2F46: 18.05
+    - Vector1_D08F6948: 0.836
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -96,11 +70,6 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_961DA9F: {r: 0, g: 0, b: 0, a: 0}
-    - Color_C74079F9: {r: 0.020247417, g: 0.5064126, b: 0.8584906, a: 0}
-    - Color_DEEAAD26: {r: 0.05228728, g: 0.30366033, b: 0.4433962, a: 0}
-    - Vector4_CAEB8FCC: {r: 1, g: 1, b: 0, a: 0}
-    - Vector4_E13A86E7: {r: 1, g: 1, b: 0, a: 0}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
