@@ -240,10 +240,10 @@ public class Character_Humanoid : MonoBehaviour
             Physics.IgnoreCollision(cc, hit.gameObject.GetComponent<Collider>());
         }
 
-        if(hit.gameObject.name == "DeathRespawn" && !touchedDeath)
+        if(hit.gameObject.tag == "DeathRespawn" && !touchedDeath)
         {
             hit.gameObject.GetComponent<RespawnOnDeath>().dead = true;
-            touchedDeath = true;
+           
             StartCoroutine(DetectionResetTimer());
         }
 
@@ -260,14 +260,14 @@ public class Character_Humanoid : MonoBehaviour
                 force = hit.controller.velocity * pushingPower;
             }
             Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
-            body.velocity = pushDir * pushingPower;
-            //body.AddForceAtPosition(force, hit.point);
+            body.velocity = pushDir * pushingPower;           
         }
     }
 
     IEnumerator DetectionResetTimer()
     {
-        yield return new WaitForSeconds(1f);
+        touchedDeath = true;
+        yield return new WaitForSeconds(0.5f);
         touchedDeath = false;
     }
 }
