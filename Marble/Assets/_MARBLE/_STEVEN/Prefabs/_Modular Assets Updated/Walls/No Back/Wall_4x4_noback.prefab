@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8457264064984807327}
   - component: {fileID: 8457264064986101747}
   - component: {fileID: 8457264064987231667}
-  - component: {fileID: 8457264064991577117}
+  - component: {fileID: 2571814646569697426}
   m_Layer: 0
   m_Name: Wall_4x4_noback
   m_TagString: Untagged
@@ -78,7 +78,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8457264064991577117
+--- !u!64 &2571814646569697426
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
