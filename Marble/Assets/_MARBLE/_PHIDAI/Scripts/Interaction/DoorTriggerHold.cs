@@ -8,7 +8,7 @@ public class DoorTriggerHold : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "PlayerBall" || other.gameObject.tag == "PlayerHumanoid")
+        if(other.gameObject.tag == "PlayerBall" || other.gameObject.tag == "PlayerHumanoid" || other.gameObject.tag == "Pushable")
         {
             ani.SetTrigger("Open");
         }
@@ -16,7 +16,7 @@ public class DoorTriggerHold : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "PlayerBall" || other.gameObject.tag == "PlayerHumanoid") 
+        if (other.gameObject.tag == "PlayerBall" || other.gameObject.tag == "PlayerHumanoid" || other.gameObject.tag == "Pushable") 
         {
             ani.SetTrigger("Closed");
         }
