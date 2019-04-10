@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject playerHumanoid;
 
     int lives;
+    bool lockCursor = true;
 
     // Start is called before the first frame update
     void Start()
@@ -36,5 +37,13 @@ public class GameManager : MonoBehaviour
             playerHumanoid.transform.position = currentRespawn.position;
             playerHumanoid.GetComponent<CharacterController>().enabled = true;
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            lockCursor = !lockCursor;
+        }
+
+        Cursor.lockState = lockCursor ? CursorLockMode.Locked : CursorLockMode.None;
+        Cursor.visible = !lockCursor;
     }
 }
