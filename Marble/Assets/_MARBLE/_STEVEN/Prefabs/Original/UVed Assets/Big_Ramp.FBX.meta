@@ -4,20 +4,18 @@ ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Plane003
-    100004: Ramp_Place_Holder002
+    100002: Ledge
+    100004: Ramp
     400000: //RootNode
-    400002: Plane003
-    400004: Ramp_Place_Holder002
-    2100000: No Name
-    2300000: Plane003
-    2300002: Ramp_Place_Holder002
-    3300000: Plane003
-    3300002: Ramp_Place_Holder002
-    4300000: Ramp_Place_Holder002
-    4300002: Plane003
-    6400000: Plane003
-    6400002: Ramp_Place_Holder002
+    400002: Ledge
+    400004: Ramp
+    2100000: 'Material #121'
+    2300000: Ledge
+    2300002: Ramp
+    3300000: Ledge
+    3300002: Ramp
+    4300000: Ledge
+    4300002: Ramp
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -51,7 +49,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
