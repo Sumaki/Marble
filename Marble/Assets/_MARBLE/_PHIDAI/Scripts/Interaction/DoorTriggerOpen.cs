@@ -8,7 +8,7 @@ public class DoorTriggerOpen : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "PlayerBall" || other.gameObject.tag == "PlayerHumanoid")
         {
             ani.SetTrigger("Open");
         }

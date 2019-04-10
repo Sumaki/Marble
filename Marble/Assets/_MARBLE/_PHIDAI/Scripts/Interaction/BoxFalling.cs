@@ -18,7 +18,7 @@ public class BoxFalling : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
 
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "PlayerBall" || collision.gameObject.tag == "PlayerHumanoid")
         {
             StartCoroutine(FallTimer(gameObject));
         }

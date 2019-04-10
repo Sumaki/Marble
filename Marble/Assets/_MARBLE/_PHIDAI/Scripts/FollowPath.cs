@@ -17,7 +17,7 @@ public class FollowPath : MonoBehaviour
     public bool OneWay = true;
 
     #region Private Variables
-    GameObject player;
+    public GameObject player;
     GameObject otherObj;
     GameObject cameraObj;
     MorphManager mm_;
@@ -28,13 +28,14 @@ public class FollowPath : MonoBehaviour
     Vector3 finishedPathPoint;
     bool entered = false;
     bool isPlayer = false;
-    float initialMovement;
+    float initialMovement = 0f;
     #endregion
 
     private void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        //player = GameObject.FindWithTag("PlayerBall");
         initialMovement = player.GetComponent<Character_Ball>().movementForce;
+        Debug.Log(initialMovement);
         cameraObj = GameObject.FindWithTag("MainCamera");
         minDistStart = cameraObj.GetComponent<CameraCollision>().minDistance;
         maxDistStart = cameraObj.GetComponent<CameraCollision>().maxDistance;
@@ -52,15 +53,15 @@ public class FollowPath : MonoBehaviour
         if (entered && !isPlayer)
             StartTravel(otherObj);
        
-        if (!entered) 
+        if (!entered && isPlayer) 
             EnablePlayer();          
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "PlayerBall")
         {
-            mm_.canMorph = false;
+          //  mm_.canMorph = false;
             entered = true;
             isPlayer = true;        
         }
@@ -77,8 +78,11 @@ public class FollowPath : MonoBehaviour
     void StartTravel(GameObject player)
     {
         // Debug.Log("Distance between them: " + Vector3.Distance(player.transform.position, pathCreator.path.GetPoint(1)));
-        cameraObj.GetComponent<CameraCollision>().minDistance = 3f;
-        cameraObj.GetComponent<CameraCollision>().maxDistance = 6f;
+        if (isPlayer)
+        {
+            cameraObj.GetComponent<CameraCollision>().minDistance = 3f;
+            cameraObj.GetComponent<CameraCollision>().maxDistance = 6f;
+        }
 
         if (Vector3.Distance(player.transform.position, pathCreator.path.GetPoint(0.99f)) <= 1f && OneWay)
         {
@@ -88,7 +92,8 @@ public class FollowPath : MonoBehaviour
             mm_.canMorph = true;
             // keep the rigidbody velocity set to the speed of the travel?
             //player.GetComponent<Rigidbody>().AddForce(player.transform.forward); // use object's forward?
-            player.GetComponent<Rigidbody>().velocity = player.transform.forward * speed;
+            if(isPlayer)
+                player.GetComponent<Rigidbody>().velocity = player.transform.forward * speed;
             
         }
 

@@ -15,7 +15,7 @@ public class UpdateRespawnPoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "PlayerBall" || other.gameObject.tag == "PlayerHumanoid")
         {
             gm_.GetComponent<GameManager>().currentRespawn = newRespawn;
         }

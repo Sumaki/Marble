@@ -8,6 +8,8 @@ TagManager:
   - Pushable
   - PlayerParent
   - DeathRespawn
+  - PlayerBall
+  - PlayerHumanoid
   layers:
   - Default
   - TransparentFX
