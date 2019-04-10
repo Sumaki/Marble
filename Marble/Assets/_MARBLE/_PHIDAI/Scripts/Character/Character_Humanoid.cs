@@ -62,7 +62,8 @@ public class Character_Humanoid : MonoBehaviour
             // Debug.Log("Movement Y: " + movement.y);
             //Debug.Log("Grounded: " + cc.isGrounded);
             // Debug.Log("Global Gravity: " + globalGravity);
-           // Debug.Log("Movement XYZ: " + movement);
+            // Debug.Log("Movement XYZ: " + movement);
+            Debug.Log(horizontalMovement);
         }
     }
 
@@ -78,10 +79,15 @@ public class Character_Humanoid : MonoBehaviour
                      
         }
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Submit_A"))
             characterState.state = CharacterAnimationState.CharacterState.jump; // fix later
 
-        if (cc.isGrounded && !jump && (horizontalMovement != 0 || verticalMovement != 0)) { characterState.state = CharacterAnimationState.CharacterState.walk; }
+
+
+        if (cc.isGrounded && !jump && (horizontalMovement != 0 || verticalMovement != 0)) {
+            characterState.state = CharacterAnimationState.CharacterState.walk;
+            characterState.walkSpeedAnim = Mathf.Abs((new Vector3(horizontalMovement,0,verticalMovement)).magnitude);
+        }
         if (cc.isGrounded && !jump && horizontalMovement == 0 && verticalMovement == 0) { characterState.state = CharacterAnimationState.CharacterState.idle; }
 
         RaycastCheck();
@@ -99,8 +105,8 @@ public class Character_Humanoid : MonoBehaviour
     void Inputs()
     {
         
-        horizontalMovement = Input.GetAxisRaw("Horizontal");
-        verticalMovement = Input.GetAxisRaw("Vertical");
+        horizontalMovement = Input.GetAxis("Horizontal");
+        verticalMovement = Input.GetAxis("Vertical");
 
         if (cc.isGrounded && (horizontalMovement !=0 || verticalMovement !=0))
         {

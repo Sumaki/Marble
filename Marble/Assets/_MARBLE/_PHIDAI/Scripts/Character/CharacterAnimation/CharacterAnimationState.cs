@@ -9,6 +9,8 @@ public class CharacterAnimationState : MonoBehaviour
 
     public enum CharacterState { idle, walk, run, jump, morphBall, morphHumanoid }
     public CharacterState state;
+
+    public float walkSpeedAnim;
    
     void Start()
     {
@@ -64,6 +66,7 @@ public class CharacterAnimationState : MonoBehaviour
         ani.SetBool("Jump", false);
         ani.SetBool("MorphBall", false);
         ani.SetBool("MorphHumanoid", false);
+        ani.SetFloat("Speed", walkSpeedAnim,.1f,Time.deltaTime);
     }
 
     void Run()
