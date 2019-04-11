@@ -7,7 +7,7 @@ public class CharacterAnimationState : MonoBehaviour
 
     public Animator ani;
 
-    public enum CharacterState { idle, walk, run, jump, morphBall, morphHumanoid }
+    public enum CharacterState { idle, walk, run, jump, push, morphBall, morphHumanoid }
     public CharacterState state;
 
     public float walkSpeedAnim;
@@ -39,6 +39,9 @@ public class CharacterAnimationState : MonoBehaviour
             case CharacterState.jump:
                 Jump();
                 break;
+            case CharacterState.push:
+                Push();
+                break;
             case CharacterState.morphBall:
                 MorphBall();
                 break;
@@ -54,6 +57,7 @@ public class CharacterAnimationState : MonoBehaviour
         ani.SetBool("Walk", false);
         //ani.SetBool("Run", false);
         ani.SetBool("Jump", false);
+        ani.SetBool("Push", false);
         ani.SetBool("MorphBall", false);
         ani.SetBool("MorphHumanoid", false);
     }
@@ -64,6 +68,7 @@ public class CharacterAnimationState : MonoBehaviour
         ani.SetBool("Walk", true);
         //ani.SetBool("Run", false);
         ani.SetBool("Jump", false);
+        ani.SetBool("Push", false);
         ani.SetBool("MorphBall", false);
         ani.SetBool("MorphHumanoid", false);
         ani.SetFloat("Speed", walkSpeedAnim,.1f,Time.deltaTime);
@@ -75,6 +80,7 @@ public class CharacterAnimationState : MonoBehaviour
         ani.SetBool("Walk", false);
         //ani.SetBool("Run", true);
         ani.SetBool("Jump", false);
+        ani.SetBool("Push", false);
         ani.SetBool("MorphBall", false);
         ani.SetBool("MorphHumanoid", false);
     }
@@ -85,6 +91,18 @@ public class CharacterAnimationState : MonoBehaviour
         ani.SetBool("Walk", false);
         //ani.SetBool("Run", false);
         ani.SetBool("Jump", true);
+        ani.SetBool("Push", false);
+        ani.SetBool("MorphBall", false);
+        ani.SetBool("MorphHumanoid", false);
+    }
+
+    void Push()
+    {
+        ani.SetBool("Idle", false);
+        ani.SetBool("Walk", false);
+        //ani.SetBool("Run", false);
+        ani.SetBool("Jump", false);
+        ani.SetBool("Push", true);
         ani.SetBool("MorphBall", false);
         ani.SetBool("MorphHumanoid", false);
     }
@@ -94,7 +112,8 @@ public class CharacterAnimationState : MonoBehaviour
         ani.SetBool("Idle", false);
         ani.SetBool("Walk", false);
         //ani.SetBool("Run", false);
-        ani.SetBool("Jump", false);     
+        ani.SetBool("Jump", false);
+        ani.SetBool("Push", false);
         ani.SetBool("MorphBall", true);
         ani.SetBool("MorphHumanoid", false);
     }
@@ -105,6 +124,7 @@ public class CharacterAnimationState : MonoBehaviour
         ani.SetBool("Walk", false);
         //ani.SetBool("Run", false);
         ani.SetBool("Jump", false);
+        ani.SetBool("Push", false);
         ani.SetBool("MorphBall", false);
         ani.SetBool("MorphHumanoid", true);
     }

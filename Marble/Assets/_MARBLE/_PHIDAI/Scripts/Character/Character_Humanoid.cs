@@ -271,6 +271,7 @@ public class Character_Humanoid : MonoBehaviour
             {
                 force = hit.controller.velocity * pushingPower;
             }
+            characterState.state = CharacterAnimationState.CharacterState.push;
             Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
             body.velocity = pushDir * pushingPower;           
         }
