@@ -16,7 +16,7 @@ public class Character_Humanoid : MonoBehaviour
     float verticalMovement;
     float globalGravity = -1f;
     float gravity = -15f;
-    bool enableScript = true;   
+    bool enableInputs = true;   
     [Header("Humanoid Stats")]
     [Range(1, 100)]
     public float movementSpeed;
@@ -52,7 +52,7 @@ public class Character_Humanoid : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (enableScript)
+        if (enableInputs)
         {
             Inputs();
           //  DebugColorGrounded();
@@ -221,10 +221,16 @@ public class Character_Humanoid : MonoBehaviour
     void Push(Transform obj)
     {
 
+        // Note: Keep the player stuck, use the controller stick variables (horizontal/vertical) for movement of the block
+        //       Do a check of the block direction based on the direction they inputed. After do the lerp to the new position.
+
+
         //Debug.Log("Push method obj: " + obj);
 
         if(obj != null)
         {
+            //  enableInputs = false;           
+            characterState.state = CharacterAnimationState.CharacterState.push;
             //Debug.Log("Inside the push method");
             Vector3 d = transform.position - obj.position;
             float dist = d.magnitude;
@@ -259,10 +265,18 @@ public class Character_Humanoid : MonoBehaviour
             StartCoroutine(DetectionResetTimer());
         }
 
+        if (hit.gameObject.name == "Box_Falling")
+        {
+            Debug.Log("Hit the box");
+            hit.gameObject.GetComponent<BoxFalling>().humanoidBoxFall = true;
+        }
+
         Rigidbody body = hit.collider.attachedRigidbody;
         Vector3 force;
         if (body != null && !body.isKinematic)
         {
+
+            characterState.state = CharacterAnimationState.CharacterState.push;
             if (hit.moveDirection.y < -0.3)
             {
                 force = new Vector3(0, -0.5f, 0) * gravity * 6.0f;
@@ -271,9 +285,9 @@ public class Character_Humanoid : MonoBehaviour
             {
                 force = hit.controller.velocity * pushingPower;
             }
-            characterState.state = CharacterAnimationState.CharacterState.push;
+
             Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
-            body.velocity = pushDir * pushingPower;           
+            body.velocity = pushDir * pushingPower;
         }
     }
 

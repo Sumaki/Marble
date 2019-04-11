@@ -8,6 +8,8 @@ public class BoxFalling : MonoBehaviour
     public float waitTime = 1f;
     public float respawnBoxTimer = 2f;
 
+    public bool humanoidBoxFall = false;
+
     Vector3 startPosition = Vector3.zero;
 
     private void Start()
@@ -15,11 +17,21 @@ public class BoxFalling : MonoBehaviour
          startPosition = gameObject.transform.position;
     }
 
+    private void Update()
+    {
+        if (humanoidBoxFall)
+        {
+            Debug.Log("Box is falling");
+            StartCoroutine(FallTimer(gameObject));
+        }   
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
 
         if (collision.gameObject.tag == "PlayerBall" || collision.gameObject.tag == "PlayerHumanoid")
         {
+            //Debug.Log("Box is falling");
             StartCoroutine(FallTimer(gameObject));
         }
     }
@@ -32,5 +44,6 @@ public class BoxFalling : MonoBehaviour
         yield return new WaitForSeconds(respawnBoxTimer);
         ani.SetBool("Fall", false);
         obj.transform.position = startPosition;
+        humanoidBoxFall = false;
     }
 }
