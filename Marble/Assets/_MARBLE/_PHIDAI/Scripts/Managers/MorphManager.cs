@@ -8,6 +8,7 @@ public class MorphManager : MonoBehaviour
     public GameObject blendObjectBall;
     [Header("Morph Model Humanoid")]
     public GameObject blendObjectHumanoid;
+
     //[Header("Ball Model")]
     //public GameObject playerBall;
     //[Header("Humanoid Model")]
@@ -16,10 +17,13 @@ public class MorphManager : MonoBehaviour
     public GameObject camera_;
     public GameObject ballCamera;
     public GameObject humanoidCamera;
+
     [Header("Player's Ball Scripts Object")]
     public GameObject ballObjScripts;
+
     [Header("Player's Humanoid Scripts Object")]
     public GameObject humanoidObjScripts;
+
     #region Morph Private Varibles
     SkinnedMeshRenderer smr_;
     SkinnedMeshRenderer smr_humanoid;

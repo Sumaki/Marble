@@ -76,11 +76,12 @@ public class Character_Humanoid : MonoBehaviour
         {
             
             jump = true;
-                     
+            characterState.state = CharacterAnimationState.CharacterState.jump;
+
         }
 
-        if(Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Submit_A"))
-            characterState.state = CharacterAnimationState.CharacterState.jump; // fix later
+        //if(Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Submit_A"))
+        //    characterState.state = CharacterAnimationState.CharacterState.jump; // fix later
 
 
 
