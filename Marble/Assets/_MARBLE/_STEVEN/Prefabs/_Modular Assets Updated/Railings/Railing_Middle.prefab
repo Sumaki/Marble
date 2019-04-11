@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2983302802850327691}
   - component: {fileID: 2983302802851654839}
   - component: {fileID: 2983302802852753271}
-  - component: {fileID: 1229613317551925782}
+  - component: {fileID: 2398129815231065692}
   m_Layer: 0
   m_Name: Railing_Middle
   m_TagString: Untagged
@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9c73ca0e8f4043e4aaf4f2f03a91d95f, type: 3}
+  - {fileID: 2100000, guid: 86b3cdbba816a174597b846fc069ef7b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -78,8 +78,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &1229613317551925782
-BoxCollider:
+--- !u!64 &2398129815231065692
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -88,6 +88,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.350066, y: 2.2, z: 0.5000365}
-  m_Center: {x: 0.67502654, y: 1.1, z: -0.25001836}
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300152, guid: 9c73ca0e8f4043e4aaf4f2f03a91d95f, type: 3}
