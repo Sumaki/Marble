@@ -94,6 +94,7 @@ public class FollowPath : MonoBehaviour
             //player.GetComponent<Rigidbody>().AddForce(player.transform.forward); // use object's forward?
             if(isPlayer)
                 player.GetComponent<Rigidbody>().velocity = player.transform.forward * speed;
+         
             
         }
 
@@ -113,10 +114,11 @@ public class FollowPath : MonoBehaviour
 
     void EnablePlayer()
     {
-        // cameraObj.GetComponent<CameraCollision>().minDistance = minDistStart;
-        //cameraObj.GetComponent<CameraCollision>().maxDistance = maxDistStart;       
+        cameraObj.GetComponent<CameraCollision>().minDistance = minDistStart;
+        cameraObj.GetComponent<CameraCollision>().maxDistance = maxDistStart;
         dstTravelled = 0;
         player.GetComponent<Character_Ball>().inputSpeed = 1f;
         player.GetComponent<Character_Ball>().movementForce = initialMovement;
+        isPlayer = false;
     }
 }
