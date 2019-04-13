@@ -13,7 +13,7 @@ public class RespawnOnDeath : MonoBehaviour
 
     private void Start()
     {      
-        gm_ = GameObject.Find("GameManager");
+        gm_ = GameObject.FindGameObjectWithTag("GameManager");
     }
 
     private void Update()
