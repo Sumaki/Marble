@@ -63,7 +63,7 @@ public class Character_Humanoid : MonoBehaviour
             //Debug.Log("Grounded: " + cc.isGrounded);
             // Debug.Log("Global Gravity: " + globalGravity);
             // Debug.Log("Movement XYZ: " + movement);
-            Debug.Log(horizontalMovement);
+            //Debug.Log(horizontalMovement);
         }
     }
 
@@ -95,8 +95,8 @@ public class Character_Humanoid : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift) && grab)
         {
-            //Push(thingToPull);
-            //movement = Vector3.zero;
+            Push(thingToPull);
+            movement = Vector3.zero;
         }
 
 
@@ -214,7 +214,7 @@ public class Character_Humanoid : MonoBehaviour
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
           //  Debug.Log("Hit nothing");
             grab = false;
-            thingToPull = null;
+            thingToPull = null;            
         }
     }
 
@@ -229,23 +229,34 @@ public class Character_Humanoid : MonoBehaviour
 
         if(obj != null)
         {
+            //RaycastHit hit;
+            //Vector3 p1 = obj.position + cc.center;
             //  enableInputs = false;           
             characterState.state = CharacterAnimationState.CharacterState.push;
-            //Debug.Log("Inside the push method");
-            Vector3 d = transform.position - obj.position;
-            float dist = d.magnitude;
-            Vector3 pullDir = d.normalized;
-           // Debug.Log("Pull direction: " + pullDir);
-            if (dist > 50) obj = null;
-            else if (dist > 0.1f)
-            {
-                float pullF = 10;
-                float pullForDist = (dist - 0.1f) / 2.0f;
-                if (pullForDist > 20) pullForDist = 20;
-                pullF += pullForDist;
-                Debug.Log(obj.GetComponent<Rigidbody>().velocity);
-                obj.GetComponent<Rigidbody>().velocity += pullDir * (pullF * Time.deltaTime);
-            }
+           // obj.GetComponent<PushingBox>().pushing = true;
+            ////Debug.Log("Inside the push method");
+
+            //if(Physics.SphereCast(p1, cc.height / 2, transform.forward, out hit, 10))
+            //{
+            //    Gizmos.color = Color.yellow;
+            //    Gizmos.DrawSphere(p1 * 10, 5f);
+            //    Debug.Log("I have spherecasted into: " + hit.transform.name);
+            //}
+
+           // Vector3 d = transform.position - obj.position;
+           // float dist = d.magnitude;
+           // Vector3 pullDir = d.normalized;
+           //// Debug.Log("Pull direction: " + pullDir);
+           // if (dist > 50) obj = null;
+           // else if (dist > 0.1f)
+           // {
+           //     float pullF = 10;
+           //     float pullForDist = (dist - 0.1f) / 2.0f;
+           //     if (pullForDist > 20) pullForDist = 20;
+           //     pullF += pullForDist;
+           //     Debug.Log(obj.GetComponent<Rigidbody>().velocity);
+           //     obj.GetComponent<Rigidbody>().velocity += pullDir * (pullF * Time.deltaTime);
+           // }
         }
     }
 
@@ -271,24 +282,24 @@ public class Character_Humanoid : MonoBehaviour
             hit.gameObject.GetComponent<BoxFalling>().humanoidBoxFall = true;
         }
 
-        Rigidbody body = hit.collider.attachedRigidbody;
-        Vector3 force;
-        if (body != null && !body.isKinematic)
-        {
+        //Rigidbody body = hit.collider.attachedRigidbody;
+        //Vector3 force;
+        //if (body != null && !body.isKinematic)
+        //{
 
-            characterState.state = CharacterAnimationState.CharacterState.push;
-            if (hit.moveDirection.y < -0.3)
-            {
-                force = new Vector3(0, -0.5f, 0) * gravity * 6.0f;
-            }
-            else
-            {
-                force = hit.controller.velocity * pushingPower;
-            }
+        //    characterState.state = CharacterAnimationState.CharacterState.push;
+        //    if (hit.moveDirection.y < -0.3)
+        //    {
+        //        force = new Vector3(0, -0.5f, 0) * gravity * 6.0f;
+        //    }
+        //    else
+        //    {
+        //        force = hit.controller.velocity * pushingPower;
+        //    }
 
-            Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
-            body.velocity = pushDir * pushingPower;
-        }
+        //    Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
+        //    body.velocity = pushDir * pushingPower;
+        //}
     }
 
     IEnumerator DetectionResetTimer()
@@ -297,4 +308,6 @@ public class Character_Humanoid : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         touchedDeath = false;
     }
+
+
 }
