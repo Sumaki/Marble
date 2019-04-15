@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    public GameObject door;
+    public Animator ani;
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        Destroy(door);
-        Destroy(this.gameObject, 0.5f);
+        if (other.gameObject.tag == "PlayerBall" || other.gameObject.tag == "PlayerHumanoid")
+        {
+            ani.SetTrigger("Open");
+            Destroy(this.gameObject, 0.5f);
+        }
     }
-
 }
