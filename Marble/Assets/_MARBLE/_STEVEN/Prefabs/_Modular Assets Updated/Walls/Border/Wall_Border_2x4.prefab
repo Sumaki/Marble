@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 1014852034683352648}
   - component: {fileID: 1014852034682582634}
   - component: {fileID: 1014852034681582762}
+  - component: {fileID: 7733288637686241642}
   m_Layer: 0
-  m_Name: Wall_Border_2x4 1
+  m_Name: Wall_Border_2x4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,3 +78,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &7733288637686241642
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1014852034683578984}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.000001, y: 4.0000005, z: 1.5}
+  m_Center: {x: 0.99999815, y: 1.9999993, z: -0.63}
