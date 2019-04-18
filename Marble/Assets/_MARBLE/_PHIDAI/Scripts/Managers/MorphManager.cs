@@ -23,7 +23,7 @@ public class MorphManager : MonoBehaviour
 
     [Header("Player's Humanoid Scripts Object")]
     public GameObject humanoidObjScripts;
-
+    
     #region Morph Private Varibles
     SkinnedMeshRenderer smr_;
     SkinnedMeshRenderer smr_humanoid;

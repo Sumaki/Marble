@@ -33,7 +33,8 @@ public class Character_Humanoid : MonoBehaviour
 
     #region Character Check Values
     bool jump;
-    bool grab = false;
+    bool canGrab = false;
+    bool isGrabbing = false;
     bool touchedDeath = false;
     Transform thingToPull = null;
     #endregion
@@ -85,19 +86,20 @@ public class Character_Humanoid : MonoBehaviour
 
 
 
-        if (cc.isGrounded && !jump && (horizontalMovement != 0 || verticalMovement != 0)) {
+        if (cc.isGrounded && !jump  && (horizontalMovement != 0 || verticalMovement != 0)) {
             characterState.state = CharacterAnimationState.CharacterState.walk;
             characterState.walkSpeedAnim = Mathf.Abs((new Vector3(horizontalMovement,0,verticalMovement)).magnitude);
         }
-        if (cc.isGrounded && !jump && horizontalMovement == 0 && verticalMovement == 0) { characterState.state = CharacterAnimationState.CharacterState.idle; }
+        if (cc.isGrounded && !jump  && horizontalMovement == 0 && verticalMovement == 0) { characterState.state = CharacterAnimationState.CharacterState.idle; }
 
         RaycastCheck();
 
-        if (Input.GetKey(KeyCode.LeftShift) && grab)
+        if ((Input.GetKey(KeyCode.LeftShift) || Input.GetAxis("LeftTrigger") > 0 && canGrab))
         {
-            Push(thingToPull);
             movement = Vector3.zero;
+            Push(thingToPull);
         }
+
 
 
     }
@@ -109,7 +111,7 @@ public class Character_Humanoid : MonoBehaviour
         horizontalMovement = Input.GetAxis("Horizontal");
         verticalMovement = Input.GetAxis("Vertical");
 
-        if (cc.isGrounded && (horizontalMovement !=0 || verticalMovement !=0))
+        if (cc.isGrounded && (horizontalMovement !=0 || verticalMovement !=0)  )
         {
            
             movement = TestMovement();
@@ -117,7 +119,7 @@ public class Character_Humanoid : MonoBehaviour
 
         }
 
-        if(cc.isGrounded && horizontalMovement == 0 && verticalMovement == 0)
+        if(cc.isGrounded && horizontalMovement == 0 && verticalMovement == 0 )
         {    
                
                 movement = Vector3.zero;
@@ -205,7 +207,7 @@ public class Character_Humanoid : MonoBehaviour
           //  Debug.Log("Hit something: " + hit.transform.name);
             if (hit.transform.tag == "Pushable")
             {
-                grab = true;
+                canGrab = true;
                 thingToPull = hit.transform;                         
             }
         }
@@ -213,7 +215,7 @@ public class Character_Humanoid : MonoBehaviour
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
           //  Debug.Log("Hit nothing");
-            grab = false;
+            canGrab = false;
             thingToPull = null;            
         }
     }
@@ -231,8 +233,10 @@ public class Character_Humanoid : MonoBehaviour
         {
             //RaycastHit hit;
             //Vector3 p1 = obj.position + cc.center;
-            //  enableInputs = false;           
+            //  enableInputs = false;        
+            obj.GetComponent<PushingBox>().input = verticalMovement;
             characterState.state = CharacterAnimationState.CharacterState.push;
+            
            // obj.GetComponent<PushingBox>().pushing = true;
             ////Debug.Log("Inside the push method");
 
@@ -308,6 +312,8 @@ public class Character_Humanoid : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         touchedDeath = false;
     }
+
+
 
 
 }
