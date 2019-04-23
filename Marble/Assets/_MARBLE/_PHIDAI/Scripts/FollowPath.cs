@@ -63,7 +63,8 @@ public class FollowPath : MonoBehaviour
         {
           //  mm_.canMorph = false;
             entered = true;
-            isPlayer = true;        
+            isPlayer = true;
+            mm_.canMorph = false;     
         }
 
         if(other.gameObject.tag == "Pushable")

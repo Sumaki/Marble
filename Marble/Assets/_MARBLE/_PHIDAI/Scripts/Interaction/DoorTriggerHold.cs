@@ -11,14 +11,15 @@ public class DoorTriggerHold : MonoBehaviour
         if(other.gameObject.tag == "PlayerBall" || other.gameObject.tag == "PlayerHumanoid" || other.gameObject.tag == "Pushable")
         {
             ani.SetTrigger("Open");
+            ani.SetFloat("Speed", 1);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "PlayerBall" || other.gameObject.tag == "PlayerHumanoid" || other.gameObject.tag == "Pushable") 
-        {
-            ani.SetTrigger("Closed");
+        {           
+            ani.SetFloat("Speed", -1);
         }
     }
 }

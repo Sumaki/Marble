@@ -94,7 +94,7 @@ public class Character_Humanoid : MonoBehaviour
 
         RaycastCheck();
 
-        if ((Input.GetKey(KeyCode.LeftShift) || Input.GetAxis("LeftTrigger") > 0 && canGrab))
+        if ( (Input.GetKey(KeyCode.LeftShift) || Input.GetAxis("LeftTrigger") > 0) && canGrab && cc.isGrounded)
         {
             movement = Vector3.zero;
             Push(thingToPull);
