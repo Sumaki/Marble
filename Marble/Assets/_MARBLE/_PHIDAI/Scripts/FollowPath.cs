@@ -28,6 +28,7 @@ public class FollowPath : MonoBehaviour
     Vector3 finishedPathPoint;
     bool entered = false;
     bool isPlayer = false;
+    bool reset = false;
     float initialMovement = 0f;
     #endregion
 
@@ -54,14 +55,16 @@ public class FollowPath : MonoBehaviour
             StartTravel(otherObj);
        
         if (!entered && isPlayer) 
-            EnablePlayer();          
+            EnablePlayer();
+
+        if (reset)
+            Reset();     
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "PlayerBall")
-        {
-          //  mm_.canMorph = false;
+        {        
             entered = true;
             isPlayer = true;
             mm_.canMorph = false;     
@@ -87,16 +90,18 @@ public class FollowPath : MonoBehaviour
 
         if (Vector3.Distance(player.transform.position, pathCreator.path.GetPoint(0.99f)) <= 1f && OneWay)
         {
-          
+
             //Debug.Log("TURN OFF TRAVEL STATUS");            
+            reset = true;
             entered = false;
-            mm_.canMorph = true;
+          
             // keep the rigidbody velocity set to the speed of the travel?
             //player.GetComponent<Rigidbody>().AddForce(player.transform.forward); // use object's forward?
-            if(isPlayer)
+            if (isPlayer)
+            {
+                mm_.canMorph = true;
                 player.GetComponent<Rigidbody>().velocity = player.transform.forward * speed;
-         
-            
+            }
         }
 
         //if(isPlayer)
@@ -117,9 +122,15 @@ public class FollowPath : MonoBehaviour
     {
         cameraObj.GetComponent<CameraCollision>().minDistance = minDistStart;
         cameraObj.GetComponent<CameraCollision>().maxDistance = maxDistStart;
-        dstTravelled = 0;
+      //  dstTravelled = 0;
         player.GetComponent<Character_Ball>().inputSpeed = 1f;
         player.GetComponent<Character_Ball>().movementForce = initialMovement;
         isPlayer = false;
+    }
+
+    private void Reset()
+    {
+        dstTravelled = 0;
+        reset = false;
     }
 }
