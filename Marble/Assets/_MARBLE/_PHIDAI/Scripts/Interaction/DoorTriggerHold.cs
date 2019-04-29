@@ -25,42 +25,44 @@ public class DoorTriggerHold : MonoBehaviour
         if (whichForm == PlayerState.Humanoid)
         {
             if (other.gameObject.tag == "PlayerHumanoid")
-                CheckDoorState();
+                CheckDoorStateEntered();
         }
 
         if(whichForm == PlayerState.Ball)
         {
             if (other.gameObject.tag == "PlayerBall")
-                CheckDoorState();
+                CheckDoorStateEntered();
         }
 
         if (objectAllowed)
         {
             if (other.gameObject.tag == "Pushable")
-                CheckDoorState();
+                CheckDoorStateEntered();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "PlayerBall" || other.gameObject.tag == "PlayerHumanoid" || other.gameObject.tag == "Pushable") 
+        if (whichForm == PlayerState.Humanoid)
         {
-            if (doorState == DoorState.Normal)
-            {
-                ani.ResetTrigger("Hold");
-                ani.SetTrigger("Close");
-            }
+            if (other.gameObject.tag == "PlayerHumanoid")
+                CheckDoorStateExit();
+        }
 
-            if(doorState == DoorState.Secret)
-            {
-               ani.SetFloat("Speed", -1);
-            }
-           
-           
+        if (whichForm == PlayerState.Ball)
+        {
+            if (other.gameObject.tag == "PlayerBall")
+                CheckDoorStateExit();
+        }
+
+        if (objectAllowed)
+        {
+            if (other.gameObject.tag == "Pushable")
+                CheckDoorStateExit();
         }
     }
 
-    void CheckDoorState()
+    void CheckDoorStateEntered()
     {
         if (doorState == DoorState.Normal)
         {
@@ -72,6 +74,20 @@ public class DoorTriggerHold : MonoBehaviour
         {
             ani.SetTrigger("Open");
             ani.SetFloat("Speed", 1);
+        }
+    }
+
+    void CheckDoorStateExit()
+    {
+        if (doorState == DoorState.Normal)
+        {
+            ani.ResetTrigger("Hold");
+            ani.SetTrigger("Close");
+        }
+
+        if (doorState == DoorState.Secret)
+        {
+            ani.SetFloat("Speed", -1);
         }
     }
 }
