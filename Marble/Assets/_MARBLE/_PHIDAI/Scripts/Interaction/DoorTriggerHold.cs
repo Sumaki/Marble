@@ -5,25 +5,39 @@ using UnityEngine;
 public class DoorTriggerHold : MonoBehaviour
 {
     public Animator ani;
-    public enum DoorState { Normal, Secret}
-    public DoorState doorState; 
 
+   
+    public enum PlayerState { Humanoid, Ball}
+    [Header("What object can interact?")]
+    public PlayerState whichForm;
+
+   
+    public enum DoorState { Normal, Secret}
+    [Header("What kind of door will it activate?")]
+    public DoorState doorState;
+
+    [Header("Can objects interact with it? (Put a Pushable tag on it!)")]
+    public bool objectAllowed;
+
+   
     private void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.tag == "PlayerBall" || other.gameObject.tag == "PlayerHumanoid" || other.gameObject.tag == "Pushable")
+        if (whichForm == PlayerState.Humanoid)
         {
-            if (doorState == DoorState.Normal)
-            {
-                ani.ResetTrigger("Close");
-                ani.SetTrigger("Hold");
-            }
+            if (other.gameObject.tag == "PlayerHumanoid")
+                CheckDoorState();
+        }
 
-            if(doorState == DoorState.Secret)
-            {
-                ani.SetTrigger("Open");
-                ani.SetFloat("Speed", 1);
-            }
-            
+        if(whichForm == PlayerState.Ball)
+        {
+            if (other.gameObject.tag == "PlayerBall")
+                CheckDoorState();
+        }
+
+        if (objectAllowed)
+        {
+            if (other.gameObject.tag == "Pushable")
+                CheckDoorState();
         }
     }
 
@@ -43,6 +57,21 @@ public class DoorTriggerHold : MonoBehaviour
             }
            
            
+        }
+    }
+
+    void CheckDoorState()
+    {
+        if (doorState == DoorState.Normal)
+        {
+            ani.ResetTrigger("Close");
+            ani.SetTrigger("Hold");
+        }
+
+        if (doorState == DoorState.Secret)
+        {
+            ani.SetTrigger("Open");
+            ani.SetFloat("Speed", 1);
         }
     }
 }
