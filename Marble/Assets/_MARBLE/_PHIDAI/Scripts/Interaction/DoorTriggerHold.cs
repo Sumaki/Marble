@@ -10,7 +10,7 @@ public class DoorTriggerHold : MonoBehaviour
     {
         if(other.gameObject.tag == "PlayerBall" || other.gameObject.tag == "PlayerHumanoid" || other.gameObject.tag == "Pushable")
         {
-            ani.SetTrigger("Open");
+            ani.SetTrigger("Hold");
             ani.SetFloat("Speed", 1);
         }
     }
