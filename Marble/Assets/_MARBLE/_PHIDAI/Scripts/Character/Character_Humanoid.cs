@@ -129,18 +129,18 @@ public class Character_Humanoid : MonoBehaviour
         if (!cc.isGrounded)
         {       // find midair movement that works with the current movement and camera
                 //movement.y += gravity * Time.deltaTime;
-                //Vector3 camForward = Vector3.Scale(cameraBase.forward, new Vector3(1, 0, 1)).normalized;
+            //   Vector3 camForward = Vector3.Scale(cameraBase.forward, new Vector3(1, 0, 1)).normalized;
 
-           
-            //movement.x = horizontalMovement * movementSpeed;
-            //movement.z = verticalMovement * movementSpeed;
-          //  movement = cameraBase.transform.TransformDirection(movement);
-            //movement = (verticalMovement * camForward + horizontalMovement * cameraBase.right).normalized;
-           // movement = AirMovement();
+            
+          
+            movement = AirMovement();
+            //movement = cameraBase.transform.TransformDirection(movement);
+           // movement = (verticalMovement * camForward + horizontalMovement * cameraBase.right).normalized;
+        //  movement = AirMovement();
             //movement.y += gravity * Time.deltaTime;
             
-            //Debug.Log("Movement in Air: " + movement);
-            //movement *= movementSpeed;
+            Debug.Log("Movement in Air: " + movement);
+          // movement *= movementSpeed;
         }
 
         if (jump)
@@ -166,14 +166,14 @@ public class Character_Humanoid : MonoBehaviour
 
     }
 
-    Vector3 AirMovement() // figure it out
+    Vector3 AirMovement()
     {
-        check = new Vector3(horizontalMovement, 0, verticalMovement);
-        finalDirection = cameraBase.transform.TransformDirection(check);
-        finalDirection.Set(finalDirection.x, AirGravity(), finalDirection.z);
+        movement.x = (horizontalMovement * movementSpeed); // insert variable to consider slowing the mid-air movement
+        movement.z = (verticalMovement * movementSpeed);
+        finalDirection = cameraBase.transform.TransformDirection(new Vector3(movement.x, 0, movement.z));
+        finalDirection.y = movement.y;
         if (horizontalMovement != 0 || verticalMovement != 0)
             transform.forward = Vector3.Normalize(new Vector3(finalDirection.x, 0, finalDirection.z));
-        finalDirection *= movementSpeed;
         return finalDirection;
     }
 
@@ -186,8 +186,8 @@ public class Character_Humanoid : MonoBehaviour
     }
 
     float AirGravity()
-    {               
-        movement.y -= 0.005f * Time.deltaTime;
+    {
+        movement.y -= 0.005f;
         return movement.y;
 
     }

@@ -139,13 +139,13 @@ public class Character_Ball : MonoBehaviour
             //gameObject.transform.right =
             //Vector3.Slerp(gameObject.transform.right, rb.velocity.normalized, Time.deltaTime);
 
-            Vector3 finalMovement = RotateInput();
+            Vector3 finalMovement = AirRoll();
            // rb.angularDrag = 0;
-            //   Debug.Log("AIR MOVEMENT: " + finalMovement);
+           Debug.Log("AIR MOVEMENT: " + finalMovement);
             //if (rb.velocity != Vector3.zero)
             //    transform.rotation = Quaternion.LookRotation(rb.velocity);
             ApplyTorque();
-            //rb.AddForce(finalMovement);
+            rb.AddForce(finalMovement);
             //rb.AddRelativeTorque(finalMovement);
             //   rb.velocity = 30 * (rb.velocity.normalized);
             // rb.AddForce(gravity * 2f);
@@ -180,10 +180,11 @@ public class Character_Ball : MonoBehaviour
     Vector3 AirRoll()
     {
        
-        Vector3 check = new Vector3(horizontalMovement, 0, verticalMovement);
+       Vector3 check = new Vector3(horizontalMovement, 0, verticalMovement);
+       
         finalDirection = cameraBase.transform.TransformDirection(check);
         finalDirection.Set(finalDirection.x, 0, finalDirection.z);
-       // Debug.Log("Air force: " + airMovementForce);
+         //Debug.Log("Air force: " + airMovementForce);
         Vector3 move = (finalDirection.normalized * movementForce) * 0.5f;
         return move;
     }
