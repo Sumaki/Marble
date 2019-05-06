@@ -141,7 +141,7 @@ public class Character_Ball : MonoBehaviour
 
             Vector3 finalMovement = AirRoll();
            // rb.angularDrag = 0;
-           Debug.Log("AIR MOVEMENT: " + finalMovement);
+           //Debug.Log("AIR MOVEMENT: " + finalMovement);
             //if (rb.velocity != Vector3.zero)
             //    transform.rotation = Quaternion.LookRotation(rb.velocity);
             ApplyTorque();

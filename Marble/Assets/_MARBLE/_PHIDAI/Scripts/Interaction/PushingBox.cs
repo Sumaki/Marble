@@ -7,6 +7,8 @@ public class PushingBox : MonoBehaviour
 
     public GameObject player;
     public bool pushing = false;
+    public float faceDetection = 1.5f;
+    public float distanceToPush = 2.5f;
     CharacterController cc;
     CharacterAnimationState characterState; 
 
@@ -16,7 +18,6 @@ public class PushingBox : MonoBehaviour
     bool isPushing = false;
     float fracJourney = 0f;
     public float input;
-
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,8 @@ public class PushingBox : MonoBehaviour
     void Update()
     {
         //Debug.Log("Final position of spherecast: " + p1);
+
+       // BoxChecks();
 
         if (characterState.state == CharacterAnimationState.CharacterState.push && !canPush)
             Check2();//Check();
@@ -106,9 +109,143 @@ public class PushingBox : MonoBehaviour
         }
         else
         {
-            Vector3 positionToPush = transform.position + (cc.transform.forward * 2.5f);
-            movePosition = positionToPush;
-            canPush = true;
+          BoxChecks();
+           // Vector3 positionToPush = transform.position + (transform.forward * 2.5f); // try to not get the diagonal
+            //movePosition = positionToPush;
+            //canPush = true;
+        }
+    }
+
+
+    void BoxChecks()
+    {
+        BoxCheckForward();
+        BoxCheckBack();
+        BoxCheckLeft();
+        BoxCheckRight();
+    }
+
+    void BoxCheckForward()
+    {
+        RaycastHit hit;
+        //if(Physics.Raycast(transform.position + Vector3.up,transform.TransformDirection(Vector3.forward),out hit, faceDetection))
+        //{
+        //    Debug.DrawRay(transform.position + Vector3.up, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+        //    if (hit.transform.tag == "Player") { 
+        //        Debug.Log("Player is facing the front of the block");               
+        //        movePosition = transform.position + (Vector3.back * distanceToPush);
+        //        canPush = true;
+        //        }
+        //}
+        //else
+        //{
+        //    Debug.DrawRay(transform.position + Vector3.up, transform.TransformDirection(Vector3.forward) * faceDetection, Color.red);
+        //    Debug.DrawRay(transform.position + Vector3.up + Vector3.left, transform.TransformDirection(Vector3.forward) * faceDetection, Color.red);
+        //    Debug.DrawRay(transform.position + Vector3.up + Vector3.right, transform.TransformDirection(Vector3.forward) * faceDetection, Color.red);
+
+
+        //}
+
+        if(Physics.SphereCast(transform.position + Vector3.up, 1f, transform.TransformDirection(Vector3.forward) * faceDetection, out hit, faceDetection))
+        {
+            Debug.Log("Spherecast location: " + hit.point);
+
+            if (hit.transform.tag == "Player")
+            {
+                //Debug.Log("Spherecast touched player");
+                movePosition = transform.position + (Vector3.back * distanceToPush);
+                canPush = true;
+            }
+        }
+
+    }
+
+    void BoxCheckBack()
+    {
+        RaycastHit hit;
+        //if (Physics.Raycast(transform.position + Vector3.up, transform.TransformDirection(Vector3.back), out hit, faceDetection))
+        //{
+        //    Debug.DrawRay(transform.position + Vector3.up, transform.TransformDirection(Vector3.back) * hit.distance, Color.yellow);
+        //    if (hit.transform.tag == "Player")
+        //    {
+        //        Debug.Log("Player is facing the back of the block");
+        //        movePosition = transform.position + (Vector3.forward * distanceToPush);
+        //        canPush = true;
+        //    }
+        //}
+        //else
+        //{
+        //    Debug.DrawRay(transform.position + Vector3.up, transform.TransformDirection(Vector3.back) * faceDetection, Color.black);
+        //}
+        if (Physics.SphereCast(transform.position + Vector3.up, 1f, transform.TransformDirection(Vector3.back) * faceDetection, out hit, faceDetection))
+        {
+            Debug.Log("Spherecast location: " + hit.point);
+
+            if (hit.transform.tag == "Player")
+            {
+                //Debug.Log("Spherecast touched player");
+                movePosition = transform.position + (Vector3.forward * distanceToPush);
+                canPush = true;
+            }
+        }
+    }
+
+    void BoxCheckLeft()
+    {
+        RaycastHit hit;
+        //if (Physics.Raycast(transform.position + Vector3.up, transform.TransformDirection(Vector3.left), out hit, faceDetection))
+        //{
+        //    Debug.DrawRay(transform.position + Vector3.up, transform.TransformDirection(Vector3.left) * hit.distance, Color.yellow);
+        //    if (hit.transform.tag == "Player")
+        //    {
+        //        Debug.Log("Player is facing the left side of the block");
+        //        movePosition = transform.position + (Vector3.right * distanceToPush);
+        //        canPush = true;
+        //    }
+        //}
+        //else
+        //{
+        //    Debug.DrawRay(transform.position + Vector3.up, transform.TransformDirection(Vector3.left) * faceDetection, Color.blue);
+        //}
+        if (Physics.SphereCast(transform.position + Vector3.up, 1f, transform.TransformDirection(Vector3.left) * faceDetection, out hit, faceDetection))
+        {
+            Debug.Log("Spherecast location: " + hit.point);
+
+            if (hit.transform.tag == "Player")
+            {
+                //Debug.Log("Spherecast touched player");
+                movePosition = transform.position + (Vector3.right * distanceToPush);
+                canPush = true;
+            }
+        }
+    }
+
+    void BoxCheckRight()
+    {
+        RaycastHit hit;
+        //if (Physics.Raycast(transform.position + Vector3.up, transform.TransformDirection(Vector3.right), out hit, faceDetection))
+        //{
+        //    Debug.DrawRay(transform.position + Vector3.up, transform.TransformDirection(Vector3.right) * hit.distance, Color.yellow);
+        //    if (hit.transform.tag == "Player")
+        //    {
+        //        Debug.Log("Player is facing the right side of the block");
+        //        movePosition = transform.position + (Vector3.left * distanceToPush);
+        //        canPush = true;
+        //    }
+        //}
+        //else
+        //{
+        //    Debug.DrawRay(transform.position + Vector3.up, transform.TransformDirection(Vector3.right) * faceDetection, Color.cyan);
+        //}
+        if (Physics.SphereCast(transform.position + Vector3.up, 1f, transform.TransformDirection(Vector3.right) * faceDetection, out hit, faceDetection))
+        {
+            Debug.Log("Spherecast location: " + hit.point);
+
+            if (hit.transform.tag == "Player")
+            {
+                movePosition = transform.position + (Vector3.left * distanceToPush);
+                canPush = true;
+            }
         }
     }
 
@@ -126,15 +263,13 @@ public class PushingBox : MonoBehaviour
             if (fracJourney < 1)
             {
                 fracJourney += Time.deltaTime * 2f;
-                Debug.Log("Travel time: " + fracJourney);
-
+                Debug.Log("Travel time: " + fracJourney);                
                 transform.position = Vector3.MoveTowards(transform.position, movePosition, fracJourney);
-            }
-
-          
+            }          
         }
-                if (fracJourney >= 1)
-                fracJourney = 0f;
+
+        if (fracJourney >= 1)
+           fracJourney = 0f;
 
     }
 
@@ -144,9 +279,13 @@ public class PushingBox : MonoBehaviour
         Gizmos.color = Color.yellow;
         Debug.DrawLine(p1, p1 + (cc.transform.forward * 2.5f));
         Gizmos.DrawWireSphere(p1 + (cc.transform.forward * 2.5f), 1.5f);// + (cc.transform.forward * 2.5f), 1.5f);
-       //  Gizmos.DrawWireSphere(p1 + Vector3.up, 1.5f);
-       // DebugExtension.DrawCapsule(p1 + Vector3.up, p1 + Vector3.up * 2);
-       // DebugExtension.DebugWireSphere(p1 + Vector3.up);
+        Gizmos.DrawWireSphere(transform.position + Vector3.up + (transform.TransformDirection(Vector3.forward) * faceDetection), 1f);
+        Gizmos.DrawWireSphere(transform.position + Vector3.up + (transform.TransformDirection(Vector3.back) * faceDetection), 1f);
+        Gizmos.DrawWireSphere(transform.position + Vector3.up + (transform.TransformDirection(Vector3.left) * faceDetection), 1f);
+        Gizmos.DrawWireSphere(transform.position + Vector3.up + (transform.TransformDirection(Vector3.right) * faceDetection), 1f);
+        //  Gizmos.DrawWireSphere(p1 + Vector3.up, 1.5f);
+        // DebugExtension.DrawCapsule(p1 + Vector3.up, p1 + Vector3.up * 2);
+        // DebugExtension.DebugWireSphere(p1 + Vector3.up);
     }
 
 
