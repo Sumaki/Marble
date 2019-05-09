@@ -13,6 +13,7 @@ public class SceneChangeManager : MonoBehaviour
     {
         if (collision.gameObject.tag == "PlayerBall" || collision.gameObject.tag == "PlayerHumanoid")
         {
+            Debug.Log("test");
             ChangeScene();
         }
     }
