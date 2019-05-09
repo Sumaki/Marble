@@ -15,8 +15,9 @@ public class PushingBox : MonoBehaviour
     Vector3 p1;
     Vector3 movePosition;
     bool canPush = false;
-    bool isPushing = false;
+    public bool isPushing = false;
     float fracJourney = 0f;
+    float distToGround;
     public float input;
 
     public Vector3 initialPosition = Vector3.zero;
@@ -27,6 +28,7 @@ public class PushingBox : MonoBehaviour
         cc = player.GetComponent<CharacterController>();
         characterState = player.GetComponent<CharacterAnimationState>();
         initialPosition = transform.position;
+        distToGround = GetComponent<Collider>().bounds.extents.y;
     }
 
     // Update is called once per frame
@@ -49,19 +51,20 @@ public class PushingBox : MonoBehaviour
 
         if (isPushing)
         {
+           // Debug.Log(isGrounded()); recheck for grounded 
             canPush = false;
             player.GetComponent<Character_Humanoid>().enabled = false;
             transform.position = Vector3.MoveTowards(transform.position, movePosition, 5 * Time.deltaTime);
-            if(transform.position == movePosition)
-                player.GetComponent<Character_Humanoid>().enabled = true;
-
         }
 
         if (transform.position == movePosition)
-        {           
+        {
+            player.GetComponent<Character_Humanoid>().enabled = true;
             canPush = false;
             isPushing = false;
         }
+
+      
     }
 
     void Check()
@@ -111,7 +114,7 @@ public class PushingBox : MonoBehaviour
 
         LayerMask mask = LayerMask.GetMask("BoxChecks");
         if (Physics.SphereCast(p1 + Vector3.up, 1f, cc.transform.forward * 1f,  out hit, distance, mask, QueryTriggerInteraction.UseGlobal)) {
-            Debug.Log("Object spherecasted: " + hit.transform.name);          
+            //Debug.Log("Object spherecasted: " + hit.transform.name);          
             //Debug.Log("Distance between the cast and object: " + Vector3.Distance(p1, hit.transform.position));           
         }
         else
@@ -155,7 +158,7 @@ public class PushingBox : MonoBehaviour
 
         if(Physics.SphereCast(transform.position + Vector3.up, 1f, transform.TransformDirection(Vector3.forward) * faceDetection, out hit, faceDetection))
         {
-            Debug.Log("Spherecast location: " + hit.point);
+            //Debug.Log("Spherecast location: " + hit.point);
 
             if (hit.transform.tag == "PlayerHumanoid")
             {
@@ -186,7 +189,7 @@ public class PushingBox : MonoBehaviour
         //}
         if (Physics.SphereCast(transform.position + Vector3.up, 1f, transform.TransformDirection(Vector3.back) * faceDetection, out hit, faceDetection))
         {
-            Debug.Log("Spherecast location: " + hit.point);
+           // Debug.Log("Spherecast location: " + hit.point);
 
             if (hit.transform.tag == "PlayerHumanoid")
             {
@@ -216,7 +219,7 @@ public class PushingBox : MonoBehaviour
         //}
         if (Physics.SphereCast(transform.position + Vector3.up, 1f, transform.TransformDirection(Vector3.left) * faceDetection, out hit, faceDetection))
         {
-            Debug.Log("Spherecast location: " + hit.point);
+           // Debug.Log("Spherecast location: " + hit.point);
 
             if (hit.transform.tag == "PlayerHumanoid")
             {
@@ -246,7 +249,7 @@ public class PushingBox : MonoBehaviour
         //}
         if (Physics.SphereCast(transform.position + Vector3.up, 1f, transform.TransformDirection(Vector3.right) * faceDetection, out hit, faceDetection))
         {
-            Debug.Log("Spherecast location: " + hit.point);
+           // Debug.Log("Spherecast location: " + hit.point);
 
             if (hit.transform.tag == "PlayerHumanoid")
             {
@@ -281,6 +284,11 @@ public class PushingBox : MonoBehaviour
             fracJourney = 0f;
         }
 
+    }
+
+    bool isGrounded()
+    {
+        return Physics.Raycast(transform.position, -Vector3.up, distToGround + 1f);
     }
 
     private void OnDrawGizmos()

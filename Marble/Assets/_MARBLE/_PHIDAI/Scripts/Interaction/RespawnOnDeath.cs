@@ -35,7 +35,8 @@ public class RespawnOnDeath : MonoBehaviour
         if(collision.gameObject.tag == "Pushable")
         {
             collision.gameObject.transform.position = collision.gameObject.GetComponent<PushingBox>().initialPosition;
-            //collision.gameObject.GetComponent<PushingBox>()
+            collision.gameObject.GetComponent<PushingBox>().isPushing = false;
+            collision.gameObject.GetComponent<PushingBox>().player.GetComponent<Character_Humanoid>().enabled = true;
         }
     }
 
