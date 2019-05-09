@@ -113,7 +113,7 @@ public class PushingBox : MonoBehaviour
         float distance = Vector3.Distance(p1, p2);
 
         LayerMask mask = LayerMask.GetMask("BoxChecks");
-        if (Physics.SphereCast(p1 + Vector3.up, 1f, cc.transform.forward * 1f,  out hit, distance, mask, QueryTriggerInteraction.UseGlobal)) {
+        if (Physics.SphereCast(p1 + Vector3.up, 0.7f, cc.transform.forward * 1f,  out hit, distance, mask, QueryTriggerInteraction.UseGlobal)) {
             //Debug.Log("Object spherecasted: " + hit.transform.name);          
             //Debug.Log("Distance between the cast and object: " + Vector3.Distance(p1, hit.transform.position));           
         }
@@ -296,7 +296,7 @@ public class PushingBox : MonoBehaviour
         cc = player.GetComponent<CharacterController>();
         Gizmos.color = Color.yellow;
         Debug.DrawLine(p1, p1 + (cc.transform.forward * 2.5f));
-        Gizmos.DrawWireSphere(p1 + Vector3.up + (cc.transform.forward * 1.5f), 1f);// + (cc.transform.forward * 2.5f), 1.5f);
+        Gizmos.DrawWireSphere(p1 + Vector3.up + (cc.transform.forward * 1.5f), 0.7f);// + (cc.transform.forward * 2.5f), 1.5f);
         Gizmos.DrawWireSphere(transform.position + Vector3.up + (transform.TransformDirection(Vector3.forward) * faceDetection), 1f);
         Gizmos.DrawWireSphere(transform.position + Vector3.up + (transform.TransformDirection(Vector3.back) * faceDetection), 1f);
         Gizmos.DrawWireSphere(transform.position + Vector3.up + (transform.TransformDirection(Vector3.left) * faceDetection), 1f);
