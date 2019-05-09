@@ -25,7 +25,7 @@ public class SceneChangeManager : MonoBehaviour
             case LevelStates.Start:
                 break;
             case LevelStates.Temple:
-                SceneManager.LoadScene(0); // stick with index for now, change in the future
+                SceneManager.LoadScene(1); // stick with index for now, change in the future
                 break;
             case LevelStates.Boss:
                 break;
