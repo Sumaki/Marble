@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3408700571392546472}
   - component: {fileID: 5339802321190555984}
   - component: {fileID: 3408700571396646600}
+  - component: {fileID: 741041162}
   m_Layer: 0
   m_Name: Box_Interactable
   m_TagString: Pushable
@@ -27,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3408700571394541670}
-  m_LocalRotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -50.906647, y: 18.797768, z: -0.7917733}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -59,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100002, guid: 9c73ca0e8f4043e4aaf4f2f03a91d95f, type: 3}
+  - {fileID: 2100000, guid: c9181163b0d95024c90bc6c5699cc964, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -109,3 +110,21 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: df1187a18003f6b41ad979b705ab5dd2, type: 3}
+--- !u!114 &741041162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3408700571394541670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b4758a0f8ac89347940015842ed33e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  pushing: 0
+  faceDetection: 1.5
+  distanceToPush: 1
+  input: 0
+  initialPosition: {x: 0, y: 0, z: 0}
