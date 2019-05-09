@@ -50,7 +50,11 @@ public class PushingBox : MonoBehaviour
         if (isPushing)
         {
             canPush = false;
+            player.GetComponent<Character_Humanoid>().enabled = false;
             transform.position = Vector3.MoveTowards(transform.position, movePosition, 5 * Time.deltaTime);
+            if(transform.position == movePosition)
+                player.GetComponent<Character_Humanoid>().enabled = true;
+
         }
 
         if (transform.position == movePosition)
@@ -257,16 +261,15 @@ public class PushingBox : MonoBehaviour
         // Based on player's controls: Maybe make a varible that stores a value based on the humanoid script.
         // Access the variable's value then based on the input, push the object in that direction. (For now just do the forward since it's the most common input)
         // Values to use : horizontal/vertical, p1 for direction (use it to gauge a initial distance then increase/decrease when necessary with a variable), distance pushed.
-
         if(input > 0)
         {
-            // disable input
+       
             
            // float distCovered = (Time.time - startTime);
            // Debug.Log("Distance Covered: " + distCovered);
             if (fracJourney < 1)
             {
-                player.GetComponent<Character_Humanoid>().enabled = false;
+                
                 fracJourney += Time.deltaTime * 2f;
                 Debug.Log("Travel time: " + fracJourney);                
                 transform.position = Vector3.MoveTowards(transform.position, movePosition, fracJourney);
@@ -276,8 +279,6 @@ public class PushingBox : MonoBehaviour
         if (fracJourney >= 1)
         {
             fracJourney = 0f;
-            // enable input
-           // player.GetComponent<Character_Humanoid>().enabled = true;
         }
 
     }
