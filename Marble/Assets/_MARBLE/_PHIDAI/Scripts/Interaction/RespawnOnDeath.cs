@@ -31,6 +31,11 @@ public class RespawnOnDeath : MonoBehaviour
             player.transform.position = gm_.GetComponent<GameManager>().currentRespawn.position;
             player.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
+
+        if(collision.gameObject.tag == "Pushable")
+        {
+            collision.gameObject.transform.position = collision.gameObject.GetComponent<PushingBox>().initialPosition;
+        }
     }
 
     void OnDeath()
