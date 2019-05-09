@@ -8,9 +8,10 @@ public class SceneChangeManager : MonoBehaviour
    public enum LevelStates { Start, Temple, Boss} // will manage more in the future
    public LevelStates Which_Level;
 
-    private void OnTriggerEnter(Collider other)
+
+    private void OnCollisionEnter(Collision collision)
     {
-        if(other.gameObject.tag == "PlayerBall" || other.gameObject.tag == "PlayerHumanoid")
+        if (collision.gameObject.tag == "PlayerBall" || collision.gameObject.tag == "PlayerHumanoid")
         {
             ChangeScene();
         }
