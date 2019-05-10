@@ -113,7 +113,7 @@ public class PushingBox : MonoBehaviour
         float distance = Vector3.Distance(p1, p2);
 
         LayerMask mask = LayerMask.GetMask("BoxChecks");
-        if (Physics.SphereCast(p1 + Vector3.up, 0.7f, cc.transform.forward * 1f,  out hit, distance, mask, QueryTriggerInteraction.UseGlobal)) {
+        if (Physics.SphereCast(p1 + Vector3.up, 0.7f, cc.transform.forward * 1.5f,  out hit, distance, mask, QueryTriggerInteraction.UseGlobal)) {
             //Debug.Log("Object spherecasted: " + hit.transform.name);          
             //Debug.Log("Distance between the cast and object: " + Vector3.Distance(p1, hit.transform.position));           
         }
