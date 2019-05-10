@@ -108,13 +108,13 @@ public class PushingBox : MonoBehaviour
     void Check2()
     {
         p1 = transform.position;// + Vector3.right + Vector3.up + Vector3.back;
-        Vector3 p2 = p1 + (cc.transform.forward * 2.5f);
+       Vector3 p2 = p1 + (cc.transform.forward * 1.5f);
         RaycastHit hit;
         float distance = Vector3.Distance(p1, p2);
 
         LayerMask mask = LayerMask.GetMask("BoxChecks");
         if (Physics.SphereCast(p1 + Vector3.up, 0.7f, cc.transform.forward * 1.5f,  out hit, distance, mask, QueryTriggerInteraction.UseGlobal)) {
-            //Debug.Log("Object spherecasted: " + hit.transform.name);          
+            Debug.Log("Object spherecasted: " + hit.transform.name);          
             //Debug.Log("Distance between the cast and object: " + Vector3.Distance(p1, hit.transform.position));           
         }
         else
