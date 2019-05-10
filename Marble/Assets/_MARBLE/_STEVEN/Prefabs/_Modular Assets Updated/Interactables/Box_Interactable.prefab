@@ -126,5 +126,6 @@ MonoBehaviour:
   pushing: 0
   faceDetection: 1.5
   distanceToPush: 1
+  isPushing: 0
   input: 0
   initialPosition: {x: 0, y: 0, z: 0}
