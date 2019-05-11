@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_MARBLE/_STEVEN/Scenes/Start.unity
+    guid: df22575f128586b428f16bebec472710
+  - enabled: 1
     path: Assets/_MARBLE/_STEVEN/Scenes/Playtest_Level.unity
     guid: ef21351bd836b884fa417c89dfc7a41e
   m_configObjects: {}

@@ -17,7 +17,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {      
         player.transform.position = currentRespawn.position;
+        player.transform.rotation = currentRespawn.rotation;
         playerHumanoid.transform.position = currentRespawn.position;
+        playerHumanoid.transform.rotation = currentRespawn.rotation;
     }
 
     // Update is called once per frame
