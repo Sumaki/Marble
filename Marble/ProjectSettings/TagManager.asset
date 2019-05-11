@@ -11,6 +11,8 @@ TagManager:
   - PlayerBall
   - PlayerHumanoid
   - GameManager
+  - StartLights
+  - Startlights
   layers:
   - Default
   - TransparentFX
