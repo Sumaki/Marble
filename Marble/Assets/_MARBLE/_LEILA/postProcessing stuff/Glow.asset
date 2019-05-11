@@ -19,6 +19,7 @@ MonoBehaviour:
   - {fileID: 114978777329686496}
   - {fileID: 114335219379948488}
   - {fileID: 114586168820639036}
+  - {fileID: 114494873581196156}
 --- !u!114 &114010983428098926
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -78,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6050e2d5de785ce4d931e4dbdbf2d755, type: 3}
   m_Name: ChromaticAberration
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
     value: 1
@@ -1421,10 +1422,47 @@ MonoBehaviour:
     value: 1
   shutterAngle:
     overrideState: 1
-    value: 269
+    value: 287
   sampleCount:
     overrideState: 1
-    value: 6
+    value: 32
+--- !u!114 &114494873581196156
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a34fa72bd4185749832024e9c8010bf, type: 3}
+  m_Name: ScreenSpaceReflections
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  preset:
+    overrideState: 0
+    value: 2
+  maximumIterationCount:
+    overrideState: 0
+    value: 16
+  resolution:
+    overrideState: 0
+    value: 0
+  thickness:
+    overrideState: 0
+    value: 8
+  maximumMarchDistance:
+    overrideState: 0
+    value: 100
+  distanceFade:
+    overrideState: 0
+    value: 0.5
+  vignette:
+    overrideState: 0
+    value: 0.5
 --- !u!114 &114586168820639036
 MonoBehaviour:
   m_ObjectHideFlags: 3
