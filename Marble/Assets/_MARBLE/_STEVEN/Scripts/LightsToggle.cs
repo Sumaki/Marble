@@ -9,18 +9,29 @@ public class LightsToggle : MonoBehaviour
 
     void Awake()
     {
-        Light = GameObject.FindGameObjectsWithTag("Startlights");
+      
+    Light = GameObject.FindGameObjectsWithTag("StartLights");
+ 
+    }
 
-
+    private void Start()
+    {
+        
+       
         foreach (GameObject i in Light)
         {
-            i.SetActive(false);
+            Debug.Log("Turning off lights");
+           i.SetActive(false);
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        StartCoroutine(TurnOn());
+        if (other.gameObject.tag == "PlayerHumanoid" || other.gameObject.tag == "PlayerBall")
+        {
+            Debug.Log("WE ARE INSIDE THE TRIGGER");
+            StartCoroutine(TurnOn());
+        }
     }
 
     IEnumerator TurnOn()

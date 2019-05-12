@@ -19,6 +19,7 @@ public class PushingBox : MonoBehaviour
     float fracJourney = 0f;
     float distToGround;
     public float input;
+    float inputTest;
 
     public Vector3 initialPosition = Vector3.zero;
 
@@ -34,16 +35,22 @@ public class PushingBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        inputTest = Input.GetAxis("Vertical");
+
         //Debug.Log("Final position of spherecast: " + p1);
 
-       // BoxChecks();
+        // BoxChecks();
 
         if (characterState.state == CharacterAnimationState.CharacterState.push && !canPush)
+        {
+            // disable player's left and right direction but not z axis
+            player.GetComponent<Character_Humanoid>().enableInputs = false;
             Check2();//Check();
+        }
 
         if (canPush)
         {
-            if (input > 0 && !isPushing ) // maybe adjust
+            if (inputTest > 0 && !isPushing ) // maybe adjust
             {
                 isPushing = true;
             }
@@ -53,13 +60,11 @@ public class PushingBox : MonoBehaviour
         {
            // Debug.Log(isGrounded()); recheck for grounded 
             canPush = false;
-            player.GetComponent<Character_Humanoid>().enabled = false;
             transform.position = Vector3.MoveTowards(transform.position, movePosition, 5 * Time.deltaTime);
         }
 
         if (transform.position == movePosition)
         {
-            player.GetComponent<Character_Humanoid>().enabled = true;
             canPush = false;
             isPushing = false;
         }
@@ -113,6 +118,8 @@ public class PushingBox : MonoBehaviour
         float distance = Vector3.Distance(p1, p2);
 
         LayerMask mask = LayerMask.GetMask("BoxChecks");
+
+        // dont use cc.forward change the sphere check base on the the side they are on, set a variable and replace the state of it then use it after to check 
         if (Physics.SphereCast(p1 + Vector3.up, 0.7f, cc.transform.forward * 1.5f,  out hit, distance, mask, QueryTriggerInteraction.UseGlobal)) {
             Debug.Log("Object spherecasted: " + hit.transform.name);          
             //Debug.Log("Distance between the cast and object: " + Vector3.Distance(p1, hit.transform.position));           

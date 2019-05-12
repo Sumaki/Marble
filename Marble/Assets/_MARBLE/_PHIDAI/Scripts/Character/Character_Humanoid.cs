@@ -12,11 +12,11 @@ public class Character_Humanoid : MonoBehaviour
     #region Character Movement Variables
     CharacterController cc;
     CharacterAnimationState characterState;
-    float horizontalMovement;
-    float verticalMovement;
+    public float horizontalMovement;
+    public float verticalMovement;
     float globalGravity = -1f;
     float gravity = -15f;
-    bool enableInputs = true;   
+    public bool enableInputs = true;   
     [Header("Humanoid Stats")]
     [Range(1, 100)]
     public float movementSpeed;
@@ -90,7 +90,7 @@ public class Character_Humanoid : MonoBehaviour
             characterState.state = CharacterAnimationState.CharacterState.walk;
             characterState.walkSpeedAnim = Mathf.Abs((new Vector3(horizontalMovement,0,verticalMovement)).magnitude);
         }
-        if (cc.isGrounded && !jump  && horizontalMovement == 0 && verticalMovement == 0) { characterState.state = CharacterAnimationState.CharacterState.idle; }
+        if (cc.isGrounded && !jump  && horizontalMovement == 0 && verticalMovement == 0 && !Input.GetKey(KeyCode.LeftShift)) { characterState.state = CharacterAnimationState.CharacterState.idle; }
 
         RaycastCheck();
 
@@ -107,9 +107,12 @@ public class Character_Humanoid : MonoBehaviour
 
     void Inputs()
     {
-        
-        horizontalMovement = Input.GetAxis("Horizontal");
-        verticalMovement = Input.GetAxis("Vertical");
+        if (enableInputs)
+        {
+
+            horizontalMovement = Input.GetAxis("Horizontal");
+            verticalMovement = Input.GetAxis("Vertical");
+        }
 
         if (cc.isGrounded && (horizontalMovement !=0 || verticalMovement !=0)  )
         {
