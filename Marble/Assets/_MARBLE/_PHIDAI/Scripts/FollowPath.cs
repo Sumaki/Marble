@@ -20,6 +20,13 @@ public class FollowPath : MonoBehaviour
     public float CameraMaxDistance;
     public float CameraMinDistance;
 
+    [Header("Field Of View")]
+    public float desiredFov;
+    //public float fovSwitchTravelSpeed; // max of one
+    float startFov;
+    //float startTime = 0.0f;
+
+
     #region Private Variables
     public GameObject player;
     GameObject otherObj;
@@ -45,6 +52,8 @@ public class FollowPath : MonoBehaviour
         minDistStart = cameraObj.GetComponent<CameraCollision>().minDistance;
         maxDistStart = cameraObj.GetComponent<CameraCollision>().maxDistance;
         mm_ = GameObject.FindObjectOfType<MorphManager>();
+        startFov = Camera.main.fieldOfView;
+        // Debug.Log("StartFOV: " + startFov);
     }
 
     void Update()
@@ -52,29 +61,37 @@ public class FollowPath : MonoBehaviour
 
 
         if (entered && isPlayer)
+        {
+            if (Camera.main.fieldOfView != desiredFov)
+                if (Camera.main.fieldOfView <= desiredFov)
+                    Camera.main.fieldOfView = desiredFov;
+
+
+            Debug.Log("Our FOV is: " + Camera.main.fieldOfView);
             StartTravel(player);
+        }
 
 
         if (entered && !isPlayer)
             StartTravel(otherObj);
-       
-        if (!entered && isPlayer) 
+
+        if (!entered && isPlayer)
             EnablePlayer();
 
         if (reset)
-            Reset();     
+            Reset();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "PlayerBall")
-        {        
+        if (other.gameObject.tag == "PlayerBall")
+        {
             entered = true;
             isPlayer = true;
-            mm_.canMorph = false;     
+            mm_.canMorph = false;
         }
 
-        if(other.gameObject.tag == "Pushable")
+        if (other.gameObject.tag == "Pushable")
         {
             entered = true;
             isPlayer = false;
@@ -85,6 +102,8 @@ public class FollowPath : MonoBehaviour
 
     void StartTravel(GameObject player)
     {
+
+
         // Debug.Log("Distance between them: " + Vector3.Distance(player.transform.position, pathCreator.path.GetPoint(1)));
         if (isPlayer)
         {
@@ -98,11 +117,15 @@ public class FollowPath : MonoBehaviour
             //Debug.Log("TURN OFF TRAVEL STATUS");            
             reset = true;
             entered = false;
-          
+
             // keep the rigidbody velocity set to the speed of the travel?
             //player.GetComponent<Rigidbody>().AddForce(player.transform.forward); // use object's forward?
             if (isPlayer)
             {
+                if (Camera.main.fieldOfView != startFov)
+                    if (Camera.main.fieldOfView >= desiredFov)
+                        Camera.main.fieldOfView = startFov;
+
                 mm_.canMorph = true;
                 player.GetComponent<Rigidbody>().velocity = player.transform.forward * speed;
             }
@@ -112,21 +135,21 @@ public class FollowPath : MonoBehaviour
         //    DisablePlayer();
 
         dstTravelled += speed * Time.deltaTime;
-        player.transform.position = pathCreator.path.GetPointAtDistance(dstTravelled,end);
-        player.transform.rotation = pathCreator.path.GetRotationAtDistance(dstTravelled,end);
+        player.transform.position = pathCreator.path.GetPointAtDistance(dstTravelled, end);
+        player.transform.rotation = pathCreator.path.GetRotationAtDistance(dstTravelled, end);
     }
 
     void DisablePlayer()
-    {      
-         player.GetComponent<Character_Ball>().inputSpeed = 0f;
-         player.GetComponent<Character_Ball>().movementForce = 0f;    
+    {
+        player.GetComponent<Character_Ball>().inputSpeed = 0f;
+        player.GetComponent<Character_Ball>().movementForce = 0f;
     }
 
     void EnablePlayer()
     {
         cameraObj.GetComponent<CameraCollision>().minDistance = minDistStart;
         cameraObj.GetComponent<CameraCollision>().maxDistance = maxDistStart;
-      //  dstTravelled = 0;
+        //  dstTravelled = 0;
         player.GetComponent<Character_Ball>().inputSpeed = 1f;
         player.GetComponent<Character_Ball>().movementForce = initialMovement;
         isPlayer = false;
