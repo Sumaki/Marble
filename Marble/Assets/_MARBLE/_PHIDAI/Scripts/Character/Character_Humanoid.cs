@@ -289,6 +289,12 @@ public class Character_Humanoid : MonoBehaviour
             hit.gameObject.GetComponent<BoxFalling>().humanoidBoxFall = true;
         }
 
+        if(hit.gameObject.tag == "SpherePushable")
+        {
+            Rigidbody body = hit.collider.attachedRigidbody;
+            body.AddForce(cc.transform.forward * 30f);
+        }
+
         //Rigidbody body = hit.collider.attachedRigidbody;
         //Vector3 force;
         //if (body != null && !body.isKinematic)
