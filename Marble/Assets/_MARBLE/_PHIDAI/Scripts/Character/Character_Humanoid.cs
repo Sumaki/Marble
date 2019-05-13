@@ -90,11 +90,11 @@ public class Character_Humanoid : MonoBehaviour
             characterState.state = CharacterAnimationState.CharacterState.walk;
             characterState.walkSpeedAnim = Mathf.Abs((new Vector3(horizontalMovement,0,verticalMovement)).magnitude);
         }
-        if (cc.isGrounded && !jump  && horizontalMovement == 0 && verticalMovement == 0 && !Input.GetKey(KeyCode.LeftShift)) { characterState.state = CharacterAnimationState.CharacterState.idle; }
+        if (cc.isGrounded && !jump  && horizontalMovement == 0 && verticalMovement == 0) { enableInputs = true; characterState.state = CharacterAnimationState.CharacterState.idle; }
 
         RaycastCheck();
 
-        if ((Input.GetKey(KeyCode.LeftShift) || Input.GetAxis("LeftTrigger") > 0) && canGrab && cc.isGrounded)
+        if ((Input.GetKey(KeyCode.LeftShift) && canGrab && cc.isGrounded || Input.GetAxis("LeftTrigger") > 0) && canGrab && cc.isGrounded)
         {
             movement = Vector3.zero;
             Push(thingToPull);
@@ -112,6 +112,10 @@ public class Character_Humanoid : MonoBehaviour
 
             horizontalMovement = Input.GetAxis("Horizontal");
             verticalMovement = Input.GetAxis("Vertical");
+        } else if (!enableInputs)
+        {
+            horizontalMovement = 0;
+            verticalMovement = 0;
         }
 
         if (cc.isGrounded && (horizontalMovement !=0 || verticalMovement !=0)  )

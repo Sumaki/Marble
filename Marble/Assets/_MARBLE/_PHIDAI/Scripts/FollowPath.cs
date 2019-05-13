@@ -20,6 +20,13 @@ public class FollowPath : MonoBehaviour
     public float CameraMaxDistance;
     public float CameraMinDistance;
 
+    [Header("Field Of View")]    
+    public float desiredFov;
+    //public float fovSwitchTravelSpeed; // max of one
+     float startFov;
+    //float startTime = 0.0f;
+    
+
     #region Private Variables
     public GameObject player;
     GameObject otherObj;
@@ -45,6 +52,8 @@ public class FollowPath : MonoBehaviour
         minDistStart = cameraObj.GetComponent<CameraCollision>().minDistance;
         maxDistStart = cameraObj.GetComponent<CameraCollision>().maxDistance;
         mm_ = GameObject.FindObjectOfType<MorphManager>();
+        startFov = Camera.main.fieldOfView;
+       // Debug.Log("StartFOV: " + startFov);
     }
 
     void Update()
@@ -52,7 +61,15 @@ public class FollowPath : MonoBehaviour
 
 
         if (entered && isPlayer)
+        {
+            if(Camera.main.fieldOfView != desiredFov)
+               if(Camera.main.fieldOfView <= desiredFov)
+                    Camera.main.fieldOfView = desiredFov;
+
+            
+            Debug.Log("Our FOV is: " + Camera.main.fieldOfView);
             StartTravel(player);
+        }
 
 
         if (entered && !isPlayer)
@@ -85,6 +102,8 @@ public class FollowPath : MonoBehaviour
 
     void StartTravel(GameObject player)
     {
+     
+
         // Debug.Log("Distance between them: " + Vector3.Distance(player.transform.position, pathCreator.path.GetPoint(1)));
         if (isPlayer)
         {
@@ -103,6 +122,10 @@ public class FollowPath : MonoBehaviour
             //player.GetComponent<Rigidbody>().AddForce(player.transform.forward); // use object's forward?
             if (isPlayer)
             {
+                if (Camera.main.fieldOfView != startFov)
+                    if (Camera.main.fieldOfView >= desiredFov)
+                        Camera.main.fieldOfView = startFov;
+
                 mm_.canMorph = true;
                 player.GetComponent<Rigidbody>().velocity = player.transform.forward * speed;
             }

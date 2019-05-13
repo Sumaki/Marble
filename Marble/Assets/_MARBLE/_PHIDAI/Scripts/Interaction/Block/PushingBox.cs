@@ -44,7 +44,7 @@ public class PushingBox : MonoBehaviour
         if (characterState.state == CharacterAnimationState.CharacterState.push && !canPush)
         {
             // disable player's left and right direction but not z axis
-            player.GetComponent<Character_Humanoid>().enableInputs = false;
+           // player.GetComponent<Character_Humanoid>().enableInputs = false;
             Check2();//Check();
         }
 
@@ -60,6 +60,7 @@ public class PushingBox : MonoBehaviour
         {
            // Debug.Log(isGrounded()); recheck for grounded 
             canPush = false;
+            
             transform.position = Vector3.MoveTowards(transform.position, movePosition, 5 * Time.deltaTime);
         }
 
