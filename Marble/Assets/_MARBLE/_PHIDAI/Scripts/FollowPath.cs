@@ -16,6 +16,10 @@ public class FollowPath : MonoBehaviour
     [Header("Enable/Disable One-Way Path")]
     public bool OneWay = true;
 
+    [Header("Camera Distance")]
+    public float CameraMaxDistance;
+    public float CameraMinDistance;
+
     #region Private Variables
     public GameObject player;
     GameObject otherObj;
@@ -84,8 +88,8 @@ public class FollowPath : MonoBehaviour
         // Debug.Log("Distance between them: " + Vector3.Distance(player.transform.position, pathCreator.path.GetPoint(1)));
         if (isPlayer)
         {
-            cameraObj.GetComponent<CameraCollision>().minDistance = 3f;
-            cameraObj.GetComponent<CameraCollision>().maxDistance = 6f;
+            cameraObj.GetComponent<CameraCollision>().minDistance = CameraMinDistance;
+            cameraObj.GetComponent<CameraCollision>().maxDistance = CameraMaxDistance;
         }
 
         if (Vector3.Distance(player.transform.position, pathCreator.path.GetPoint(0.99f)) <= 1f && OneWay)
