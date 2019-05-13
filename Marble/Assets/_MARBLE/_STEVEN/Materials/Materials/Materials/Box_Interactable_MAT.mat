@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Box_Interactable_MAT
-  m_Shader: {fileID: 4800000, guid: 984eb0d0086ea644c8ee85d3e772a144, type: 3}
+  m_Shader: {fileID: 4800000, guid: bf77a14728654fe44b1beb2f3e7202dc, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,20 +19,32 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_4ABA0E29:
+        m_Texture: {fileID: 2800000, guid: 44c17fbb337f38942a5c6af42a58c2a5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_5976AB50:
+        m_Texture: {fileID: 2800000, guid: b48831c04554979438933e54bd1b0f53, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_8124BFF5:
-        m_Texture: {fileID: 2800000, guid: 99896682b99121442932fc7c17433c18, type: 3}
+        m_Texture: {fileID: 2800000, guid: 664aa9acbfbbf3a499c84b67bba56189, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_8C978CB:
-        m_Texture: {fileID: 2800000, guid: 97e517753937de04c80eab3e38994b51, type: 3}
+        m_Texture: {fileID: 2800000, guid: bee837f5323ada144b29306ad49c33e4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_997C6BE8:
-        m_Texture: {fileID: 2800000, guid: 619080f8d0bd7084b8cf2d8e11dc506c, type: 3}
+        m_Texture: {fileID: 2800000, guid: c4ebbdf0632e9f94f8334cae87ea39a6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_9CE1F68F:
-        m_Texture: {fileID: 2800000, guid: 512f28d59749616409618f36d9c3c513, type: 3}
+        m_Texture: {fileID: 2800000, guid: 64ee40315e6ec1544a9412838bc68620, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_A7426902:
+        m_Texture: {fileID: 2800000, guid: 44c17fbb337f38942a5c6af42a58c2a5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_2EFF491F_Texture:
@@ -52,4 +64,6 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
-    m_Colors: []
+    m_Colors:
+    - Color_29BDA202: {r: 1, g: 1, b: 1, a: 0}
+    - Color_D5F9ADC3: {r: 1, g: 1, b: 1, a: 0}
