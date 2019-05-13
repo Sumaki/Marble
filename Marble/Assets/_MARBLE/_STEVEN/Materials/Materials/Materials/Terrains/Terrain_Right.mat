@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Terrain_Right
-  m_Shader: {fileID: 4800000, guid: beb2bfe6c5d6c4e4f829b7d2089c6e36, type: 3}
+  m_Shader: {fileID: 4800000, guid: ce4bde7b0f12a0140948171a3d7cb0eb, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,12 +19,24 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_387D644:
+        m_Texture: {fileID: 2800000, guid: 26076063349cc9a4fbe97064d2065c2f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_457179CC:
         m_Texture: {fileID: 2800000, guid: 20a8fcd3163f7fb4194194c763fdd3d0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - Texture2D_580E0939:
+        m_Texture: {fileID: 2800000, guid: 8af8eb4b1e553d3478b3133144a48e80, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_5976AB50:
         m_Texture: {fileID: 2800000, guid: 7c08fcdc02f3f9344b1b7c7ca933a942, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_66FFD33D:
+        m_Texture: {fileID: 2800000, guid: da163562c0ada504b94792db2db6f803, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_8124BFF5:
@@ -41,6 +53,18 @@ Material:
         m_Offset: {x: 0, y: 0}
     - Texture2D_9CE1F68F:
         m_Texture: {fileID: 2800000, guid: 26076063349cc9a4fbe97064d2065c2f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_9DF4636D:
+        m_Texture: {fileID: 2800000, guid: 20a8fcd3163f7fb4194194c763fdd3d0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_AC78B1F1:
+        m_Texture: {fileID: 2800000, guid: 3d302cac4affbf846b3c1d53f826f7ba, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_B8A7A3C9:
+        m_Texture: {fileID: 2800000, guid: 7c08fcdc02f3f9344b1b7c7ca933a942, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -68,6 +92,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_554329FF: 1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1

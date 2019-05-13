@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Eye_Lock_2_MAT
-  m_Shader: {fileID: 4800000, guid: beb2bfe6c5d6c4e4f829b7d2089c6e36, type: 3}
+  m_Shader: {fileID: 4800000, guid: ce4bde7b0f12a0140948171a3d7cb0eb, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,6 +19,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_387D644:
+        m_Texture: {fileID: 2800000, guid: ada4a90b2a7e0154fbe3568e13680395, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_457179CC:
         m_Texture: {fileID: 2800000, guid: 389f17c8342f2d041a66250b5d6b12d8, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -27,8 +31,16 @@ Material:
         m_Texture: {fileID: 2800000, guid: 446ee5f9833526245be34083ef71d765, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - Texture2D_580E0939:
+        m_Texture: {fileID: 2800000, guid: aadd81bc987fc0240b7445b84f65cc6c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_5976AB50:
         m_Texture: {fileID: 2800000, guid: cc37b7a5009c0084f9bf1b1f1d42bc47, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_66FFD33D:
+        m_Texture: {fileID: 2800000, guid: 02b6ef7923c009c47a1a68f1c66fb733, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_8124BFF5:
@@ -47,8 +59,20 @@ Material:
         m_Texture: {fileID: 2800000, guid: ada4a90b2a7e0154fbe3568e13680395, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - Texture2D_9DF4636D:
+        m_Texture: {fileID: 2800000, guid: a8b43212c947223409aa696d2ff3da5f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_A7426902:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_AC78B1F1:
+        m_Texture: {fileID: 2800000, guid: 7d44518dd7877d4499d21fbfaf2aedb6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_B8A7A3C9:
+        m_Texture: {fileID: 2800000, guid: cc37b7a5009c0084f9bf1b1f1d42bc47, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -76,6 +100,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_554329FF: 1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1

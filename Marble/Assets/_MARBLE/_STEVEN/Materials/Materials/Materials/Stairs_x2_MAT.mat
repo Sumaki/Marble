@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Stairs_x2_MAT
-  m_Shader: {fileID: 4800000, guid: 984eb0d0086ea644c8ee85d3e772a144, type: 3}
+  m_Shader: {fileID: 4800000, guid: ce4bde7b0f12a0140948171a3d7cb0eb, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,8 +19,20 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_387D644:
+        m_Texture: {fileID: 2800000, guid: 8987a61f3d55fa141ad08beced3f1e53, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_580E0939:
+        m_Texture: {fileID: 2800000, guid: ba675256b31dd1d41a9e1d877fbb0772, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_5976AB50:
         m_Texture: {fileID: 2800000, guid: ff36cb9a4b7d7e9428dbb0a042abb6d2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_66FFD33D:
+        m_Texture: {fileID: 2800000, guid: 1aeba6e1ccaca6242ac224d6c6ad9726, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_8124BFF5:
@@ -39,8 +51,20 @@ Material:
         m_Texture: {fileID: 2800000, guid: 8987a61f3d55fa141ad08beced3f1e53, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - Texture2D_9DF4636D:
+        m_Texture: {fileID: 2800000, guid: b0aa934df2fa86f42873822fd61e4f6c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_A7426902:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_AC78B1F1:
+        m_Texture: {fileID: 2800000, guid: 0df0b70ff19f209479fc81c8aee788db, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_B8A7A3C9:
+        m_Texture: {fileID: 2800000, guid: ff36cb9a4b7d7e9428dbb0a042abb6d2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -68,6 +92,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_554329FF: 1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
