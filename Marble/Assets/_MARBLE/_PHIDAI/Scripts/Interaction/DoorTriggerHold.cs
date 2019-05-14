@@ -36,7 +36,7 @@ public class DoorTriggerHold : MonoBehaviour
 
         if (objectAllowed)
         {
-            if (other.gameObject.tag == "Pushable")
+            if (other.gameObject.tag == "SpherePushable")
                 CheckDoorStateEntered();
         }
     }
@@ -57,7 +57,7 @@ public class DoorTriggerHold : MonoBehaviour
 
         if (objectAllowed)
         {
-            if (other.gameObject.tag == "Pushable")
+            if (other.gameObject.tag == "SpherePushable")
                 CheckDoorStateExit();
         }
     }

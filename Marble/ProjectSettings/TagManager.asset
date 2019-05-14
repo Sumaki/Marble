@@ -13,6 +13,7 @@ TagManager:
   - GameManager
   - StartLights
   - Startlights
+  - SpherePushable
   layers:
   - Default
   - TransparentFX

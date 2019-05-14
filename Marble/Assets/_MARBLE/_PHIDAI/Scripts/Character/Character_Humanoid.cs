@@ -292,6 +292,7 @@ public class Character_Humanoid : MonoBehaviour
         if(hit.gameObject.tag == "SpherePushable")
         {
             Rigidbody body = hit.collider.attachedRigidbody;
+           
             body.AddForce(cc.transform.forward * 30f);
         }
 
