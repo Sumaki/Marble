@@ -7,7 +7,6 @@ public class Character_Humanoid : MonoBehaviour
 {
     
     public Transform cameraBase;
-    // public Animator ani;
 
     #region Character Movement Variables
     CharacterController cc;
@@ -21,8 +20,6 @@ public class Character_Humanoid : MonoBehaviour
     [Range(1, 100)]
     public float movementSpeed;
     #endregion
-    //[Range(0,10)]
-    //public float gravityAmount = 9.8f;
     [Range(1,100)]
     public float jumpPower;
     [Range(1, 100)]
@@ -37,6 +34,8 @@ public class Character_Humanoid : MonoBehaviour
     bool isGrabbing = false;
     bool touchedDeath = false;
     Transform thingToPull = null;
+
+    GameObject playerParent;
     #endregion
 
 
@@ -48,6 +47,7 @@ public class Character_Humanoid : MonoBehaviour
          cc = GetComponent<CharacterController>();
         characterState = GetComponent<CharacterAnimationState>();
         //gravity.y = -gravityAmount;
+        playerParent = GameObject.FindGameObjectWithTag("PlayerParent");
     }
 
     // Update is called once per frame
@@ -97,7 +97,14 @@ public class Character_Humanoid : MonoBehaviour
         if ((Input.GetKey(KeyCode.LeftShift) || Input.GetAxis("LeftTrigger") > 0) && canGrab && cc.isGrounded)
         {
             movement = Vector3.zero;
+            enableInputs = false;         
             Push(thingToPull);
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift) && !enableInputs)
+        {
+            enableInputs = true;
+            gameObject.transform.parent = playerParent.transform;
+
         }
 
 
@@ -108,12 +115,10 @@ public class Character_Humanoid : MonoBehaviour
     void Inputs()
     {
         if (enableInputs)
-        {
-
-            horizontalMovement = Input.GetAxis("Horizontal");
+        {            
             verticalMovement = Input.GetAxis("Vertical");
         }
-
+            horizontalMovement = Input.GetAxis("Horizontal");
         if (cc.isGrounded && (horizontalMovement !=0 || verticalMovement !=0)  )
         {
            
@@ -233,37 +238,10 @@ public class Character_Humanoid : MonoBehaviour
         //Debug.Log("Push method obj: " + obj);
 
         if(obj != null)
-        {
-            //RaycastHit hit;
-            //Vector3 p1 = obj.position + cc.center;
-            //  enableInputs = false;        
+        { 
             obj.GetComponent<PushingBox>().input = verticalMovement;
+            gameObject.transform.parent = obj.transform;
             characterState.state = CharacterAnimationState.CharacterState.push;
-            
-           // obj.GetComponent<PushingBox>().pushing = true;
-            ////Debug.Log("Inside the push method");
-
-            //if(Physics.SphereCast(p1, cc.height / 2, transform.forward, out hit, 10))
-            //{
-            //    Gizmos.color = Color.yellow;
-            //    Gizmos.DrawSphere(p1 * 10, 5f);
-            //    Debug.Log("I have spherecasted into: " + hit.transform.name);
-            //}
-
-           // Vector3 d = transform.position - obj.position;
-           // float dist = d.magnitude;
-           // Vector3 pullDir = d.normalized;
-           //// Debug.Log("Pull direction: " + pullDir);
-           // if (dist > 50) obj = null;
-           // else if (dist > 0.1f)
-           // {
-           //     float pullF = 10;
-           //     float pullForDist = (dist - 0.1f) / 2.0f;
-           //     if (pullForDist > 20) pullForDist = 20;
-           //     pullF += pullForDist;
-           //     Debug.Log(obj.GetComponent<Rigidbody>().velocity);
-           //     obj.GetComponent<Rigidbody>().velocity += pullDir * (pullF * Time.deltaTime);
-           // }
         }
     }
 
@@ -308,7 +286,7 @@ public class Character_Humanoid : MonoBehaviour
         //    }
         //    else
         //    {
-        //        force = hit.controller.velocity * pushingPower;
+        //        force = hit.controller.velocity * p   ushingPower;
         //    }
 
         //    Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
