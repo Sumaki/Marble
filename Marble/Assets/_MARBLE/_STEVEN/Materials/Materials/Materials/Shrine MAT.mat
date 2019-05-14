@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Shrine MAT
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: 4800000, guid: ce4bde7b0f12a0140948171a3d7cb0eb, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,6 +19,30 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_387D644:
+        m_Texture: {fileID: 2800000, guid: 4e71b7c08305a9446a2c68ec7c524f31, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_580E0939:
+        m_Texture: {fileID: 2800000, guid: 11379ccf4ab46a34299bf347b8f8c8f6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_66FFD33D:
+        m_Texture: {fileID: 2800000, guid: 16cc6a5b32b02264aa9123da83a98c7b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_9DF4636D:
+        m_Texture: {fileID: 2800000, guid: 16f83c69afc91294897ad03b13573e93, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_AC78B1F1:
+        m_Texture: {fileID: 2800000, guid: d83c9d15119907848bf2aa269b491eb9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_B8A7A3C9:
+        m_Texture: {fileID: 2800000, guid: 28651eb66d2bfef4cb0ce1cb11015274, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -44,6 +68,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_554329FF: 1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
