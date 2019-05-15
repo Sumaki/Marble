@@ -97,10 +97,10 @@ public class Character_Humanoid : MonoBehaviour
         if ((Input.GetKey(KeyCode.LeftShift) || Input.GetAxis("LeftTrigger") > 0) && canGrab && cc.isGrounded)
         {
             movement = Vector3.zero;
-            enableInputs = false;         
+            enableInputs = false;
             Push(thingToPull);
         }
-        else if (Input.GetKeyUp(KeyCode.LeftShift) && !enableInputs)
+        else if (Input.GetKeyUp(KeyCode.LeftShift) && !enableInputs || Input.GetAxis("LeftTrigger") <= 0 && !enableInputs)       
         {
             enableInputs = true;
             gameObject.transform.parent = playerParent.transform;

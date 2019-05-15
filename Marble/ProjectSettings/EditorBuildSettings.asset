@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_MARBLE/_LEILA/Scenes/Leila_Gym.unity
+    guid: bf97581862f5c994cb34d8c1e0a10cab
+  - enabled: 1
     path: Assets/_MARBLE/_STEVEN/Scenes/Start.unity
     guid: df22575f128586b428f16bebec472710
   - enabled: 1
