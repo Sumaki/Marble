@@ -13,6 +13,7 @@ public class BlockInPlace : MonoBehaviour
         {
             other.gameObject.transform.position = gameObject.transform.position;
             // set that the box cannot be pushed anymore or perhaps change the color
+            other.gameObject.GetComponent<PushingBox>().enabled = false;
             puzzleObj.GetComponent<PuzzleConditions>().amountOfCompletedPieces += 1;
             gameObject.GetComponent<BoxCollider>().enabled = false;
         }

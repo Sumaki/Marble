@@ -15,22 +15,22 @@ public class PuzzleConditions : MonoBehaviour
 
     private void Start()
     {
-        smr_objEvent = objEvent.GetComponent<SkinnedMeshRenderer>();
+       smr_objEvent = objEvent.GetComponent<SkinnedMeshRenderer>();
     }
 
     private void Update()
     {
-        if (amountOfCompletedPieces >= requiredAmountToComplete) complete = true;
+        if (amountOfCompletedPieces >= requiredAmountToComplete) { complete = true; Debug.Log("Puzzle " + gameObject.name + " is done!"); }
 
         if (complete && !finishedAnimation) DoCompletedAction();
     }
 
     void DoCompletedAction()
     {
-        smr_objEvent.SetBlendShapeWeight(0, Mathf.Lerp(100, 0, t));
-        t += 3f * Time.deltaTime;
+       smr_objEvent.SetBlendShapeWeight(0, Mathf.Lerp(100, 0, t));
+       t += 1.5f * Time.deltaTime;
 
-        if (smr_objEvent.GetBlendShapeWeight(0) == 0) finishedAnimation = true;
+       if (smr_objEvent.GetBlendShapeWeight(0) == 0) finishedAnimation = true;
     }
 
 }
