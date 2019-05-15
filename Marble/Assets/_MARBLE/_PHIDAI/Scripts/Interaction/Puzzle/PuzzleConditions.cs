@@ -30,7 +30,7 @@ public class PuzzleConditions : MonoBehaviour
        smr_objEvent.SetBlendShapeWeight(0, Mathf.Lerp(100, 0, t));
        t += 1.5f * Time.deltaTime;
 
-       if (smr_objEvent.GetBlendShapeWeight(0) == 0) finishedAnimation = true;
+        if (smr_objEvent.GetBlendShapeWeight(0) == 0) { finishedAnimation = true;  objEvent.GetComponent<MeshCollider>().convex = false; }
     }
 
 }

@@ -23,7 +23,7 @@ public class ElementUnlockDoor : MonoBehaviour
         {
             CheckWhichElement();
             if (open)
-            {
+            {   
                 ani.SetTrigger("Open");
             }
         }
