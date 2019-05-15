@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class RotatePipe : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject objAffected;
+    Animator ani;
+
+    private void Start()
     {
-        
+        ani = objAffected.GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerStay(Collider other)
     {
-        
+        if(other.gameObject.tag == "Pushable")
+        {
+            // Play the animation           
+            Debug.Log(objAffected + " is being turned."); ani.SetBool("Turn180", true); ani.SetBool("TurnBack180", false); //play            
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Pushable")
+        {
+            // Play the animation           
+            Debug.Log(objAffected + " is being turned."); ani.SetBool("Turn180", false); ani.SetBool("TurnBack180", true); // play
+            
+        }
     }
 }
