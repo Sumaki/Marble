@@ -13,6 +13,12 @@ public class GameManager : MonoBehaviour
     int lives;
     bool lockCursor = true;
 
+    #region Character Progression
+    public bool gotRuby;
+    public bool gotSapphire;
+    public bool gotAmethyste;
+    #endregion
+
     // Start is called before the first frame update
     void Start()
     {      
