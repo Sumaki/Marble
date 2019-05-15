@@ -29,6 +29,7 @@ public class RespawnOnDeath : MonoBehaviour
         {
             Debug.Log("I died");
             player.transform.position = gm_.GetComponent<GameManager>().currentRespawn.position;
+            player.transform.rotation = gm_.GetComponent<GameManager>().currentRespawn.transform.rotation;
             player.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
 

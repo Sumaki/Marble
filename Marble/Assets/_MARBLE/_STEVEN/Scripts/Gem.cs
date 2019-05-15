@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class Gem : MonoBehaviour
 {
-    public Animator ani;
+   // public Animator ani;
     public Material newElementMaterial;
     public GameObject humanoid_mesh;
+    public enum Element { Ruby, Sapphire, Amethyste}
+    public Element whichElement;
+    GameObject gm_; // GameManager
+
 
     // Floating Gem
     public float degreePerSecond;
@@ -20,10 +24,11 @@ public class Gem : MonoBehaviour
     {
         if (other.gameObject.tag == "PlayerBall" || other.gameObject.tag == "PlayerHumanoid")
         {
-            
-          
+
+            Debug.Log("Obtained: " + gameObject.name);
+            CheckWhatElementObtained();
             StartCoroutine(TimerToSwtich());
-            ani.SetTrigger("Open");
+            //ani.SetTrigger("Open");
             Destroy(this.gameObject, 0.5f);
         }
     }
@@ -37,6 +42,7 @@ public class Gem : MonoBehaviour
 
     void Start()
     {
+        gm_ = GameObject.FindGameObjectWithTag("GameManager");
         posOffset = transform.position;
     }
 
@@ -48,5 +54,21 @@ public class Gem : MonoBehaviour
         tempPos.y += Mathf.Sin(Time.fixedTime * Mathf.PI * frequency) * amplitude;
 
         transform.position = tempPos;
+    }
+
+    void CheckWhatElementObtained()
+    {
+        switch (whichElement)
+        {
+            case Element.Ruby:
+                gm_.GetComponent<GameManager>().gotRuby = true;
+                break;
+            case Element.Sapphire:
+                gm_.GetComponent<GameManager>().gotSapphire = true;
+                break;
+            case Element.Amethyste:
+                gm_.GetComponent<GameManager>().gotAmethyste = true;
+                break;
+        }
     }
 }
