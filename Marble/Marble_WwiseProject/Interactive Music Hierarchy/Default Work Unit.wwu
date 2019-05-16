@@ -1,6 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{2DBC3769-086D-4459-87F2-ACC811C0A72B}" SchemaVersion="94">
 	<InteractiveMusic>
-		<WorkUnit Name="Default Work Unit" ID="{2DBC3769-086D-4459-87F2-ACC811C0A72B}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{2DBC3769-086D-4459-87F2-ACC811C0A72B}" PersistMode="Standalone">
+			<ChildrenList>
+				<MusicPlaylistContainer Name="main theme" ID="{A4EA8BA4-C8E7-46CB-B6B4-E79BC45F53EB}" ShortID="125661296">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="SFX" ID="{C0958F49-1E59-4B16-8A7F-2E178030D60B}" WorkUnitID="{07EB17D3-00A2-44B0-95FB-B94A21223281}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{4379F494-26E7-4599-AB46-095D9318E058}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<MusicSegment Name="Neutral environment - Marble exploration" ID="{463C4CF5-5C0E-4EE6-8D7B-4BD13774D9CD}" ShortID="628026180">
+							<PropertyList>
+								<Property Name="EndPosition" Type="Real64" Value="201378.843537415"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{07EB17D3-00A2-44B0-95FB-B94A21223281}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{4379F494-26E7-4599-AB46-095D9318E058}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<MusicTrack Name="Neutral environment - Marble exploration" ID="{53B6A307-C78C-4C94-BD75-C8A31CD10065}" ShortID="888133064">
+									<ReferenceList>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{4379F494-26E7-4599-AB46-095D9318E058}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Neutral environment - Marble exploration" ID="{AF98E4FE-DC45-4519-99A0-5503E0BAED5D}" ShortID="650428977">
+											<Language>SFX</Language>
+											<AudioFile>Neutral environment - Marble exploration.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<TransitionList>
+										<MusicTransition Name="Root" ID="{3CBC8321-8C08-4FDC-BCB7-6FC46FBEDDE8}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</TransitionList>
+									<SequenceList>
+										<MusicTrackSequence Name="" ID="{7B4DDFBA-123E-4D8E-A567-DC962D99214A}">
+											<ClipList>
+												<MusicClip Name="Neutral environment - Marble exploration" ID="{E64A8FB7-B9A3-496F-8928-D277F906FCB5}">
+													<PropertyList>
+														<Property Name="EndTrimOffset" Type="Real64" Value="201378.843537415"/>
+														<Property Name="FadeInMode" Type="int16" Value="0"/>
+														<Property Name="FadeOutMode" Type="int16" Value="0"/>
+													</PropertyList>
+													<AudioSourceRef Name="Neutral environment - Marble exploration" ID="{AF98E4FE-DC45-4519-99A0-5503E0BAED5D}"/>
+												</MusicClip>
+											</ClipList>
+										</MusicTrackSequence>
+									</SequenceList>
+								</MusicTrack>
+							</ChildrenList>
+							<CueList>
+								<MusicCue Name="Entry Cue" ID="{0D8FF031-F9B1-4DD2-A0E3-DD41D42E74A7}"/>
+								<MusicCue Name="Exit Cue" ID="{56264806-E6F8-46B7-AD5A-B9403C0DEAC4}">
+									<PropertyList>
+										<Property Name="CueType" Type="int16" Value="1"/>
+										<Property Name="TimeMs" Type="Real64" Value="201378.843537415"/>
+									</PropertyList>
+								</MusicCue>
+							</CueList>
+						</MusicSegment>
+					</ChildrenList>
+					<TransitionList>
+						<MusicTransition Name="Root" ID="{320126E7-9167-46B1-BC07-E0A021B8B6AE}">
+							<PropertyList>
+								<Property Name="IsFolder" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<MusicTransition Name="Transition" ID="{A34F1DAE-7D23-424F-8A7B-2C92D3BDBE57}">
+									<TransitionInfo/>
+								</MusicTransition>
+							</ChildrenList>
+							<TransitionInfo/>
+						</MusicTransition>
+					</TransitionList>
+					<Playlist>
+						<MusicPlaylistItem Name="" ID="{418FC3D9-F68F-406D-9080-F48CE201B9A6}" ShortID="469317981">
+							<PropertyList>
+								<Property Name="LoopCount" Type="int16" Value="0"/>
+							</PropertyList>
+							<ChildrenList>
+								<MusicPlaylistItem Name="" ID="{FBB62F14-9E23-4185-AB07-AE94312F4240}" ShortID="727690496">
+									<PropertyList>
+										<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+									</PropertyList>
+									<SegmentRef Name="Neutral environment - Marble exploration" ID="{463C4CF5-5C0E-4EE6-8D7B-4BD13774D9CD}"/>
+								</MusicPlaylistItem>
+							</ChildrenList>
+						</MusicPlaylistItem>
+					</Playlist>
+				</MusicPlaylistContainer>
+			</ChildrenList>
+		</WorkUnit>
 	</InteractiveMusic>
 </WwiseDocument>

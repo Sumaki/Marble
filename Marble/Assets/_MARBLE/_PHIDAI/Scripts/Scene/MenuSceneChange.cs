@@ -7,7 +7,7 @@ public class MenuSceneChange : MonoBehaviour
 {
     void Update()
     {
-        if (Input.GetButtonDown("Submit_B"))
+        if (Input.GetButtonDown("Submit_B") || Input.GetKeyDown(KeyCode.Return))
         {
             SceneManager.LoadScene(1);
         }
