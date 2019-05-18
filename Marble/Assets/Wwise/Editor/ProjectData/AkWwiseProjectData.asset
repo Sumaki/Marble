@@ -12,95 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 648362a2599f3c247884f56315291c74, type: 3}
   m_Name: AkWwiseProjectData
   m_EditorClassIdentifier: 
-  AcousticTextureWwu:
-  - PhysicalPath: Virtual Acoustics\Default Work Unit.wwu
-    ParentPhysicalPath: 
-    guid: 28fdd0dbb42ab54689f0c42f07580072
-    GuidInternal: 
-    m_lastTime: -8586436505170885478
-    List: []
-  AuxBusWwu:
-  - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
-    ParentPhysicalPath: 
-    guid: 94f47943e7269945ab46095d9318e058
-    GuidInternal: 
-    m_lastTime: -8586436505171513715
-    List: []
-  BankWwu:
-  - PhysicalPath: SoundBanks\Default Work Unit.wwu
-    ParentPhysicalPath: 
-    guid: f1c04c7a6ae56544b0a04af6e31acb8b
-    GuidInternal: 
-    m_lastTime: -8586436471303015075
-    List:
-    - name: Main
-      guid: c8f2789ba58a1a46b20c96205748efd6
-      id: 3161908922
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: Main
-        ObjectType: 7
-      Path: Default Work Unit\Main
-  EventWwu:
-  - PhysicalPath: Events\Default Work Unit.wwu
-    ParentPhysicalPath: 
-    guid: bdadaceb7f5c7046bf95071301f15d01
-    GuidInternal: 
-    m_lastTime: -8586436471303044999
-    List: []
-  - PhysicalPath: Events\Music.wwu
-    ParentPhysicalPath: Events\Default Work Unit.wwu
-    guid: 96cc3f0cae10cb46b68c1fe20ca16946
-    GuidInternal: 
-    m_lastTime: -8586436471302975185
-    List:
-    - name: Main_theme
-      guid: bc53ae810b4ba042bedde6ecaeb8bd1d
-      id: 2557777556
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: Music
-        ObjectType: 12
-      - ElementName: Main_theme
-        ObjectType: 3
-      Path: Default Work Unit\Music\Main_theme
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
-  RtpcWwu:
-  - PhysicalPath: Game Parameters\Default Work Unit.wwu
-    ParentPhysicalPath: 
-    guid: e75df7159745f94e88091efd7a269d0e
-    GuidInternal: 
-    m_lastTime: -8586436505171214496
-    List: []
-  StateWwu:
-  - PhysicalPath: States\Default Work Unit.wwu
-    ParentPhysicalPath: 
-    guid: af233af4c4cf9f4ca40a10f6375b55ff
-    GuidInternal: 
-    m_lastTime: -8586436505171134822
-    List: []
-  SwitchWwu:
-  - PhysicalPath: Switches\Default Work Unit.wwu
-    ParentPhysicalPath: 
-    guid: fdd09aba3d8e664b963202eb955fc2bb
-    GuidInternal: 
-    m_lastTime: -8586436505171174708
-    List: []
-  TriggerWwu:
-  - PhysicalPath: Triggers\Default Work Unit.wwu
-    ParentPhysicalPath: 
-    guid: 0a238f01bb6e754c869a433f929157d1
-    GuidInternal: 
-    m_lastTime: -8586436505170905327
-    List: []
-  ExpandedItems:
-  - /Marble_WwiseProject
-  - /Marble_WwiseProject/Events
-  - /Marble_WwiseProject/Events/Default Work Unit
-  - /Marble_WwiseProject/Events/Default Work Unit/Music
+  AcousticTextureWwu: []
+  AuxBusWwu: []
+  BankWwu: []
+  EventWwu: []
+  RtpcWwu: []
+  StateWwu: []
+  SwitchWwu: []
+  TriggerWwu: []
+  ExpandedItems: []
   autoPopulateEnabled: 1
   CurrentPluginConfig: 
