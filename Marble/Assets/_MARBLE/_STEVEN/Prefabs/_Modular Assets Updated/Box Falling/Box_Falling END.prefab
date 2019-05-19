@@ -107,9 +107,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ani: {fileID: 1583836635}
-  waitTime: 0.12
+  waitTime: 0.1
   respawnBoxTimer: 2
-  humanoidBoxFall: 0
+  humanoidBoxFall: 1
 --- !u!95 &1583836635
 Animator:
   serializedVersion: 3

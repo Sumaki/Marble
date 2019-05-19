@@ -26,7 +26,7 @@ public class BoxFalling : MonoBehaviour
         }   
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionExit(Collision collision)
     {
 
         if (collision.gameObject.tag == "PlayerBall" || collision.gameObject.tag == "PlayerHumanoid")
