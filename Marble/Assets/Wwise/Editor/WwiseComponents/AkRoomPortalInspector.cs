@@ -9,6 +9,8 @@
 [UnityEditor.CustomEditor(typeof(AkRoomPortal))]
 public class AkRoomPortalInspector : UnityEditor.Editor
 {
+	private UnityEditor.SerializedProperty initialState;
+
 	private readonly AkUnityEventHandlerInspector m_ClosePortalEventHandlerInspector = new AkUnityEventHandlerInspector();
 	private readonly AkUnityEventHandlerInspector m_OpenPortalEventHandlerInspector = new AkUnityEventHandlerInspector();
 
@@ -30,27 +32,33 @@ public class AkRoomPortalInspector : UnityEditor.Editor
 
 	private void OnEnable()
 	{
+		initialState = serializedObject.FindProperty("initialState");
+
 		m_OpenPortalEventHandlerInspector.Init(serializedObject, "triggerList", "Open On: ", false);
 		m_ClosePortalEventHandlerInspector.Init(serializedObject, "closePortalTriggerList", "Close On: ", false);
 
-        m_roomPortal = target as AkRoomPortal;
+		m_roomPortal = target as AkRoomPortal;
 
 		m_roomPortal.FindOverlappingRooms(roomList);
 		for (var i = 0; i < 2; i++)
 		{
-			var index = roomList[i].BinarySearch(m_roomPortal.rooms[i]);
+			var index = roomList[i].BinarySearch(m_roomPortal.GetRoom(i));
 			m_selectedIndex[i] = index == -1 ? 0 : index;
 		}
 	}
 
-    public override void OnInspectorGUI()
-    {
-        serializedObject.Update();
+	public override void OnInspectorGUI()
+	{
+		serializedObject.Update();
 
-        m_OpenPortalEventHandlerInspector.OnGUI();
-        m_ClosePortalEventHandlerInspector.OnGUI();
+		using (new UnityEditor.EditorGUILayout.VerticalScope("box"))
+		{
+			UnityEditor.EditorGUILayout.PropertyField(initialState);
+			m_OpenPortalEventHandlerInspector.OnGUI();
+			m_ClosePortalEventHandlerInspector.OnGUI();
+		}
 
-        m_roomPortal.FindOverlappingRooms(roomList);
+		m_roomPortal.FindOverlappingRooms(roomList);
 
 		using (new UnityEditor.EditorGUILayout.VerticalScope("box"))
 		{
@@ -67,13 +75,14 @@ public class AkRoomPortalInspector : UnityEditor.Editor
 				m_selectedIndex[i] = UnityEditor.EditorGUILayout.Popup(labels[i] + " Room",
 					UnityEngine.Mathf.Clamp(m_selectedIndex[i], 0, roomListCount - 1), roomLabels);
 
-				m_roomPortal.rooms[i] = m_selectedIndex[i] < 0 || m_selectedIndex[i] >= roomListCount
+				m_roomPortal.SetRoom(i, 
+					m_selectedIndex[i] < 0 || m_selectedIndex[i] >= roomListCount
 					? null
-					: roomList[i].rooms[m_selectedIndex[i]];
+					: roomList[i].rooms[m_selectedIndex[i]]);
 			}
 		}
 
-        serializedObject.ApplyModifiedProperties();
-    }
+		serializedObject.ApplyModifiedProperties();
+	}
 }
 #endif

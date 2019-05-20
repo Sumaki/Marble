@@ -48,19 +48,19 @@ public class AkPositioningInfo : global::System.IDisposable {
   public float fCenterPct { set { AkSoundEnginePINVOKE.CSharp_AkPositioningInfo_fCenterPct_set(swigCPtr, value); }  get { return AkSoundEnginePINVOKE.CSharp_AkPositioningInfo_fCenterPct_get(swigCPtr); } 
   }
 
-  public AkPannerType pannerType { set { AkSoundEnginePINVOKE.CSharp_AkPositioningInfo_pannerType_set(swigCPtr, (int)value); }  get { return (AkPannerType)AkSoundEnginePINVOKE.CSharp_AkPositioningInfo_pannerType_get(swigCPtr); } 
+  public AkSpeakerPanningType pannerType { set { AkSoundEnginePINVOKE.CSharp_AkPositioningInfo_pannerType_set(swigCPtr, (int)value); }  get { return (AkSpeakerPanningType)AkSoundEnginePINVOKE.CSharp_AkPositioningInfo_pannerType_get(swigCPtr); } 
   }
 
-  public AkPositionSourceType posSourceType { set { AkSoundEnginePINVOKE.CSharp_AkPositioningInfo_posSourceType_set(swigCPtr, (int)value); }  get { return (AkPositionSourceType)AkSoundEnginePINVOKE.CSharp_AkPositioningInfo_posSourceType_get(swigCPtr); } 
+  public Ak3DPositionType e3dPositioningType { set { AkSoundEnginePINVOKE.CSharp_AkPositioningInfo_e3dPositioningType_set(swigCPtr, (int)value); }  get { return (Ak3DPositionType)AkSoundEnginePINVOKE.CSharp_AkPositioningInfo_e3dPositioningType_get(swigCPtr); } 
   }
 
-  public bool bUpdateEachFrame { set { AkSoundEnginePINVOKE.CSharp_AkPositioningInfo_bUpdateEachFrame_set(swigCPtr, value); }  get { return AkSoundEnginePINVOKE.CSharp_AkPositioningInfo_bUpdateEachFrame_get(swigCPtr); } 
+  public bool bHoldEmitterPosAndOrient { set { AkSoundEnginePINVOKE.CSharp_AkPositioningInfo_bHoldEmitterPosAndOrient_set(swigCPtr, value); }  get { return AkSoundEnginePINVOKE.CSharp_AkPositioningInfo_bHoldEmitterPosAndOrient_get(swigCPtr); } 
   }
 
   public Ak3DSpatializationMode e3DSpatializationMode { set { AkSoundEnginePINVOKE.CSharp_AkPositioningInfo_e3DSpatializationMode_set(swigCPtr, (int)value); }  get { return (Ak3DSpatializationMode)AkSoundEnginePINVOKE.CSharp_AkPositioningInfo_e3DSpatializationMode_get(swigCPtr); } 
   }
 
-  public bool bUseAttenuation { set { AkSoundEnginePINVOKE.CSharp_AkPositioningInfo_bUseAttenuation_set(swigCPtr, value); }  get { return AkSoundEnginePINVOKE.CSharp_AkPositioningInfo_bUseAttenuation_get(swigCPtr); } 
+  public bool bEnableAttenuation { set { AkSoundEnginePINVOKE.CSharp_AkPositioningInfo_bEnableAttenuation_set(swigCPtr, value); }  get { return AkSoundEnginePINVOKE.CSharp_AkPositioningInfo_bEnableAttenuation_get(swigCPtr); } 
   }
 
   public bool bUseConeAttenuation { set { AkSoundEnginePINVOKE.CSharp_AkPositioningInfo_bUseConeAttenuation_set(swigCPtr, value); }  get { return AkSoundEnginePINVOKE.CSharp_AkPositioningInfo_bUseConeAttenuation_get(swigCPtr); } 

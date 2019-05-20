@@ -34,34 +34,17 @@ public class AkMultiPosEvent
 /// - <a href="https://www.audiokinetic.com/library/edge/?source=SDK&id=soundengine__events.html" target="_blank">Integration Details - Events</a> (Note: This is described in the Wwise SDK documentation.)
 public class AkAmbient : AkEvent
 {
-	public static System.Collections.Generic.Dictionary<int, AkMultiPosEvent> multiPosEventTree =
-		new System.Collections.Generic.Dictionary<int, AkMultiPosEvent>();
-
-	public System.Collections.Generic.List<UnityEngine.Vector3> multiPositionArray =
-		new System.Collections.Generic.List<UnityEngine.Vector3>();
+	public static System.Collections.Generic.Dictionary<uint, AkMultiPosEvent> multiPosEventTree =
+		new System.Collections.Generic.Dictionary<uint, AkMultiPosEvent>();
 
 	public AkMultiPositionType MultiPositionType = AkMultiPositionType.MultiPositionType_MultiSources;
 	public MultiPositionTypeLabel multiPositionTypeLabel = MultiPositionTypeLabel.Simple_Mode;
-	public AkAmbient ParentAkAmbience { get; set; }
+
+	public AkAmbientLargeModePositioner[] LargeModePositions;
 
 	private void OnEnable()
 	{
-		if (multiPositionTypeLabel == MultiPositionTypeLabel.Simple_Mode)
-		{
-			var gameObj = gameObject.GetComponents<AkGameObj>();
-			for (var i = 0; i < gameObj.Length; i++)
-				gameObj[i].enabled = true;
-		}
-		else if (multiPositionTypeLabel == MultiPositionTypeLabel.Large_Mode)
-		{
-			var gameObj = gameObject.GetComponents<AkGameObj>();
-			for (var i = 0; i < gameObj.Length; i++)
-				gameObj[i].enabled = false;
-
-			var positionArray = BuildAkPositionArray();
-			AkSoundEngine.SetMultiplePositions(gameObject, positionArray, (ushort) positionArray.Count, MultiPositionType);
-		}
-		else if (multiPositionTypeLabel == MultiPositionTypeLabel.MultiPosition_Mode)
+		if (multiPositionTypeLabel == MultiPositionTypeLabel.MultiPosition_Mode)
 		{
 			var gameObj = gameObject.GetComponents<AkGameObj>();
 			for (var i = 0; i < gameObj.Length; i++)
@@ -69,7 +52,7 @@ public class AkAmbient : AkEvent
 
 			AkMultiPosEvent eventPosList;
 
-			if (multiPosEventTree.TryGetValue(eventID, out eventPosList))
+			if (multiPosEventTree.TryGetValue(data.Id, out eventPosList))
 			{
 				if (!eventPosList.list.Contains(this))
 					eventPosList.list.Add(this);
@@ -78,7 +61,7 @@ public class AkAmbient : AkEvent
 			{
 				eventPosList = new AkMultiPosEvent();
 				eventPosList.list.Add(this);
-				multiPosEventTree.Add(eventID, eventPosList);
+				multiPosEventTree.Add(data.Id, eventPosList);
 			}
 
 			var positionArray = BuildMultiDirectionArray(eventPosList);
@@ -89,14 +72,41 @@ public class AkAmbient : AkEvent
 		}
 	}
 
+	protected override void Start()
+	{
+		base.Start();
+
+		if (multiPositionTypeLabel == MultiPositionTypeLabel.Simple_Mode)
+		{
+			var gameObj = gameObject.GetComponents<AkGameObj>();
+			for (var i = 0; i < gameObj.Length; i++)
+				gameObj[i].enabled = true;
+		}
+		else if (multiPositionTypeLabel == MultiPositionTypeLabel.Large_Mode)
+		{
+#if UNITY_EDITOR
+			if (!UnityEditor.EditorApplication.isPlaying)
+			{
+				return;
+			}
+#endif
+			var gameObj = gameObject.GetComponents<AkGameObj>();
+			for (var i = 0; i < gameObj.Length; i++)
+				gameObj[i].enabled = false;
+
+			var positionArray = BuildAkPositionArray();
+			AkSoundEngine.SetMultiplePositions(gameObject, positionArray, (ushort)positionArray.Count, MultiPositionType);
+		}
+	}
+
 	private void OnDisable()
 	{
 		if (multiPositionTypeLabel == MultiPositionTypeLabel.MultiPosition_Mode)
 		{
-			var eventPosList = multiPosEventTree[eventID];
+			var eventPosList = multiPosEventTree[data.Id];
 
 			if (eventPosList.list.Count == 1)
-				multiPosEventTree.Remove(eventID);
+				multiPosEventTree.Remove(data.Id);
 			else
 			{
 				eventPosList.list.Remove(this);
@@ -111,10 +121,12 @@ public class AkAmbient : AkEvent
 	public override void HandleEvent(UnityEngine.GameObject in_gameObject)
 	{
 		if (multiPositionTypeLabel != MultiPositionTypeLabel.MultiPosition_Mode)
+		{
 			base.HandleEvent(in_gameObject);
+		}
 		else
 		{
-			var multiPositionSoundEmitter = multiPosEventTree[eventID];
+			var multiPositionSoundEmitter = multiPosEventTree[data.Id];
 			if (multiPositionSoundEmitter.eventIsPlaying)
 				return;
 
@@ -123,22 +135,31 @@ public class AkAmbient : AkEvent
 			soundEmitterObject = multiPositionSoundEmitter.list[0].gameObject;
 
 			if (enableActionOnEvent)
-			{
-				AkSoundEngine.ExecuteActionOnEvent((uint) eventID, actionOnEventType, multiPositionSoundEmitter.list[0].gameObject,
-					(int) transitionDuration * 1000, curveInterpolation);
-			}
+				data.ExecuteAction(soundEmitterObject, actionOnEventType, (int)transitionDuration * 1000, curveInterpolation);
 			else
-			{
-				playingId = AkSoundEngine.PostEvent((uint) eventID, multiPositionSoundEmitter.list[0].gameObject,
-					(uint) AkCallbackType.AK_EndOfEvent, multiPositionSoundEmitter.FinishedPlaying, null, 0, null,
-					AkSoundEngine.AK_INVALID_PLAYING_ID);
-			}
+				playingId = data.Post(soundEmitterObject, (uint)AkCallbackType.AK_EndOfEvent, multiPositionSoundEmitter.FinishedPlaying);
 		}
 	}
 
 	public void OnDrawGizmosSelected()
 	{
 		UnityEngine.Gizmos.DrawIcon(transform.position, "WwiseAudioSpeaker.png", false);
+
+#if UNITY_EDITOR
+		if (multiPositionTypeLabel == MultiPositionTypeLabel.Large_Mode)
+		{
+			foreach (var entry in LargeModePositions)
+			{
+				if (entry != null)
+				{
+					UnityEngine.Gizmos.color = UnityEngine.Color.green;
+					UnityEngine.Gizmos.DrawSphere(entry.transform.position, 0.1f);
+
+					UnityEditor.Handles.Label(entry.transform.position, entry.name);
+				}
+			}
+		}
+#endif
 	}
 
 	public AkPositionArray BuildMultiDirectionArray(AkMultiPosEvent eventPosList)
@@ -155,11 +176,95 @@ public class AkAmbient : AkEvent
 
 	private AkPositionArray BuildAkPositionArray()
 	{
-		var positionArray = new AkPositionArray((uint) multiPositionArray.Count);
-		for (var i = 0; i < multiPositionArray.Count; i++)
-			positionArray.Add(transform.position + multiPositionArray[i], transform.forward, transform.up);
+		var validPositionList = new System.Collections.Generic.List<AkAmbientLargeModePositioner>();
+
+		for( int i= 0; i < LargeModePositions.Length; ++i)
+		{
+			if (LargeModePositions[i] != null)
+			{
+				if (!validPositionList.Contains(LargeModePositions[i]))
+				{
+					validPositionList.Add(LargeModePositions[i]);
+				}
+			}
+		}
+
+		var positionArray = new AkPositionArray((uint)validPositionList.Count);
+		for (int i = 0; i < validPositionList.Count; ++i)
+		{
+			positionArray.Add(validPositionList[i].Position, validPositionList[i].Forward, validPositionList[i].Up);
+		}
 
 		return positionArray;
 	}
+
+	#region WwiseMigration
+#pragma warning disable 0414 // private field assigned but not used.
+	[UnityEngine.HideInInspector]
+	[UnityEngine.SerializeField]
+	public System.Collections.Generic.List<UnityEngine.Vector3> multiPositionArray = null;
+#pragma warning restore 0414 // private field assigned but not used.
+
+#if UNITY_EDITOR
+	public override bool Migrate(UnityEditor.SerializedObject obj)
+	{
+		var hasMigrated = base.Migrate(obj);
+
+		if (!AkUtilities.IsMigrationRequired(AkUtilities.MigrationStep.AkAmbient_v2019_1_0))
+		{
+			return hasMigrated;
+		}
+
+		var multiPositionTypeLabelProperty = obj.FindProperty("multiPositionTypeLabel");
+		if (multiPositionTypeLabelProperty == null)
+		{
+			return hasMigrated;
+		}
+
+		if (multiPositionTypeLabelProperty.intValue != (int)MultiPositionTypeLabel.Large_Mode)
+		{
+			return hasMigrated;
+		}
+
+		var multiPositionArrayProperty = obj.FindProperty("multiPositionArray");
+		if (multiPositionArrayProperty == null)
+		{
+			return hasMigrated;
+		}
+
+		if (multiPositionArrayProperty.arraySize == 0)
+		{
+			return hasMigrated;
+		}
+
+		var largeModePositionsProperty = obj.FindProperty("LargeModePositions");
+		if (largeModePositionsProperty == null)
+		{
+			return hasMigrated;
+		}
+
+		largeModePositionsProperty.arraySize = multiPositionArrayProperty.arraySize;
+
+		for (int point = 0; point < multiPositionArrayProperty.arraySize; ++point)
+		{
+			var elementProperty = multiPositionArrayProperty.GetArrayElementAtIndex(point);
+
+			var largeModePositionElementProperty = largeModePositionsProperty.GetArrayElementAtIndex(point);
+			if (largeModePositionElementProperty != null)
+			{
+				UnityEngine.GameObject newPoint = new UnityEngine.GameObject("AkAmbientPoint" + point.ToString());
+				newPoint.AddComponent<AkAmbientLargeModePositioner>();
+				newPoint.transform.SetParent(transform);
+				newPoint.transform.position = transform.TransformPoint(elementProperty.vector3Value);
+
+				largeModePositionElementProperty.objectReferenceValue = newPoint.GetComponent<AkAmbientLargeModePositioner>();
+			}
+		}
+
+		multiPositionArrayProperty.arraySize = 0;
+		return true;
+	}
+#endif
+	#endregion
 }
 #endif // #if ! (UNITY_DASHBOARD_WIDGET || UNITY_WEBPLAYER || UNITY_WII || UNITY_WIIU || UNITY_NACL || UNITY_FLASH || UNITY_BLACKBERRY) // Disable under unsupported platforms.

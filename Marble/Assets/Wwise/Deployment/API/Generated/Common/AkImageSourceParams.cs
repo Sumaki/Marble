@@ -65,5 +65,14 @@ public class AkImageSourceParams : global::System.IDisposable {
   public float fLevel { set { AkSoundEnginePINVOKE.CSharp_AkImageSourceParams_fLevel_set(swigCPtr, value); }  get { return AkSoundEnginePINVOKE.CSharp_AkImageSourceParams_fLevel_get(swigCPtr); } 
   }
 
+  public float fDiffraction { set { AkSoundEnginePINVOKE.CSharp_AkImageSourceParams_fDiffraction_set(swigCPtr, value); }  get { return AkSoundEnginePINVOKE.CSharp_AkImageSourceParams_fDiffraction_get(swigCPtr); } 
+  }
+
+  public byte uDiffractionEmitterSide { set { AkSoundEnginePINVOKE.CSharp_AkImageSourceParams_uDiffractionEmitterSide_set(swigCPtr, value); }  get { return AkSoundEnginePINVOKE.CSharp_AkImageSourceParams_uDiffractionEmitterSide_get(swigCPtr); } 
+  }
+
+  public byte uDiffractionListenerSide { set { AkSoundEnginePINVOKE.CSharp_AkImageSourceParams_uDiffractionListenerSide_set(swigCPtr, value); }  get { return AkSoundEnginePINVOKE.CSharp_AkImageSourceParams_uDiffractionListenerSide_get(swigCPtr); } 
+  }
+
 }
 #endif // #if ! (UNITY_DASHBOARD_WIDGET || UNITY_WEBPLAYER || UNITY_WII || UNITY_WIIU || UNITY_NACL || UNITY_FLASH || UNITY_BLACKBERRY) // Disable under unsupported platforms.

@@ -23,7 +23,7 @@ public class WwiseSetupWizard
 		{
 			UnityEngine.Debug.Log("WwiseUnity: Running modify setup...");
 
-			AkSceneUtils.CreateNewScene();
+			UnityEditor.SceneManagement.EditorSceneManager.NewScene(UnityEditor.SceneManagement.NewSceneSetup.DefaultGameObjects);
 
 			ModifySetup();
 
@@ -45,8 +45,6 @@ public class WwiseSetupWizard
 		{
 			UnityEngine.Debug.Log("WwiseUnity: Running install setup...");
 
-			AkSceneUtils.CreateNewScene();
-
 			Setup();
 
 			UnityEngine.Debug.Log("WwiseUnity: Refreshing asset database.");
@@ -67,11 +65,9 @@ public class WwiseSetupWizard
 		{
 			UnityEngine.Debug.Log("WwiseUnity: Running demo scene setup...");
 
-			AkSceneUtils.CreateNewScene();
-
 			Setup();
 
-			AkSceneUtils.OpenExistingScene("Assets/WwiseDemoScene/WwiseDemoScene.unity");
+			UnityEditor.SceneManagement.EditorSceneManager.OpenScene("Assets/WwiseDemoScene/WwiseDemoScene.unity");
 
 			UnityEngine.Debug.Log("WwiseUnity: Refreshing asset database.");
 			UnityEditor.AssetDatabase.Refresh();
@@ -84,8 +80,13 @@ public class WwiseSetupWizard
 		}
 	}
 
-	private static void UpdateProgressBar(float progress)
+	private static int TotalNumberOfSections = 3;
+	private static void UpdateProgressBar(int sectionIndex, int subSectionIndex = 0, int totalSubSections = 1)
 	{
+		subSectionIndex = UnityEngine.Mathf.Clamp(subSectionIndex, 0, totalSubSections);
+		sectionIndex = UnityEngine.Mathf.Clamp(sectionIndex, 0, TotalNumberOfSections);
+
+		float progress = ((float)subSectionIndex / totalSubSections + sectionIndex) / TotalNumberOfSections;
 		UnityEditor.EditorUtility.DisplayProgressBar("Wwise Integration", "Migration in progress - Please wait...", progress);
 	}
 
@@ -94,7 +95,6 @@ public class WwiseSetupWizard
 		try
 		{
 			UnityEngine.Debug.Log("WwiseUnity: Running migration setup...");
-
 			UnityEngine.Debug.Log("WwiseUnity: Reading parameters...");
 
 			var arguments = System.Environment.GetCommandLineArgs();
@@ -109,19 +109,7 @@ public class WwiseSetupWizard
                 return;
 			}
 
-			string migrateStopString = null;
-			var indexMigrateStop = System.Array.IndexOf(arguments, "-wwiseInstallMigrateStop");
-
-			if (indexMigrateStop != -1)
-				migrateStopString = arguments[indexMigrateStop + 1];
-			else
-			{
-				UnityEngine.Debug.LogError("WwiseUnity: ERROR: Missing parameter wwiseInstallMigrateStart.");
-				return;
-			}
-
 			int migrateStart;
-			int migrateStop;
 
 			if (!int.TryParse(migrateStartString, out migrateStart))
 			{
@@ -129,13 +117,9 @@ public class WwiseSetupWizard
 				return;
 			}
 
-			if (!int.TryParse(migrateStopString, out migrateStop))
-			{
-				UnityEngine.Debug.LogError("WwiseUnity: ERROR: wwiseInstallMigrateStop is not a number.");
-				return;
-			}
+			PerformMigration(migrateStart - 1);
 
-			PerformMigration(migrateStart, migrateStop);
+			UnityEditor.AssetDatabase.SaveAssets();
 
 			UnityEngine.Debug.Log("WwiseUnity: Refreshing asset database.");
 			UnityEditor.AssetDatabase.Refresh();
@@ -149,28 +133,19 @@ public class WwiseSetupWizard
 		}
 	}
 
-	private static void MigrateCurrentScene(System.IO.FileInfo[] files, int migrateStart, int migrateStop)
+	private static void MigrateCurrentScene(System.Type[] wwiseComponentTypes)
 	{
 		var objectTypeMap = new System.Collections.Generic.Dictionary<System.Type, UnityEngine.Object[]>();
 
-		foreach (var file in files)
+		foreach (var objectType in wwiseComponentTypes)
 		{
-			var className = System.IO.Path.GetFileNameWithoutExtension(file.Name);
-
-			// Since monobehaviour scripts need to have the same name as the class it contains, we can use it to get the type of the object.
-			var objectType = System.Type.GetType(className + ", Assembly-CSharp");
-
-			if (objectType != null && objectType.IsSubclassOf(typeof(UnityEngine.Object)))
-			{
-				// Get all objects in the scene with the specified type.
-				var objects = UnityEngine.Object.FindObjectsOfType(objectType);
-
-				if (objects != null && objects.Length > 0)
-					objectTypeMap[objectType] = objects;
-			}
+			// Get all objects in the scene with the specified type.
+			var objects = UnityEngine.Object.FindObjectsOfType(objectType);
+			if (objects != null && objects.Length > 0)
+				objectTypeMap[objectType] = objects;
 		}
 
-		for (var ii = migrateStart; ii <= migrateStop; ++ii)
+		for (var ii = AkUtilities.MigrationStartIndex; ii < AkUtilities.MigrationStopIndex; ++ii)
 		{
 			var migrationMethodName = "Migrate" + ii;
 			var preMigrationMethodName = "PreMigration" + ii;
@@ -212,50 +187,275 @@ public class WwiseSetupWizard
 		}
 	}
 
-	public static void PerformMigration(int migrateStart, int migrateStop)
+	private static System.Type[] GetWwiseComponentTypes()
 	{
-		UpdateProgressBar(0f);
+		var wwiseComponentTypes = new System.Collections.Generic.List<System.Type>();
 
-		UnityEngine.Debug.Log("WwiseUnity: Migrating incrementally to versions " + migrateStart + " up to " + migrateStop);
+		var wwiseComponentFolder = UnityEngine.Application.dataPath + "/Wwise/Deployment/Components";
+		var files = new System.IO.DirectoryInfo(wwiseComponentFolder).GetFiles("*.cs", System.IO.SearchOption.AllDirectories);
+		foreach (var file in files)
+		{
+			var className = System.IO.Path.GetFileNameWithoutExtension(file.Name);
+			var objectType = System.Type.GetType(className + ", Assembly-CSharp");
+			if (objectType != null && objectType.IsSubclassOf(typeof(UnityEngine.Object)))
+				wwiseComponentTypes.Add(objectType);
+		}
+
+		return wwiseComponentTypes.ToArray();
+	}
+
+	private static void MigrateObject(UnityEngine.Object obj)
+	{
+		if (obj == null)
+		{
+			UnityEngine.Debug.LogWarning("WwiseUnity: Missing script! Please consider resolving the missing scripts before migrating your Unity project. Any WwiseType on this object will NOT be migrated!");
+			return;
+		}
+
+		var migratable = obj as AK.Wwise.IMigratable;
+		if (migratable == null && !AkUtilities.IsMigrationRequired(AkUtilities.MigrationStep.WwiseTypes_v2018_1_6))
+			return;
+
+		var hasChanged = false;
+		var serializedObject = new UnityEditor.SerializedObject(obj);
+		if (migratable != null)
+			hasChanged = migratable.Migrate(serializedObject);
+		else
+			hasChanged = AK.Wwise.TypeMigration.SearchAndProcessWwiseTypes(serializedObject.GetIterator());
+
+		if (hasChanged)
+			serializedObject.ApplyModifiedPropertiesWithoutUndo();
+	}
+
+	private static void MigratePrefabs()
+	{
+		var guids = UnityEditor.AssetDatabase.FindAssets("t:Prefab", new[] { "Assets" });
+		for (var i = 0; i < guids.Length; i++)
+		{
+			UpdateProgressBar(0, i, guids.Length);
+
+			var path = UnityEditor.AssetDatabase.GUIDToAssetPath(guids[i]);
+			UnityEngine.Debug.Log("WwiseUnity: Migrating prefab: " + path);
+
+			var prefabObject = UnityEditor.AssetDatabase.LoadAssetAtPath<UnityEngine.GameObject>(path);
+			if (prefabObject == null)
+			{
+				UnityEngine.Debug.LogWarning("WwiseUnity: Failed to migrate prefab: " + path);
+				continue;
+			}
+
+			var objects = prefabObject.GetComponents<UnityEngine.MonoBehaviour>();
+
+#if UNITY_2018_3_OR_NEWER
+			var instanceIds = new System.Collections.Generic.List<int>();
+			foreach (var obj in objects)
+			{
+				if (obj == null)
+					continue;
+
+				var id = obj.GetInstanceID();
+				if (!instanceIds.Contains(id))
+					instanceIds.Add(id);
+			}
+
+			for (; instanceIds.Count > 0; instanceIds.RemoveAt(0))
+			{
+				var id = instanceIds[0];
+				objects = prefabObject.GetComponents<UnityEngine.MonoBehaviour>();
+				foreach (var obj in objects)
+				{
+					if (obj && obj.GetInstanceID() == id)
+					{
+						MigrateObject(obj);
+						break;
+					}
+				}
+			}
+#else
+			foreach (var obj in objects)
+				MigrateObject(obj);
+#endif
+		}
+	}
+
+	private static string[] ScriptableObjectGuids = null;
+
+	private static bool ShouldProcessScriptableObject(UnityEngine.Object obj)
+	{
+		if (obj == null)
+			return true;
+
+		if (!(obj is UnityEngine.ScriptableObject))
+			return false;
+
+		if (obj is UnityEngine.GUISkin)
+			return false;
+
+		if (obj is AkWwiseProjectData)
+			return false;
+
+		if (obj is AkWwiseInitializationSettings)
+			return false;
+
+		if (obj is AkCommonPlatformSettings)
+			return false;
+
+		if (obj is WwiseObjectReference)
+			return false;
+
+		return true;
+	}
+
+	private static void MigrateScriptableObjects()
+	{
+		var guids = ScriptableObjectGuids;
+		if (guids == null)
+			return;
+
+		var processedGuids = new System.Collections.Generic.HashSet<string>();
+
+		for (var i = 0; i < guids.Length; i++)
+		{
+			UpdateProgressBar(2, i, guids.Length);
+
+			var guid = guids[i];
+			if (processedGuids.Contains(guid))
+				continue;
+
+			processedGuids.Add(guid);
+
+			var path = UnityEditor.AssetDatabase.GUIDToAssetPath(guid);
+			UnityEngine.Debug.Log("WwiseUnity: Migrating ScriptableObject: " + path);
+
+			var objects = UnityEditor.AssetDatabase.LoadAllAssetsAtPath(path);
+			foreach (var obj in objects)
+			{
+				if (ShouldProcessScriptableObject(obj))
+				{
+					MigrateObject(obj);
+				}
+			}
+		}
+	}
+
+	private static void MigrateScenes()
+	{
+		var wwiseComponentTypes = GetWwiseComponentTypes();
+		var guids = UnityEditor.AssetDatabase.FindAssets("t:Scene", new[] { "Assets" });
+		for (var i = 0; i < guids.Length; i++)
+		{
+			UpdateProgressBar(1, i, guids.Length);
+
+			var path = UnityEditor.AssetDatabase.GUIDToAssetPath(guids[i]);
+			UnityEngine.Debug.Log("WwiseUnity: Migrating scene: " + path);
+
+			UnityEditor.EditorUtility.UnloadUnusedAssetsImmediate();
+
+			var scene = UnityEditor.SceneManagement.EditorSceneManager.OpenScene(path);
+
+			MigrateCurrentScene(wwiseComponentTypes);
+
+			var objects = UnityEngine.Resources.FindObjectsOfTypeAll<UnityEngine.MonoBehaviour>();
+
+#if UNITY_2018_3_OR_NEWER
+			var instanceIds = new System.Collections.Generic.List<int>();
+			foreach (var obj in objects)
+			{
+				if (obj == null)
+					continue;
+
+				var id = obj.GetInstanceID();
+				if (!instanceIds.Contains(id))
+					instanceIds.Add(id);
+			}
+
+			for (; instanceIds.Count > 0; instanceIds.RemoveAt(0))
+			{
+				var id = instanceIds[0];
+				objects = UnityEngine.Resources.FindObjectsOfTypeAll<UnityEngine.MonoBehaviour>();
+				foreach (var obj in objects)
+				{
+					if (obj && obj.GetInstanceID() == id)
+					{
+						MigrateObject(obj);
+						break;
+					}
+				}
+			}
+#else
+			foreach (var obj in objects)
+			{
+				var isPrefabInstance = false;
+				if (obj != null)
+				{
+#if UNITY_2018_2
+					isPrefabInstance = UnityEditor.PrefabUtility.GetCorrespondingObjectFromSource(obj) != null;
+#else
+					isPrefabInstance = UnityEditor.PrefabUtility.GetPrefabParent(obj) != null;
+#endif
+
+					if (!isPrefabInstance)
+					{
+						var isSceneObject = !UnityEditor.EditorUtility.IsPersistent(obj);
+						var isEditableAndSavable = (obj.hideFlags & (UnityEngine.HideFlags.NotEditable | UnityEngine.HideFlags.DontSave)) == 0;
+						if (!isSceneObject || !isEditableAndSavable)
+							continue;
+					}
+				}
+
+				MigrateObject(obj);
+
+				if (isPrefabInstance)
+					UnityEditor.PrefabUtility.RecordPrefabInstancePropertyModifications(obj);
+			}
+#endif
+
+			if (UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(scene))
+				if (!UnityEditor.SceneManagement.EditorSceneManager.SaveScene(scene))
+					throw new System.Exception("Error occurred while saving migrated scenes.");
+		}
+	}
+
+	public static void PerformMigration(int migrateStart)
+	{
+		UpdateProgressBar(0);
+
+		UnityEngine.Debug.Log("WwiseUnity: Migrating from Unity Integration Version " + migrateStart + " to " + AkUtilities.MigrationStopIndex);
 
 		AkPluginActivator.DeactivateAllPlugins();
 		AkPluginActivator.Update();
 		AkPluginActivator.ActivatePluginsForEditor();
 
 		// Get the name of the currently opened scene.
-		var currentScene = AkSceneUtils.GetCurrentScene().Replace('/', '\\');
+		var activeScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
+		var loadedScenePath = activeScene.path;
+		
+		if (!string.IsNullOrEmpty(loadedScenePath))
+			AkBasePathGetter.FixSlashes(ref loadedScenePath, '\\', '/', false);
 
-		var files =
-			new System.IO.DirectoryInfo(UnityEngine.Application.dataPath + "/Wwise/Deployment/Components").GetFiles("*.cs",
-				System.IO.SearchOption.AllDirectories);
-		var sceneInfo =
-			new System.IO.DirectoryInfo(UnityEngine.Application.dataPath).GetFiles("*.unity",
-				System.IO.SearchOption.AllDirectories);
-		var scenes = new string[sceneInfo.Length];
+		UnityEditor.SceneManagement.EditorSceneManager.NewScene(UnityEditor.SceneManagement.NewSceneSetup.DefaultGameObjects);
 
-		AkSceneUtils.CreateNewScene();
-		AkUtilities.IsMigrating = true;
+		// obtain a list of ScriptableObjects before any migration is performed
+		ScriptableObjectGuids = UnityEditor.AssetDatabase.FindAssets("t:ScriptableObject", new[] { "Assets" });
 
-		for (var i = 0; i < scenes.Length; i++)
-		{
-			UpdateProgressBar((float) i / scenes.Length);
+		AkUtilities.BeginMigration(migrateStart);
+		AkWwiseProjectInfo.GetData().Migrate();
+		AkWwiseWWUBuilder.UpdateWwiseObjectReferenceData();
 
-			var scene = "Assets" + sceneInfo[i].FullName.Substring(UnityEngine.Application.dataPath.Length);
-			UnityEngine.Debug.Log("WwiseUnity: Migrating scene " + scene);
+		MigratePrefabs();
+		MigrateScenes();
+		MigrateScriptableObjects();
 
-			AkSceneUtils.OpenExistingScene(scene);
-			MigrateCurrentScene(files, migrateStart - 1, migrateStop - 1);
-			AkSceneUtils.SaveCurrentScene(null);
-		}
+		UnityEditor.EditorUtility.UnloadUnusedAssetsImmediate();
 
-		UpdateProgressBar(1.0f);
+		UnityEditor.SceneManagement.EditorSceneManager.NewScene(UnityEditor.SceneManagement.NewSceneSetup.DefaultGameObjects);
+		AkUtilities.EndMigration();
 
-		AkSceneUtils.CreateNewScene();
-
-		AkUtilities.IsMigrating = false;
+		UpdateProgressBar(TotalNumberOfSections);
 
 		// Reopen the scene that was opened before the migration process started.
-		AkSceneUtils.OpenExistingScene(currentScene);
+		if (!string.IsNullOrEmpty(loadedScenePath))
+			UnityEditor.SceneManagement.EditorSceneManager.OpenScene(loadedScenePath);
 
 		UnityEngine.Debug.Log("WwiseUnity: Removing lock for launcher.");
 
@@ -287,6 +487,8 @@ public class WwiseSetupWizard
 	// Perform all necessary steps to use the Wwise Unity integration.
 	private static void Setup()
 	{
+		UnityEditor.SceneManagement.EditorSceneManager.NewScene(UnityEditor.SceneManagement.NewSceneSetup.DefaultGameObjects);
+
 		AkPluginActivator.DeactivateAllPlugins();
 
 		// 0. Make sure the soundbank directory exists
@@ -308,7 +510,6 @@ public class WwiseSetupWizard
 		// 5. Disable the built-in audio listener, and add AkAudioListener component to camera
 		if (WwiseSettings.LoadSettings().CreateWwiseListener)
 		{
-			AkUtilities.RemoveUnityAudioListenerFromMainCamera();
 			AkUtilities.AddAkAudioListenerToMainCamera();
 		}
 
@@ -333,17 +534,13 @@ public class WwiseSetupWizard
 	{
 		// Look for a game object which has the initializer component
 		var AkInitializers = UnityEngine.Object.FindObjectsOfType<AkInitializer>();
-		UnityEngine.GameObject WwiseGlobalGameObject = null;
 		if (AkInitializers.Length > 0)
 			UnityEditor.Undo.DestroyObjectImmediate(AkInitializers[0].gameObject);
 
-		WwiseGlobalGameObject = new UnityEngine.GameObject("WwiseGlobal");
+		var WwiseGlobalGameObject = new UnityEngine.GameObject("WwiseGlobal");
 
 		// attach initializer component
-		var AkInit = UnityEditor.Undo.AddComponent<AkInitializer>(WwiseGlobalGameObject);
-
-		// Set the soundbank path property on the initializer
-		AkInit.basePath = Settings.SoundbankPath;
+		UnityEditor.Undo.AddComponent<AkInitializer>(WwiseGlobalGameObject);
 
 		// Set focus on WwiseGlobal
 		UnityEditor.Selection.activeGameObject = WwiseGlobalGameObject;
