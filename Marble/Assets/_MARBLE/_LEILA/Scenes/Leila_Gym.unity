@@ -167,8 +167,7 @@ MonoBehaviour:
   data:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: aba7c5b6c092a52469984c61906034fa,
-      type: 2}
+    WwiseObjectReference: {fileID: 0}
   useCallbacks: 0
   Callbacks: []
   playingId: 0
@@ -872,7 +871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc91ee6dae3fa0348857b1db4019c856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitializationSettings: {fileID: 11400000, guid: 4f2fa6ce8dc3fcc4d8a668466468a828,
+  InitializationSettings: {fileID: 11400000, guid: 2908bd514bf4ec643b44a0777d5e2e6b,
     type: 2}
   basePath: 
   language: 
@@ -919,8 +918,7 @@ MonoBehaviour:
   data:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: f9039f6b93e8aa9458b7923881d212d3,
-      type: 2}
+    WwiseObjectReference: {fileID: 0}
   decodeBank: 0
   loadAsynchronous: 0
   saveDecodedBank: 0
@@ -1026,6 +1024,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 100000, guid: 7aa2bbc8dae6851468f44b340f9faa39, type: 3}
+      propertyPath: m_Name
+      value: Waterfall_Left
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7aa2bbc8dae6851468f44b340f9faa39, type: 3}
       propertyPath: m_LocalPosition.x
       value: 712.37
@@ -1081,10 +1083,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 7aa2bbc8dae6851468f44b340f9faa39, type: 3}
       propertyPath: m_LocalScale.z
       value: 1.9145
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 7aa2bbc8dae6851468f44b340f9faa39, type: 3}
-      propertyPath: m_Name
-      value: Waterfall_Left
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 7aa2bbc8dae6851468f44b340f9faa39, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2142,6 +2140,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 100000, guid: ab8706d7c3589fc44b3403c481438d9b, type: 3}
+      propertyPath: m_Name
+      value: Waterfall_Right
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ab8706d7c3589fc44b3403c481438d9b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 616.65
@@ -2197,10 +2199,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: ab8706d7c3589fc44b3403c481438d9b, type: 3}
       propertyPath: m_LocalScale.z
       value: 1.9145
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: ab8706d7c3589fc44b3403c481438d9b, type: 3}
-      propertyPath: m_Name
-      value: Waterfall_Right
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: ab8706d7c3589fc44b3403c481438d9b, type: 3}
       propertyPath: m_Materials.Array.data[0]

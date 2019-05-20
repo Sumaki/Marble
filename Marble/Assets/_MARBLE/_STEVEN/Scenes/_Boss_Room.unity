@@ -262,6 +262,11 @@ PrefabInstance:
       propertyPath: cameraFollowObj
       value: 
       objectReference: {fileID: 113163096}
+    - target: {fileID: 20520939917088934, guid: d3f133c9aa9428e4e974019f54880b4c,
+        type: 3}
+      propertyPath: field of view
+      value: 36
+      objectReference: {fileID: 0}
     - target: {fileID: 114937094082411654, guid: d3f133c9aa9428e4e974019f54880b4c,
         type: 3}
       propertyPath: minDistance
@@ -276,11 +281,6 @@ PrefabInstance:
         type: 3}
       propertyPath: maxDistance
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 20520939917088934, guid: d3f133c9aa9428e4e974019f54880b4c,
-        type: 3}
-      propertyPath: field of view
-      value: 36
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3f133c9aa9428e4e974019f54880b4c, type: 3}

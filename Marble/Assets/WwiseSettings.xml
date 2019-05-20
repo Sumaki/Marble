@@ -8,6 +8,6 @@
   <ShowMissingRigidBodyWarning>true</ShowMissingRigidBodyWarning>
   <SoundbankPath>Audio/GeneratedSoundBanks</SoundbankPath>
   <WwiseInstallationPathMac />
-  <WwiseInstallationPathWindows>D:\Real Program Files\Wwise 2017.2.10.6745</WwiseInstallationPathWindows>
-  <WwiseProjectPath>../../../__REMISE_16mai/CORINNE_PHILIPPON/CorinnePhilippon5/CorinnePhilippon5.wproj</WwiseProjectPath>
+  <WwiseInstallationPathWindows>D:\wwise</WwiseInstallationPathWindows>
+  <WwiseProjectPath>../../../Marble - Music/__REMISE_16mai/CORINNE_PHILIPPON/CorinnePhilippon5/CorinnePhilippon5.wproj</WwiseProjectPath>
 </WwiseSettings>

@@ -1,0 +1,320 @@
+fileFormatVersion: 2
+guid: 0dd2fe538b786c946994adda4a54ed22
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: _OG_Pipe010
+    100002: _OG_Pipe011
+    100004: _OG_Pipe012
+    100006: _OG_Pipe013
+    100008: _OG_Pipe014
+    100010: _OG_Pipe015
+    100012: _OG_Pipe016
+    100014: _OG_Pipe017
+    100016: _OG_Pipe018
+    100018: _OG_Pipe019
+    100020: _OG_Pipe_095
+    100022: _OG_Pipe_096
+    100024: _OG_Pipe_097
+    100026: _OG_Pipe_098
+    100028: _OG_Pipe_099
+    100030: _OG_Pipe_100
+    100032: _OG_Pipe_90_End002
+    100034: _OG_Pipe_90_End003
+    100036: _OG_Pipe_90_End004
+    100038: _OG_Pipe_End001
+    100040: _OG_Pipe_End002
+    100042: Big Ramp
+    100044: Door
+    100046: Gym
+    100048: Half Pipe
+    100050: Pipe001
+    100052: Pipe004
+    100054: Pipe_093
+    100056: Pipe_097
+    100058: Pipe_098
+    100060: Pipe_099
+    100062: Pipe_101
+    100064: Pipe_102
+    100066: Pipe_104
+    100068: Pipe_106
+    100070: Pipe_107
+    100072: Pipe_108
+    100074: Pipe_End003
+    100076: Pipe_End005
+    100078: Pipe_End006
+    100080: Plane001
+    100082: Sphere001
+    100084: //RootNode
+    100086: Ball Level
+    100088: Big Ramp 1
+    100090: Element Level
+    100092: Half Pipe 1
+    400000: _OG_Pipe010
+    400002: _OG_Pipe011
+    400004: _OG_Pipe012
+    400006: _OG_Pipe013
+    400008: _OG_Pipe014
+    400010: _OG_Pipe015
+    400012: _OG_Pipe016
+    400014: _OG_Pipe017
+    400016: _OG_Pipe018
+    400018: _OG_Pipe019
+    400020: _OG_Pipe_095
+    400022: _OG_Pipe_096
+    400024: _OG_Pipe_097
+    400026: _OG_Pipe_098
+    400028: _OG_Pipe_099
+    400030: _OG_Pipe_100
+    400032: _OG_Pipe_90_End002
+    400034: _OG_Pipe_90_End003
+    400036: _OG_Pipe_90_End004
+    400038: _OG_Pipe_End001
+    400040: _OG_Pipe_End002
+    400042: Big Ramp
+    400044: Door
+    400046: Gym
+    400048: Half Pipe
+    400050: Pipe001
+    400052: Pipe004
+    400054: Pipe_093
+    400056: Pipe_097
+    400058: Pipe_098
+    400060: Pipe_099
+    400062: Pipe_101
+    400064: Pipe_102
+    400066: Pipe_104
+    400068: Pipe_106
+    400070: Pipe_107
+    400072: Pipe_108
+    400074: Pipe_End003
+    400076: Pipe_End005
+    400078: Pipe_End006
+    400080: Plane001
+    400082: Sphere001
+    400084: //RootNode
+    400086: Ball Level
+    400088: Big Ramp 1
+    400090: Element Level
+    400092: Half Pipe 1
+    2100000: No Name
+    2100002: 'Material #3'
+    2100004: 'Material #4'
+    2100006: 'Material #2'
+    2100008: 'Material #5'
+    2300000: _OG_Pipe010
+    2300002: _OG_Pipe011
+    2300004: _OG_Pipe012
+    2300006: _OG_Pipe013
+    2300008: _OG_Pipe014
+    2300010: _OG_Pipe015
+    2300012: _OG_Pipe016
+    2300014: _OG_Pipe017
+    2300016: _OG_Pipe018
+    2300018: _OG_Pipe019
+    2300020: _OG_Pipe_095
+    2300022: _OG_Pipe_096
+    2300024: _OG_Pipe_097
+    2300026: _OG_Pipe_098
+    2300028: _OG_Pipe_099
+    2300030: _OG_Pipe_100
+    2300032: _OG_Pipe_90_End002
+    2300034: _OG_Pipe_90_End003
+    2300036: _OG_Pipe_90_End004
+    2300038: _OG_Pipe_End001
+    2300040: _OG_Pipe_End002
+    2300042: Big Ramp
+    2300044: Door
+    2300046: Gym
+    2300048: Half Pipe
+    2300050: Pipe001
+    2300052: Pipe004
+    2300054: Pipe_093
+    2300056: Pipe_097
+    2300058: Pipe_098
+    2300060: Pipe_099
+    2300062: Pipe_101
+    2300064: Pipe_102
+    2300066: Pipe_104
+    2300068: Pipe_106
+    2300070: Pipe_107
+    2300072: Pipe_108
+    2300074: Pipe_End003
+    2300076: Pipe_End005
+    2300078: Pipe_End006
+    2300080: Plane001
+    2300082: Sphere001
+    2300084: Big Ramp 1
+    2300086: Half Pipe 1
+    3300000: _OG_Pipe010
+    3300002: _OG_Pipe011
+    3300004: _OG_Pipe012
+    3300006: _OG_Pipe013
+    3300008: _OG_Pipe014
+    3300010: _OG_Pipe015
+    3300012: _OG_Pipe016
+    3300014: _OG_Pipe017
+    3300016: _OG_Pipe018
+    3300018: _OG_Pipe019
+    3300020: _OG_Pipe_095
+    3300022: _OG_Pipe_096
+    3300024: _OG_Pipe_097
+    3300026: _OG_Pipe_098
+    3300028: _OG_Pipe_099
+    3300030: _OG_Pipe_100
+    3300032: _OG_Pipe_90_End002
+    3300034: _OG_Pipe_90_End003
+    3300036: _OG_Pipe_90_End004
+    3300038: _OG_Pipe_End001
+    3300040: _OG_Pipe_End002
+    3300042: Big Ramp
+    3300044: Door
+    3300046: Gym
+    3300048: Half Pipe
+    3300050: Pipe001
+    3300052: Pipe004
+    3300054: Pipe_093
+    3300056: Pipe_097
+    3300058: Pipe_098
+    3300060: Pipe_099
+    3300062: Pipe_101
+    3300064: Pipe_102
+    3300066: Pipe_104
+    3300068: Pipe_106
+    3300070: Pipe_107
+    3300072: Pipe_108
+    3300074: Pipe_End003
+    3300076: Pipe_End005
+    3300078: Pipe_End006
+    3300080: Plane001
+    3300082: Sphere001
+    3300084: Big Ramp 1
+    3300086: Half Pipe 1
+    4300000: Plane001
+    4300002: Pipe_End003
+    4300004: Pipe_093
+    4300006: Pipe001
+    4300008: Pipe004
+    4300010: Pipe_097
+    4300012: Pipe_098
+    4300014: Pipe_099
+    4300016: Pipe_101
+    4300018: Pipe_End005
+    4300020: Pipe_102
+    4300022: Pipe_104
+    4300024: Pipe_106
+    4300026: Pipe_107
+    4300028: Pipe_108
+    4300030: Door
+    4300032: _OG_Pipe010
+    4300034: _OG_Pipe011
+    4300036: _OG_Pipe012
+    4300038: _OG_Pipe_095
+    4300040: _OG_Pipe_90_End002
+    4300042: Pipe_End006
+    4300044: _OG_Pipe_End001
+    4300046: _OG_Pipe013
+    4300048: _OG_Pipe014
+    4300050: _OG_Pipe015
+    4300052: _OG_Pipe_096
+    4300054: _OG_Pipe_097
+    4300056: _OG_Pipe016
+    4300058: _OG_Pipe017
+    4300060: _OG_Pipe_90_End003
+    4300062: Sphere001
+    4300064: _OG_Pipe_End002
+    4300066: _OG_Pipe018
+    4300068: _OG_Pipe_098
+    4300070: _OG_Pipe_099
+    4300072: _OG_Pipe019
+    4300074: _OG_Pipe_100
+    4300076: _OG_Pipe_90_End004
+    4300078: Half Pipe
+    4300080: Big Ramp
+    4300082: Gym
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

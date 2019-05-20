@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	2557777556	Main_theme			\Default Work Unit\Music\Main_theme	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	650428977	Neutral environment - Marble exploration	D:\Projects\Marble\Marble\Marble_WwiseProject\.cache\Windows\SFX\Neutral environment - Marble exploration_9B96ECC7.wem		\Interactive Music Hierarchy\Default Work Unit\main theme\Neutral environment - Marble exploration\Neutral environment - Marble exploration		2965705
+

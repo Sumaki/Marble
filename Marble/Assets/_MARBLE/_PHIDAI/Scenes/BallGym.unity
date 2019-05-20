@@ -5238,6 +5238,10 @@ MonoBehaviour:
   end: 1
   speed: 25
   OneWay: 0
+  CameraMaxDistance: 0
+  CameraMinDistance: 0
+  desiredFov: 0
+  player: {fileID: 0}
 --- !u!65 &1164479070
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7643,6 +7647,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2336336150950110792, guid: 81e5c9f1979f5484e9fb2b2e682b1e9e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 2336336151352464676, guid: 81e5c9f1979f5484e9fb2b2e682b1e9e,
         type: 3}
       propertyPath: cameraBase
@@ -7683,11 +7692,6 @@ PrefabInstance:
       propertyPath: FinalDirection
       value: 
       objectReference: {fileID: 1128739109}
-    - target: {fileID: 2336336150950110792, guid: 81e5c9f1979f5484e9fb2b2e682b1e9e,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81e5c9f1979f5484e9fb2b2e682b1e9e, type: 3}
 --- !u!1 &1902514634
@@ -8352,6 +8356,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7087936789113918000, guid: ef65ec39ccf9759409fb7b6cbd1aee33,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: b8a032c70a255d24480d4af132926a1d,
+        type: 2}
+    - target: {fileID: 7087936789113917997, guid: ef65ec39ccf9759409fb7b6cbd1aee33,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7087936789113917997, guid: ef65ec39ccf9759409fb7b6cbd1aee33,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7087936789113917997, guid: ef65ec39ccf9759409fb7b6cbd1aee33,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7087936789113917997, guid: ef65ec39ccf9759409fb7b6cbd1aee33,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7087936789113917996, guid: ef65ec39ccf9759409fb7b6cbd1aee33,
         type: 3}
       propertyPath: cameraBase
@@ -8400,32 +8430,6 @@ PrefabInstance:
     - target: {fileID: 7087936789113917996, guid: ef65ec39ccf9759409fb7b6cbd1aee33,
         type: 3}
       propertyPath: TEST_VARIABLES
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7087936789113918000, guid: ef65ec39ccf9759409fb7b6cbd1aee33,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 13400000, guid: b8a032c70a255d24480d4af132926a1d,
-        type: 2}
-    - target: {fileID: 7087936789113917997, guid: ef65ec39ccf9759409fb7b6cbd1aee33,
-        type: 3}
-      propertyPath: m_Interpolate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7087936789113917997, guid: ef65ec39ccf9759409fb7b6cbd1aee33,
-        type: 3}
-      propertyPath: m_AngularDrag
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7087936789113917997, guid: ef65ec39ccf9759409fb7b6cbd1aee33,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7087936789113917997, guid: ef65ec39ccf9759409fb7b6cbd1aee33,
-        type: 3}
-      propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

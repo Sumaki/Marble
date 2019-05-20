@@ -1,0 +1,185 @@
+fileFormatVersion: 2
+guid: d64649297f0d31a448f3cc18abe5a388
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Door_4x4
+    100004: Door_4x4_L
+    100006: Door_4x4_R
+    100008: Pillar_x16_LP
+    100010: Pillar_x48_LP
+    100012: Stair_x2_one_side
+    100014: Stair_x2_two_sides
+    100016: Stair_x4_one_side
+    100018: Stair_x4_two_sides
+    100020: Straight_Ramp_x4_one_side
+    100022: Wall_Border_2x4
+    100024: Wall_Corner_IN_x1_Collider
+    100026: Wall_Corner_IN_x2_Collider
+    100028: Wall_Corner_IN_x4_Collider
+    100030: Wall_Corner_OUT_x2
+    100032: Wall_Corner_Rounded_IN_x1
+    100034: Wall_Corner_Rounded_IN_x2_Collider
+    100036: Wall_Corner_Rounded_IN_x4_Collider
+    400000: //RootNode
+    400002: Door_4x4
+    400004: Door_4x4_L
+    400006: Door_4x4_R
+    400008: Pillar_x16_LP
+    400010: Pillar_x48_LP
+    400012: Stair_x2_one_side
+    400014: Stair_x2_two_sides
+    400016: Stair_x4_one_side
+    400018: Stair_x4_two_sides
+    400020: Straight_Ramp_x4_one_side
+    400022: Wall_Border_2x4
+    400024: Wall_Corner_IN_x1_Collider
+    400026: Wall_Corner_IN_x2_Collider
+    400028: Wall_Corner_IN_x4_Collider
+    400030: Wall_Corner_OUT_x2
+    400032: Wall_Corner_Rounded_IN_x1
+    400034: Wall_Corner_Rounded_IN_x2_Collider
+    400036: Wall_Corner_Rounded_IN_x4_Collider
+    2100000: 'Material #121'
+    2100002: No Name
+    2300000: Door_4x4
+    2300002: Door_4x4_L
+    2300004: Door_4x4_R
+    2300006: Pillar_x16_LP
+    2300008: Pillar_x48_LP
+    2300010: Stair_x2_one_side
+    2300012: Stair_x2_two_sides
+    2300014: Stair_x4_one_side
+    2300016: Stair_x4_two_sides
+    2300018: Straight_Ramp_x4_one_side
+    2300020: Wall_Border_2x4
+    2300022: Wall_Corner_IN_x1_Collider
+    2300024: Wall_Corner_IN_x2_Collider
+    2300026: Wall_Corner_IN_x4_Collider
+    2300028: Wall_Corner_OUT_x2
+    2300030: Wall_Corner_Rounded_IN_x1
+    2300032: Wall_Corner_Rounded_IN_x2_Collider
+    2300034: Wall_Corner_Rounded_IN_x4_Collider
+    3300000: Door_4x4
+    3300002: Door_4x4_L
+    3300004: Door_4x4_R
+    3300006: Pillar_x16_LP
+    3300008: Pillar_x48_LP
+    3300010: Stair_x2_one_side
+    3300012: Stair_x2_two_sides
+    3300014: Stair_x4_one_side
+    3300016: Stair_x4_two_sides
+    3300018: Straight_Ramp_x4_one_side
+    3300020: Wall_Border_2x4
+    3300022: Wall_Corner_IN_x1_Collider
+    3300024: Wall_Corner_IN_x2_Collider
+    3300026: Wall_Corner_IN_x4_Collider
+    3300028: Wall_Corner_OUT_x2
+    3300030: Wall_Corner_Rounded_IN_x1
+    3300032: Wall_Corner_Rounded_IN_x2_Collider
+    3300034: Wall_Corner_Rounded_IN_x4_Collider
+    4300000: Door_4x4
+    4300002: Door_4x4_L
+    4300004: Door_4x4_R
+    4300006: Wall_Border_2x4
+    4300008: Stair_x4_one_side
+    4300010: Stair_x4_two_sides
+    4300012: Stair_x2_two_sides
+    4300014: Stair_x2_one_side
+    4300016: Wall_Corner_OUT_x2
+    4300018: Wall_Corner_Rounded_IN_x1
+    4300020: Straight_Ramp_x4_one_side
+    4300022: Pillar_x16_LP
+    4300024: Pillar_x48_LP
+    4300026: Wall_Corner_IN_x2_Collider
+    4300028: Wall_Corner_IN_x1_Collider
+    4300030: Wall_Corner_IN_x4_Collider
+    4300032: Wall_Corner_Rounded_IN_x4_Collider
+    4300034: Wall_Corner_Rounded_IN_x2_Collider
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
