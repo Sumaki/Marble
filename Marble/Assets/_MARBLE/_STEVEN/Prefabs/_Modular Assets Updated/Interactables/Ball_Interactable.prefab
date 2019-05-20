@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 8901958224976166405}
   - component: {fileID: 2588412344071319413}
   m_Layer: 0
-  m_Name: Ball_Interactable 1
-  m_TagString: Untagged
+  m_Name: Ball_Interactable
+  m_TagString: SpherePushable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,4 +107,4 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
