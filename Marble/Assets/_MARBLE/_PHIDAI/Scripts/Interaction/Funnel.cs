@@ -25,7 +25,7 @@ public class Funnel : MonoBehaviour
     bool activePower = false;
     bool powerOn = false;
     bool launch = false;
-    bool spin = false;
+    bool spin;
 
     private void Update()
     {
@@ -41,11 +41,13 @@ public class Funnel : MonoBehaviour
 
         if (spin)
         {
-            SpinFinish();
+            StartCoroutine(SpinDuration());
+            spin = false;
         }
 
-        //   Debug.Log("Spin variable: " + spin);
+        //Debug.Log("Spin variable: " + spin);
         //Debug.Log("Launch Variable: " + launch);
+
     }
 
     private void OnTriggerStay(Collider other)
@@ -89,7 +91,9 @@ public class Funnel : MonoBehaviour
             if (Input.GetKeyUp(KeyCode.Space))
             {
                 // do it
+                spin = true;
                 powerOn = true;
+                
             }
         }
     }
@@ -107,8 +111,7 @@ public class Funnel : MonoBehaviour
             // do it for x amount of spins or timer
             // launch the player
 
-            playerBall.transform.position = new Vector3(x, y, z);
-            StartCoroutine(SpinDuration());
+        playerBall.transform.position = new Vector3(x, y, z);
 
         // do the ability, set a force to push the ball in a Vector.up motion in global space
         // maybe set the camera in a upwards view?
@@ -116,30 +119,31 @@ public class Funnel : MonoBehaviour
 
     IEnumerator SpinDuration()
     {
-        
+        // spin = false;
+        Debug.Log("In spin duration");
         yield return new WaitForSeconds(seconds);
-        spin = true;
+        SpinFinish();
+       // spin = true;
+    
     }
 
     void SpinFinish()
     {
-        if (spin)
-        {
-            Debug.Log("SpinDurationFunction");
 
+            Debug.Log("Finishing Spin");
+            powerOn = false;
             timerCounter = 0;
             launch = true;
           
-            powerOn = false;
-            spin = false;
-        }
+           
     }
 
     void BurstUp()
     {
         // launch the player upwards
         //playerBall.GetComponent<Rigidbody>().AddForce(Vector3.up * launchPower);
-        playerBall.GetComponent<Rigidbody>().AddForceAtPosition(Vector3.up * launchPower, playerBall.transform.position);
+        playerBall.GetComponent<Rigidbody>().AddForceAtPosition(Vector3.up * launchPower * 10f, playerBall.transform.position);
+        //playerBall.GetComponent<Rigidbody>().AddExplosionForce(launchPower, playerBall.transform.position, 1f);
         Debug.Log("Launching");
         launch = false;
     }
