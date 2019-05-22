@@ -13,9 +13,9 @@ public class RotatePipe : MonoBehaviour
     private void Start()
     {
         ani = objAffected.GetComponent<Animator>();
-        for (int i = 0; i < pathsToDisableWhenTriggered.Length - 1; i++)
+        for (int i = 0; i <= pathsToDisableWhenTriggered.Length - 1; i++)
             pathsToDisableWhenTriggered[i].GetComponent<BoxCollider>().enabled = false;
-        for (int i = 0; i < pathsToEnableWhenTriggered.Length - 1; i++)
+        for (int i = 0; i <= pathsToEnableWhenTriggered.Length - 1; i++)
             pathsToEnableWhenTriggered[i].GetComponent<BoxCollider>().enabled = false;
     }
 
@@ -47,12 +47,12 @@ public class RotatePipe : MonoBehaviour
 
     void DisableEnablePaths()
     {
-        for(int i = 0; i < pathsToDisableWhenTriggered.Length - 1; i++)
+        for(int i = 0; i <= pathsToDisableWhenTriggered.Length - 1; i++)
         {
             pathsToDisableWhenTriggered[i].GetComponent<BoxCollider>().enabled = false;
         }
 
-        for(int i = 0; i < pathsToEnableWhenTriggered.Length - 1; i++)
+        for(int i = 0; i <= pathsToEnableWhenTriggered.Length - 1; i++)
         {
             pathsToEnableWhenTriggered[i].GetComponent<BoxCollider>().enabled = true;
         }
@@ -60,12 +60,12 @@ public class RotatePipe : MonoBehaviour
 
     void Revert()
     {
-        for (int i = 0; i < pathsToDisableWhenTriggered.Length - 1; i++)
+        for (int i = 0; i <= pathsToDisableWhenTriggered.Length - 1; i++)
         {
             pathsToDisableWhenTriggered[i].GetComponent<BoxCollider>().enabled = false;
         }
 
-        for (int i = 0; i < pathsToEnableWhenTriggered.Length - 1; i++)
+        for (int i = 0; i <= pathsToEnableWhenTriggered.Length - 1; i++)
         {
             pathsToEnableWhenTriggered[i].GetComponent<BoxCollider>().enabled = false;
         }
