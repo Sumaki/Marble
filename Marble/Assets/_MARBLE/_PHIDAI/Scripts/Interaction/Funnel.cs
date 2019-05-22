@@ -71,12 +71,12 @@ public class Funnel : MonoBehaviour
         // counter to check how long the player has been in the trigger
         // track that the player is constantly moving a speed that we set a limit to
 
-        if (Input.GetKey(KeyCode.Space) && !activePower && playerBall.GetComponent<Rigidbody>().velocity.magnitude >= speedLimitToActivate)
+        if ( (Input.GetKey(KeyCode.Space) || Input.GetButton("Submit_X"))  && !activePower && playerBall.GetComponent<Rigidbody>().velocity.magnitude >= speedLimitToActivate)
         {
             currentTimer += 1 * Time.deltaTime;
         }
 
-        if(Input.GetKeyUp(KeyCode.Space) && !activePower)
+        if(  (Input.GetKeyUp(KeyCode.Space) || Input.GetButtonUp("Submit_X")) && !activePower)
         {
             currentTimer = 0;
         }
@@ -88,7 +88,7 @@ public class Funnel : MonoBehaviour
 
         if (activePower && !powerOn)
         {
-            if (Input.GetKeyUp(KeyCode.Space))
+            if (Input.GetKeyUp(KeyCode.Space) || Input.GetButtonUp("Submit_X"))
             {
                 // do it
                 spin = true;

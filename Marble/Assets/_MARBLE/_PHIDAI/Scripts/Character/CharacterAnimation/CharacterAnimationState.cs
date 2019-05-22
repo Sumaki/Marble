@@ -7,7 +7,7 @@ public class CharacterAnimationState : MonoBehaviour
 
     public Animator ani;
 
-    public enum CharacterState { idle, walk, run, jump, push, morphBall, morphHumanoid }
+    public enum CharacterState { idle, walk, run, jump, fall, push, morphBall, morphHumanoid }
     public CharacterState state;
 
     public float walkSpeedAnim;
@@ -38,6 +38,9 @@ public class CharacterAnimationState : MonoBehaviour
                 break;
             case CharacterState.jump:
                 Jump();
+                break;
+            case CharacterState.fall:
+                Fall();
                 break;
             case CharacterState.push:
                 Push();
@@ -91,6 +94,18 @@ public class CharacterAnimationState : MonoBehaviour
         ani.SetBool("Walk", false);
         //ani.SetBool("Run", false);
         ani.SetBool("Jump", true);
+        ani.SetBool("Push", false);
+        ani.SetBool("MorphBall", false);
+        ani.SetBool("MorphHumanoid", false);
+    }
+
+    void Fall()
+    {
+        ani.SetBool("Idle", false);
+        ani.SetBool("Walk", false);
+        //ani.SetBool("Run", false);
+        ani.SetBool("Jump", false);
+     //   ani.SetBool("Fall", true); // add
         ani.SetBool("Push", false);
         ani.SetBool("MorphBall", false);
         ani.SetBool("MorphHumanoid", false);

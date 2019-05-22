@@ -787,10 +787,10 @@ MonoBehaviour:
   speedLimitToActivate: 15
   timerToActivate: 5
   speed: 5
-  width: 5
-  height: 5
-  launchPower: 70
-  seconds: 3
+  width: 10
+  height: 10
+  launchPower: 1000
+  seconds: 10
 --- !u!135 &1204388413
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -857,8 +857,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1204388411}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.95, y: 6.28, z: 0}
-  m_LocalScale: {x: 25, y: 25, z: 25}
+  m_LocalPosition: {x: 1.27, y: 6.28, z: -0.07}
+  m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
