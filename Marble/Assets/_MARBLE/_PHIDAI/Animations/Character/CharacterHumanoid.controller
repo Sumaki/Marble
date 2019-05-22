@@ -73,7 +73,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400002, guid: 2833a9defdbb006498f139f950c25ea9, type: 3}
+    m_Motion: {fileID: 7400008, guid: 98ce668fe0adb954b9461798d65d5eed, type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -81,10 +81,10 @@ BlendTree:
     m_DirectBlendParameter: Speed
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400004, guid: 5c4bc584889b09543963fb03b72320af, type: 3}
+    m_Motion: {fileID: 7400006, guid: 98ce668fe0adb954b9461798d65d5eed, type: 3}
     m_Threshold: 1
     m_Position: {x: 0, y: 0}
-    m_TimeScale: 2
+    m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Speed
     m_Mirror: 0
@@ -689,7 +689,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400002, guid: 5c4bc584889b09543963fb03b72320af, type: 3}
+  m_Motion: {fileID: 7400012, guid: 98ce668fe0adb954b9461798d65d5eed, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -733,7 +733,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: MorphHumanoid
-  m_Speed: -1
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101769555350638536}
@@ -747,7 +747,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400004, guid: 2833a9defdbb006498f139f950c25ea9, type: 3}
+  m_Motion: {fileID: 7400014, guid: 98ce668fe0adb954b9461798d65d5eed, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -805,7 +805,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 14871e26b151a114ab58a19eb771ebbd, type: 3}
+  m_Motion: {fileID: 7400010, guid: 98ce668fe0adb954b9461798d65d5eed, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
