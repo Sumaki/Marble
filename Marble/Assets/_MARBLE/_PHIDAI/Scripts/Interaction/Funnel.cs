@@ -62,6 +62,9 @@ public class Funnel : MonoBehaviour
             
             CheckConditions();
 
+            if(playerBall.GetComponent<Rigidbody>().velocity.magnitude <= 30f)
+                playerBall.GetComponent<Rigidbody>().velocity *= 1.05f;
+
            
         }
     }
@@ -71,6 +74,7 @@ public class Funnel : MonoBehaviour
         if(other.gameObject.tag == "PlayerBall")
         {
             currentTimer = 0;
+           
         }
     }
 
