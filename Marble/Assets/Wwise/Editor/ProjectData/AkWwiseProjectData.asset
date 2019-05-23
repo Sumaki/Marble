@@ -12,24 +12,278 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 648362a2599f3c247884f56315291c74, type: 3}
   m_Name: AkWwiseProjectData
   m_EditorClassIdentifier: 
-  AcousticTextureWwu: []
+  AcousticTextureWwu:
+  - Guid: '{45E850CE-D616-4BBB-9A6C-C8FC546063BF}'
+    m_lastTimePart2: -1999189156
+    m_lastTimePsrt1: -1811900928
+    ParentPhysicalPath: 
+    PhysicalPath: Virtual Acoustics\Default Work Unit.wwu
+    List: []
   autoPopulateEnabled: 1
-  AuxBusWwu: []
-  BankWwu: []
+  AuxBusWwu:
+  - Guid: '{1E974362-02FB-4D5F-8C2E-6D655D6CFA5A}'
+    m_lastTimePart2: -1999189156
+    m_lastTimePsrt1: -1811900928
+    ParentPhysicalPath: 
+    PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
+    List: []
+  BankWwu:
+  - Guid: '{0D83936B-9AF6-404D-A638-F0C978D665A9}'
+    m_lastTimePart2: -1999185283
+    m_lastTimePsrt1: 2014728960
+    ParentPhysicalPath: 
+    PhysicalPath: SoundBanks\Default Work Unit.wwu
+    List:
+    - Guid: 0d259631fa8a11489826116f213cd821
+      ID: -222937841
+      Name: New_SoundBank
+      Path: Default Work Unit\New_SoundBank
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: New_SoundBank
+        ObjectType: 7
   basePath: Audio\GeneratedSoundBanks
   callbackManagerBufferSize: 4
   CurrentPluginConfig: 
   defaultPoolSize: 4096
-  EventWwu: []
-  ExpandedItems: []
+  EventWwu:
+  - Guid: '{71D570BE-A59C-4095-A926-4EA71D22E8C2}'
+    m_lastTimePart2: -1999189156
+    m_lastTimePsrt1: -1811900928
+    ParentPhysicalPath: 
+    PhysicalPath: Events\Default Work Unit.wwu
+    List: []
+  - Guid: '{7434DC02-F725-44AB-8E82-3593AD2642FE}'
+    m_lastTimePart2: -1999185284
+    m_lastTimePsrt1: -1105271040
+    ParentPhysicalPath: 
+    PhysicalPath: Events\Music.wwu
+    List:
+    - Guid: 910b43baaf475142b8bfcf44d70600ac
+      ID: -606814535
+      Name: Boss_fight
+      Path: Music\BOSS\Boss_fight
+      PathAndIcons:
+      - ElementName: Music
+        ObjectType: 12
+      - ElementName: BOSS
+        ObjectType: 4
+      - ElementName: Boss_fight
+        ObjectType: 3
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - Guid: 1cd0eae9881acc4c8e26df3196edf1c3
+      ID: -654489118
+      Name: BOSS_LOSE
+      Path: Music\BOSS\BOSS_LOSE
+      PathAndIcons:
+      - ElementName: Music
+        ObjectType: 12
+      - ElementName: BOSS
+        ObjectType: 4
+      - ElementName: BOSS_LOSE
+        ObjectType: 3
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - Guid: 771db7427a68de4c979c5497b8445709
+      ID: 1275915897
+      Name: BOSS_WIN
+      Path: Music\BOSS\BOSS_WIN
+      PathAndIcons:
+      - ElementName: Music
+        ObjectType: 12
+      - ElementName: BOSS
+        ObjectType: 4
+      - ElementName: BOSS_WIN
+        ObjectType: 3
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - Guid: 33508c0bee1dff4aa5cc0ba68aa21651
+      ID: -691494297
+      Name: Enter_Boss_Room
+      Path: Music\BOSS\Enter_Boss_Room
+      PathAndIcons:
+      - ElementName: Music
+        ObjectType: 12
+      - ElementName: BOSS
+        ObjectType: 4
+      - ElementName: Enter_Boss_Room
+        ObjectType: 3
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - Guid: 78a972d9bd6b4448b5d06515e7b1a7e6
+      ID: 165985272
+      Name: Pick_amethyst
+      Path: Music\PICK_ELEMENTS\Pick_amethyst
+      PathAndIcons:
+      - ElementName: Music
+        ObjectType: 12
+      - ElementName: PICK_ELEMENTS
+        ObjectType: 4
+      - ElementName: Pick_amethyst
+        ObjectType: 3
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - Guid: fe807d0bd6396e46a5b29adf3f336a4b
+      ID: 315184738
+      Name: Pick_neutral
+      Path: Music\PICK_ELEMENTS\Pick_neutral
+      PathAndIcons:
+      - ElementName: Music
+        ObjectType: 12
+      - ElementName: PICK_ELEMENTS
+        ObjectType: 4
+      - ElementName: Pick_neutral
+        ObjectType: 3
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - Guid: 84074496beaad24e87d870f0aebe9311
+      ID: -1502515571
+      Name: Pick_ruby
+      Path: Music\PICK_ELEMENTS\Pick_ruby
+      PathAndIcons:
+      - ElementName: Music
+        ObjectType: 12
+      - ElementName: PICK_ELEMENTS
+        ObjectType: 4
+      - ElementName: Pick_ruby
+        ObjectType: 3
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - Guid: 9158f18c42966d4abdf14ce1c0e922ca
+      ID: -357230649
+      Name: Pick_sapphire
+      Path: Music\PICK_ELEMENTS\Pick_sapphire
+      PathAndIcons:
+      - ElementName: Music
+        ObjectType: 12
+      - ElementName: PICK_ELEMENTS
+        ObjectType: 4
+      - ElementName: Pick_sapphire
+        ObjectType: 3
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - Guid: 7180aa8b40cadc489cb961711a35a238
+      ID: 897997148
+      Name: Start_music_Boss_intro_rythme
+      Path: Music\BOSS\Start_music_Boss_intro_rythme
+      PathAndIcons:
+      - ElementName: Music
+        ObjectType: 12
+      - ElementName: BOSS
+        ObjectType: 4
+      - ElementName: Start_music_Boss_intro_rythme
+        ObjectType: 3
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - Guid: e878ec305d75ec4abddca61eb216192f
+      ID: -128973935
+      Name: Start_music_enviro
+      Path: Music\Start_music_enviro
+      PathAndIcons:
+      - ElementName: Music
+        ObjectType: 12
+      - ElementName: Start_music_enviro
+        ObjectType: 3
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+  ExpandedItems:
+  - /CorinnePhilippon5
+  - /CorinnePhilippon5/SoundBanks
+  - /CorinnePhilippon5/SoundBanks/Default Work Unit
+  - /CorinnePhilippon5/States
   language: English(US)
   lowerPoolSize: 2048
   m_lastPopulateTimePart2: 0
   m_lastPopulateTimePsrt1: 0
   memoryCutoffThreshold: 0.95
   preparePoolSize: 0
-  RtpcWwu: []
-  StateWwu: []
+  RtpcWwu:
+  - Guid: '{749D4417-8B47-47AE-800B-14C2535EE5D4}'
+    m_lastTimePart2: -1999189156
+    m_lastTimePsrt1: -1811900928
+    ParentPhysicalPath: 
+    PhysicalPath: Game Parameters\Default Work Unit.wwu
+    List: []
+  StateWwu:
+  - Guid: '{1C0BBDE4-F2CA-4DE1-915B-707B0A44E313}'
+    m_lastTimePart2: -1999189156
+    m_lastTimePsrt1: -1811900928
+    ParentPhysicalPath: 
+    PhysicalPath: States\Default Work Unit.wwu
+    List:
+    - Guid: ec7acc44bebd0d40b173eea81c2fefdc
+      ID: -2005336994
+      Name: MUSIC_ENVIRO
+      Path: Default Work Unit\MUSIC_ENVIRO
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: MUSIC_ENVIRO
+        ObjectType: 9
+      ValueGuids:
+      - bytes: a75f2b23c6431e449a4fc8ae847b76f9
+      - bytes: 7216bc926d2c7f4fab437a3c8d1a6ca9
+      - bytes: fea1c08fdf313543a71251b44631a4e6
+      - bytes: b70b51806bb4324597c8b93e75b7bd18
+      - bytes: a108d59184eb4c4285e19e9071149688
+      - bytes: 80e155df74e05a45825fcb1a7c6f8300
+      - bytes: 128989d0c4ee4d4caa70faa37cc82848
+      - bytes: ad0fca7cd417fe479a998a5288d7afcb
+      - bytes: 9e60061b1028654a9a069f0a59a95f9b
+      ValueIcons:
+      - ElementName: AMETHYSE
+        ObjectType: 8
+      - ElementName: AMETHYSE_PIPE
+        ObjectType: 8
+      - ElementName: NEUTRE
+        ObjectType: 8
+      - ElementName: NEUTRE_PIPE
+        ObjectType: 8
+      - ElementName: None
+        ObjectType: 8
+      - ElementName: RUBY
+        ObjectType: 8
+      - ElementName: RUBY_PIPE
+        ObjectType: 8
+      - ElementName: SAPPHIRE
+        ObjectType: 8
+      - ElementName: SAPPHIRE_PIPE
+        ObjectType: 8
+      valueIDs: b1014f87f860c60fa6cd976df92f19badb3ba32c553d9a7644ab4198ff397a03c6132796
+      values:
+      - AMETHYSE
+      - AMETHYSE_PIPE
+      - NEUTRE
+      - NEUTRE_PIPE
+      - None
+      - RUBY
+      - RUBY_PIPE
+      - SAPPHIRE
+      - SAPPHIRE_PIPE
   streamingPoolSize: 1024
-  SwitchWwu: []
-  TriggerWwu: []
+  SwitchWwu:
+  - Guid: '{98DDF0A2-2EF4-472E-8240-B36900EB67E2}'
+    m_lastTimePart2: -1999189156
+    m_lastTimePsrt1: -1811900928
+    ParentPhysicalPath: 
+    PhysicalPath: Switches\Default Work Unit.wwu
+    List: []
+  TriggerWwu:
+  - Guid: '{2C184281-121F-4054-A342-F645CE3757A7}'
+    m_lastTimePart2: -1999189156
+    m_lastTimePsrt1: -1811900928
+    ParentPhysicalPath: 
+    PhysicalPath: Triggers\Default Work Unit.wwu
+    List: []

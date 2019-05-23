@@ -29,6 +29,7 @@ public class Gem : MonoBehaviour
             CheckWhatElementObtained();
             StartCoroutine(TimerToSwtich());
             //ani.SetTrigger("Open");
+            gm_.GetComponent<GameManager>().playerHumanoid.GetComponent<CharacterAnimationState>().state = CharacterAnimationState.CharacterState.grab_element;
             Destroy(this.gameObject, 0.5f);
         }
     }

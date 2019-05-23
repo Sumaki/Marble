@@ -55,6 +55,11 @@ public class PushingBox : MonoBehaviour
             {
                 isPushing = true;
             }
+            
+            //if(inputTest < 0 && !isPushing)
+            //{
+            //    isPushing = true;
+            //}
         }
 
         if (isPushing)

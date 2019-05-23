@@ -111,7 +111,7 @@ public class Funnel : MonoBehaviour
             // do it for x amount of spins or timer
             // launch the player
 
-        playerBall.transform.position = new Vector3(x, y, z);
+        playerBall.transform.position = new Vector3(gameObject.transform.position.x + x, gameObject.transform.position.y, gameObject.transform.position.z + z);
 
         // do the ability, set a force to push the ball in a Vector.up motion in global space
         // maybe set the camera in a upwards view?
@@ -142,7 +142,7 @@ public class Funnel : MonoBehaviour
     {
         // launch the player upwards
         //playerBall.GetComponent<Rigidbody>().AddForce(Vector3.up * launchPower);
-        playerBall.GetComponent<Rigidbody>().AddForceAtPosition(Vector3.up * launchPower * 10f, playerBall.transform.position);
+        playerBall.GetComponent<Rigidbody>().AddForceAtPosition(Vector3.up * launchPower * 1000f, playerBall.transform.position);
         //playerBall.GetComponent<Rigidbody>().AddExplosionForce(launchPower, playerBall.transform.position, 1f);
         Debug.Log("Launching");
         launch = false;
