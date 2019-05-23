@@ -35,7 +35,8 @@ public class PushingBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        inputTest = Input.GetAxis("Vertical");
+        //Debug.Log("Move position: " + movePosition);
+        inputTest = Input.GetAxisRaw("Vertical");
 
         //Debug.Log("Final position of spherecast: " + p1);
 
@@ -59,13 +60,13 @@ public class PushingBox : MonoBehaviour
         if (isPushing)
         {
             // Debug.Log(isGrounded()); recheck for grounded 
-            canPush = false;
-
+          
             transform.position = Vector3.MoveTowards(transform.position, movePosition, 5 * Time.deltaTime);
         }
 
         if (transform.position == movePosition)
         {
+            Debug.Log("Done moving to position");
             canPush = false;
             isPushing = false;
         }
