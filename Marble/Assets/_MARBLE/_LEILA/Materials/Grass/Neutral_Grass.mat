@@ -11,7 +11,7 @@ Material:
   m_Shader: {fileID: 4800000, guid: d1356c77d6d8a2f40a97e645efcc9a45, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -80,3 +80,4 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _windMvt: {r: 2, g: 0, b: 0, a: 0}
+    - _worldPosition: {r: 0, g: 0, b: 0, a: 0}
