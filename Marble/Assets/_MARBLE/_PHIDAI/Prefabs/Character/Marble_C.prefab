@@ -112,7 +112,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!135 &1210640272155539318
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1808,7 +1808,7 @@ GameObject:
   - component: {fileID: 1210640271128982310}
   m_Layer: 0
   m_Name: 'Marble UVED '
-  m_TagString: Untagged
+  m_TagString: PlayerBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2351,8 +2351,8 @@ MonoBehaviour:
   horizontalMovement: 0
   verticalMovement: 0
   enableInputs: 1
-  movementSpeed: 7
-  jumpPower: 6
+  movementSpeed: 10
+  jumpPower: 6.7
   pushingPower: 2.5
 --- !u!114 &3504182796552348805
 MonoBehaviour:
@@ -2677,7 +2677,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 69da4dbc4e12c444ca0052791085a137, type: 2}
+  - {fileID: 2100000, guid: ab7698c0cf29aee4ca1314f33b8af81c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4501,6 +4501,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Marble_Humanoid
+      objectReference: {fileID: 0}
+    - target: {fileID: 6778856454582166444, guid: cf530f9857b6468468cfcb17ee00f67c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2865029288736286402, guid: cf530f9857b6468468cfcb17ee00f67c,
         type: 3}

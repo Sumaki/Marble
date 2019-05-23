@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blendObjectBall: {fileID: 0}
-  blendObjectHumanoid: {fileID: 0}
   camera_: {fileID: 0}
   ballCamera: {fileID: 0}
   humanoidCamera: {fileID: 0}
   ballObjScripts: {fileID: 0}
   humanoidObjScripts: {fileID: 0}
+  canMorph: 1
