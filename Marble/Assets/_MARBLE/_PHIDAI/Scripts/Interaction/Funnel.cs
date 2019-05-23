@@ -66,20 +66,33 @@ public class Funnel : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.tag == "PlayerBall")
+        {
+            currentTimer = 0;
+        }
+    }
+
     void CheckConditions()
     {
         // counter to check how long the player has been in the trigger
         // track that the player is constantly moving a speed that we set a limit to
 
-        if ( (Input.GetKey(KeyCode.Space) || Input.GetButton("Submit_X"))  && !activePower && playerBall.GetComponent<Rigidbody>().velocity.magnitude >= speedLimitToActivate)
+        if (!activePower && playerBall.GetComponent<Rigidbody>().velocity.magnitude >= speedLimitToActivate)
         {
             currentTimer += 1 * Time.deltaTime;
         }
 
-        if(  (Input.GetKeyUp(KeyCode.Space) || Input.GetButtonUp("Submit_X")) && !activePower)
+        if (!activePower && playerBall.GetComponent<Rigidbody>().velocity.magnitude < speedLimitToActivate)
         {
-            currentTimer = 0;
+            currentTimer -= 1 * Time.deltaTime;
         }
+
+        //if(  (Input.GetKeyUp(KeyCode.Space) || Input.GetButtonUp("Submit_X")) && !activePower)
+        //{
+        //    currentTimer = 0;
+        //}
 
         if (currentTimer >= timerToActivate)
         {
@@ -88,7 +101,7 @@ public class Funnel : MonoBehaviour
 
         if (activePower && !powerOn)
         {
-            if (Input.GetKeyUp(KeyCode.Space) || Input.GetButtonUp("Submit_X"))
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Submit_X"))
             {
                 // do it
                 spin = true;
