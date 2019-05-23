@@ -51,6 +51,7 @@ public class RotatePipe : MonoBehaviour
             pipePathStart.GetComponent<BoxCollider>().enabled = false;         
             DisableEnablePaths();
             objTriggered = true;
+            triggered = true;
             if(multiplePathTriggers)
                 TriggerOverlap();
         }
@@ -67,6 +68,7 @@ public class RotatePipe : MonoBehaviour
             pipePathStart.GetComponent<BoxCollider>().enabled = true;
             Revert();
             objTriggered = false;
+            triggered = false;
         }
     }
 
@@ -126,6 +128,11 @@ public class RotatePipe : MonoBehaviour
     {
         if (multipleTriggers)
         {
+            Debug.Log("YO IM TURNING IT OFF");
+            pipePathStart.GetComponent<BoxCollider>().enabled = false;
+            for (int i = 0; i <= pathsToDisableWhenTriggered.Length - 1; i++) { pathsToDisableWhenTriggered[i].GetComponent<BoxCollider>().enabled = false; }
+            for (int i = 0; i <= pathsToEnableWhenTriggered.Length - 1; i++) { pathsToEnableWhenTriggered[i].GetComponent<BoxCollider>().enabled = false; }
+
             for (int i = 0; i <= pathsOffForFinalPath.Length - 1; i++) { pathsOffForFinalPath[i].GetComponent<BoxCollider>().enabled = false; }
             for (int i = 0; i <= pathsOnForFinalPath.Length - 1; i++) { pathsOnForFinalPath[i].GetComponent<BoxCollider>().enabled = true; }
         }
