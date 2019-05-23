@@ -19,6 +19,8 @@ public class Funnel : MonoBehaviour
     [Header("How long until the ability ends?")]
     public float seconds;
 
+    [Header("Speed limit Inside")]
+    public float speedLimit;
 
     float timerCounter = 0f;
     float currentTimer = 0f;
@@ -62,7 +64,7 @@ public class Funnel : MonoBehaviour
             
             CheckConditions();
 
-            if(playerBall.GetComponent<Rigidbody>().velocity.magnitude <= 30f)
+            if(playerBall.GetComponent<Rigidbody>().velocity.magnitude <= speedLimit)
                 playerBall.GetComponent<Rigidbody>().velocity *= 1.05f;
 
            
