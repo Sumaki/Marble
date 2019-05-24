@@ -28,6 +28,7 @@ public class SceneChangeManager : MonoBehaviour
                 SceneManager.LoadScene(2); // stick with index for now, change in the future
                 break;
             case LevelStates.Boss:
+                SceneManager.LoadScene(3);
                 break;
         }
     }

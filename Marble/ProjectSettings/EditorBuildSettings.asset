@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_MARBLE/_STEVEN/Scenes/__Temple.unity
     guid: ef21351bd836b884fa417c89dfc7a41e
+  - enabled: 1
+    path: Assets/_MARBLE/_STEVEN/Scenes/_Boss_Room.unity
+    guid: c8723b1563ff3d4479b399bd1b4f4347
   m_configObjects: {}
