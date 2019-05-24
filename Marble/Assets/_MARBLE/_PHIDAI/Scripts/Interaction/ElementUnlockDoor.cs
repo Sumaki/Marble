@@ -58,5 +58,6 @@ public class ElementUnlockDoor : MonoBehaviour
         ani_eye.SetBool("EyeOpen", true);
         yield return new WaitForSeconds(3.2f);
         ani_door.SetTrigger("Open");
+        ani_eye.SetBool("EyeOpen", false);
     }
 }

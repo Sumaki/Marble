@@ -81,6 +81,7 @@ public class Funnel : MonoBehaviour
         if(other.gameObject.tag == "PlayerBall")
         {
             currentTimer = 0;
+            emitSpeed = -10f;
            
         }
     }
@@ -94,9 +95,9 @@ public class Funnel : MonoBehaviour
         {
             currentTimer += 1 * Time.deltaTime;
 
-            if (emitSpeed >= -10 && emitSpeed < 10)
+            if (emitSpeed >= -10 && emitSpeed <= 10)
             {
-                playerBallMesh.GetComponent<SkinnedMeshRenderer>().material.SetFloat("_funnelColor", emitSpeed += 3 * Time.deltaTime);
+                playerBallMesh.GetComponent<SkinnedMeshRenderer>().material.SetFloat("_funnelColor", emitSpeed += 1);
             }
         }
 
@@ -106,7 +107,7 @@ public class Funnel : MonoBehaviour
 
             if (emitSpeed >= -10 && emitSpeed <= 10)
             {
-                playerBallMesh.GetComponent<SkinnedMeshRenderer>().material.SetFloat("_funnelColor", emitSpeed -= 3 * Time.deltaTime);
+                playerBallMesh.GetComponent<SkinnedMeshRenderer>().material.SetFloat("_funnelColor", emitSpeed -= 1);
             }
         }
 
