@@ -105,9 +105,11 @@ public class DoorTriggerHold : MonoBehaviour
 
     IEnumerator StartTimer()
     {
-        ani.SetTrigger("Open");      
+        ani.SetTrigger("Hold");      
         yield return new WaitForSeconds(timer_length);
-        ani.ResetTrigger("Open");
         ani.SetTrigger("Close");
+        yield return new WaitForSeconds(1f);
+        ani.ResetTrigger("Hold");
+        ani.ResetTrigger("Close");
     }
 }
