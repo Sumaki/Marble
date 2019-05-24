@@ -38,10 +38,10 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 10
+    value: 6.4
   threshold:
     overrideState: 1
-    value: 0.99
+    value: 1.02
   softKnee:
     overrideState: 0
     value: 0.616
@@ -158,7 +158,7 @@ MonoBehaviour:
     value: -15
   saturation:
     overrideState: 1
-    value: 22
+    value: 11
   brightness:
     overrideState: 0
     value: 0
