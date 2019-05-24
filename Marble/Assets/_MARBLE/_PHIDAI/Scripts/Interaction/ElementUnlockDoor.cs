@@ -26,9 +26,10 @@ public class ElementUnlockDoor : MonoBehaviour
             CheckWhichElement();
             if (open)
             {
-                other.GetComponent<Animator>().enabled = true;
-                other.GetComponent<Animator>().SetBool("Unlock", true);
+                //other.GetComponent<Animator>().enabled = true;
+                //other.GetComponent<Animator>().SetBool("Unlock", true);
                 //ani_door.SetTrigger("Open");
+                StartCoroutine(AnimationSequence());
             }
         }
     }
@@ -50,5 +51,12 @@ public class ElementUnlockDoor : MonoBehaviour
                     open = true;
                 break;
         }
+    }
+
+    IEnumerator AnimationSequence()
+    {
+        ani_eye.SetBool("EyeOpen", true);
+        yield return new WaitForSeconds(3.2f);
+        ani_door.SetTrigger("Open");
     }
 }

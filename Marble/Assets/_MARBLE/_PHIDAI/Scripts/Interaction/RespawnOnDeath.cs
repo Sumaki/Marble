@@ -49,6 +49,7 @@ public class RespawnOnDeath : MonoBehaviour
             CharacterController cc = playerHumanoid.GetComponent<CharacterController>();
             cc.enabled = false;
             cc.transform.position = gm_.GetComponent<GameManager>().currentRespawn.position;
+            cc.transform.rotation = gm_.GetComponent<GameManager>().currentRespawn.rotation;
             playerHumanoid.GetComponent<CharacterAnimationState>().state = CharacterAnimationState.CharacterState.idle;
             cc.enabled = true;                       
             dead = false;

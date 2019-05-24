@@ -12,14 +12,17 @@ public class DoorTriggerHold : MonoBehaviour
     public PlayerState whichForm;
 
    
-    public enum DoorState { Normal, Secret}
+    public enum DoorState { Normal, Secret, Timer}
     [Header("What kind of door will it activate?")]
     public DoorState doorState;
 
     [Header("Can objects interact with it? (Put a Pushable tag on it!)")]
     public bool objectAllowed;
 
-   
+    [Header("Length of the timer")]
+    public float timer_length = 0f;
+
+
     private void OnTriggerStay(Collider other)
     {
         if (whichForm == PlayerState.Humanoid)
@@ -39,6 +42,10 @@ public class DoorTriggerHold : MonoBehaviour
             if (other.gameObject.tag == "SpherePushable")
                 CheckDoorStateEntered();
         }
+
+        
+           
+        
     }
 
     private void OnTriggerExit(Collider other)
@@ -75,11 +82,16 @@ public class DoorTriggerHold : MonoBehaviour
             ani.SetTrigger("Open");
             ani.SetFloat("Speed", 1);
         }
+
+        if(doorState == DoorState.Timer)
+        {
+            StartCoroutine(StartTimer());
+        }
     }
 
     void CheckDoorStateExit()
     {
-        if (doorState == DoorState.Normal)
+        if (doorState == DoorState.Normal )
         {
             ani.ResetTrigger("Hold");
             ani.SetTrigger("Close");
@@ -89,5 +101,13 @@ public class DoorTriggerHold : MonoBehaviour
         {
             ani.SetFloat("Speed", -1);
         }
+    }
+
+    IEnumerator StartTimer()
+    {
+        ani.SetTrigger("Open");      
+        yield return new WaitForSeconds(timer_length);
+        ani.ResetTrigger("Open");
+        ani.SetTrigger("Close");
     }
 }
