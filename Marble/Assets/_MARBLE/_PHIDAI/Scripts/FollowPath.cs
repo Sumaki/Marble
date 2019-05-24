@@ -131,12 +131,37 @@ public class FollowPath : MonoBehaviour
             }
         }
 
+        if(Vector3.Distance(player.transform.position, pathCreator.path.GetPoint(0.1f)) <= 1f && !OneWay)
+        {
+            reset = true;
+            entered = false;
+            if (isPlayer)
+            {
+                if (Camera.main.fieldOfView != startFov)
+                    if (Camera.main.fieldOfView >= desiredFov)
+                        Camera.main.fieldOfView = startFov;
+
+                mm_.canMorph = true;
+                player.GetComponent<Rigidbody>().velocity = player.transform.forward * speed;
+            }
+        }
+
         //if(isPlayer)
         //    DisablePlayer();
 
-        dstTravelled += speed * Time.deltaTime;
-        player.transform.position = pathCreator.path.GetPointAtDistance(dstTravelled, end);
-        player.transform.rotation = pathCreator.path.GetRotationAtDistance(dstTravelled, end);
+        if (end == EndOfPathInstruction.Stop)
+        {
+            dstTravelled += speed * Time.deltaTime;
+            player.transform.position = pathCreator.path.GetPointAtDistance(dstTravelled, end);
+            player.transform.rotation = pathCreator.path.GetRotationAtDistance(dstTravelled, end);
+        }
+
+        if(end == EndOfPathInstruction.Reverse)
+        {
+            dstTravelled -= speed * Time.deltaTime;
+            player.transform.position = pathCreator.path.GetPointAtDistance(dstTravelled, end);
+            player.transform.rotation = pathCreator.path.GetRotationAtDistance(dstTravelled, end);
+        }
     }
 
     void DisablePlayer()

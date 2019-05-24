@@ -6,6 +6,8 @@ public class Funnel : MonoBehaviour
 {
     [Header("Player Ball Object")]
     public GameObject playerBall;
+    [Header("Player's Ball Mesh")]
+    public GameObject playerBallMesh;
     [Header("How much speed do we need to keep at? (either the same or greater)")]
     public float speedLimitToActivate;
     [Header("How long until we activate the power")]
@@ -29,6 +31,8 @@ public class Funnel : MonoBehaviour
     bool launch = false;
     bool spin;
 
+    public float emitSpeed = -10f;
+
     private void Update()
     {
         if (powerOn)
@@ -49,6 +53,7 @@ public class Funnel : MonoBehaviour
 
         //Debug.Log("Spin variable: " + spin);
         //Debug.Log("Launch Variable: " + launch);
+        Debug.Log("Emit Speed: " + emitSpeed);
 
     }
 
@@ -88,11 +93,21 @@ public class Funnel : MonoBehaviour
         if (!activePower && playerBall.GetComponent<Rigidbody>().velocity.magnitude >= speedLimitToActivate)
         {
             currentTimer += 1 * Time.deltaTime;
+
+            if (emitSpeed >= -10 && emitSpeed < 10)
+            {
+                playerBallMesh.GetComponent<SkinnedMeshRenderer>().material.SetFloat("_funnelColor", emitSpeed += 3 * Time.deltaTime);
+            }
         }
 
         if (!activePower && playerBall.GetComponent<Rigidbody>().velocity.magnitude < speedLimitToActivate)
         {
             currentTimer -= 1 * Time.deltaTime;
+
+            if (emitSpeed >= -10 && emitSpeed <= 10)
+            {
+                playerBallMesh.GetComponent<SkinnedMeshRenderer>().material.SetFloat("_funnelColor", emitSpeed -= 3 * Time.deltaTime);
+            }
         }
 
         //if(  (Input.GetKeyUp(KeyCode.Space) || Input.GetButtonUp("Submit_X")) && !activePower)
