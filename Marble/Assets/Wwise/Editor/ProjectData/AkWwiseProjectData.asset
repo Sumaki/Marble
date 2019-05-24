@@ -200,9 +200,9 @@ MonoBehaviour:
       minDuration: 0
   ExpandedItems:
   - /CorinnePhilippon5
-  - /CorinnePhilippon5/SoundBanks
-  - /CorinnePhilippon5/SoundBanks/Default Work Unit
-  - /CorinnePhilippon5/States
+  - /CorinnePhilippon5/Events
+  - /CorinnePhilippon5/Events/Music
+  - /CorinnePhilippon5/Events/Music/BOSS
   language: English(US)
   lowerPoolSize: 2048
   m_lastPopulateTimePart2: 0

@@ -5,7 +5,9 @@ using UnityEngine;
 public class ElementUnlockDoor : MonoBehaviour
 {
     [Header("Which door's animator?")]
-    public Animator ani; 
+    public Animator ani_door;
+    [Header("Eye Animator")]
+    public Animator ani_eye;
     public enum DoorType { Ruby, Sapphire, Amethyste }
     [Header("What element does this door need?")]
     public DoorType whichElement;
@@ -19,12 +21,14 @@ public class ElementUnlockDoor : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "PlayerHumanoid" || other.gameObject.tag == "PlayerBall")
+        if(other.gameObject.tag == "PlayerBall") //other.gameObject.tag == "PlayerHumanoid" || other.gameObject.tag == "PlayerBall")
         {
             CheckWhichElement();
             if (open)
-            {   
-                ani.SetTrigger("Open");
+            {
+                other.GetComponent<Animator>().enabled = true;
+                other.GetComponent<Animator>().SetBool("Unlock", true);
+                //ani_door.SetTrigger("Open");
             }
         }
     }

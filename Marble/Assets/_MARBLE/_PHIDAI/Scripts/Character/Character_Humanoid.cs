@@ -92,6 +92,8 @@ public class Character_Humanoid : MonoBehaviour
         }
         if (cc.isGrounded && !jump  && horizontalMovement == 0 && verticalMovement == 0 && !Input.GetKey(KeyCode.LeftShift)) { characterState.state = CharacterAnimationState.CharacterState.idle; }
 
+        if (!cc.isGrounded && characterState.state != CharacterAnimationState.CharacterState.jump && movement.y <= -5f) characterState.state = CharacterAnimationState.CharacterState.fall; 
+       
         RaycastCheck();
 
         if ((Input.GetKey(KeyCode.LeftShift) || Input.GetAxis("LeftTrigger") > 0) && canGrab && cc.isGrounded)
