@@ -25,6 +25,16 @@ public class FinishOff : MonoBehaviour
         {
             // finish
             Debug.Log("Killed Boss");
+            Destroy(bm_);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "PlayerBall" && bm_.canFinishOff)
+        {
+            Debug.Log("Killed Boss");
+            Destroy(bm_);
         }
     }
 

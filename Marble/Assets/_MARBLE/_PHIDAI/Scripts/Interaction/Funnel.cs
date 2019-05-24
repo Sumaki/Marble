@@ -123,7 +123,7 @@ public class Funnel : MonoBehaviour
 
         if (activePower && !powerOn)
         {
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Submit_X"))
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Submit_A"))
             {
                 // do it
                 spin = true;

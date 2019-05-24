@@ -7,6 +7,7 @@ public class Gem : MonoBehaviour
    // public Animator ani;
     public Material newElementMaterial;
     public GameObject humanoid_mesh;
+    public GameObject humanoid_core_mesh;
     public GameObject ball_mesh;
     public enum Element { Ruby, Sapphire, Amethyste}
     public Element whichElement;
@@ -40,6 +41,7 @@ public class Gem : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
         humanoid_mesh.GetComponent<SkinnedMeshRenderer>().material = newElementMaterial;
         ball_mesh.GetComponent<SkinnedMeshRenderer>().material = newElementMaterial;
+        humanoid_core_mesh.GetComponent<SkinnedMeshRenderer>().material = newElementMaterial;
 
     }
 

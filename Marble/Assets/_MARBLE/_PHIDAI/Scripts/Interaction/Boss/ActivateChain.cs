@@ -26,7 +26,7 @@ public class ActivateChain : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Pushable" || other.gameObject.tag == "PlayerBall")
+        if(other.gameObject.tag == "Pushable" || other.gameObject.tag == "PlayerBall" || other.gameObject.tag == "PlayerHumanoid")
         {
             // turn on chain
             chain.GetComponent<MeshRenderer>().enabled = true;

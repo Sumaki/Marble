@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -665,7 +665,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ani: {fileID: 408600139}
   hits: 0
-  canFinishOff: 0
+  canFinishOff: 1
 --- !u!64 &408600142
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1468,6 +1468,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4535134838278254260, guid: 62fc0a8372f9c9d4c80ff4a75205aa27,
+        type: 3}
+      propertyPath: cameraBase
+      value: 
+      objectReference: {fileID: 1352806509}
     - target: {fileID: 1040094284700463719, guid: 62fc0a8372f9c9d4c80ff4a75205aa27,
         type: 3}
       propertyPath: cameraBase
@@ -1478,11 +1483,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c91119020b505f0439bfe2e3a8b8ac17, type: 2}
-    - target: {fileID: 4535134838278254260, guid: 62fc0a8372f9c9d4c80ff4a75205aa27,
-        type: 3}
-      propertyPath: cameraBase
-      value: 
-      objectReference: {fileID: 1352806509}
     - target: {fileID: 4535134837268474600, guid: 62fc0a8372f9c9d4c80ff4a75205aa27,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2195,6 +2195,7 @@ GameObject:
   - component: {fileID: 1546167996}
   - component: {fileID: 1546167995}
   - component: {fileID: 1546167994}
+  - component: {fileID: 1546167997}
   m_Layer: 0
   m_Name: WwiseGlobal
   m_TagString: Untagged
@@ -2254,6 +2255,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1546167997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1546167993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b22663018f0a15e4a9b8b06be30e8114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  bankName: New_SoundBank
+  decodeBank: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 958ca0ea
+  valueGuid: 0d259631fa8a11489826116f213cd821
 --- !u!1 &1583367747
 GameObject:
   m_ObjectHideFlags: 0
@@ -3071,7 +3092,7 @@ Transform:
   m_GameObject: {fileID: 1951693588}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 3861, z: 25994}
-  m_LocalScale: {x: 6006.075, y: 6006.075, z: 6006.075}
+  m_LocalScale: {x: 11958.096, y: 11958.096, z: 11958.096}
   m_Children: []
   m_Father: {fileID: 1633593350}
   m_RootOrder: 0

@@ -8,27 +8,54 @@ public class ResetPuzzle : MonoBehaviour
     [Header("What objects do you want to reset?")]
     public GameObject[] objectsToReset;
 
-    GameObject[] tempObjectsToReset;
+    Vector3[] tempObjTransform = new Vector3[20];
+
+    [Header("Is it a puzzle that locks?")]
+    public bool puzzleResetLock;
 
     // Start is called before the first frame update
     void Start()
     {
-        for(int i = 0; i <= objectsToReset.Length - 1; i++)
+        if (!puzzleResetLock)
         {
-            tempObjectsToReset[i].transform.position = objectsToReset[i].transform.position;
-            tempObjectsToReset[i].transform.rotation = objectsToReset[i].transform.rotation;
-        }           
+            for (int i = 0; i <= objectsToReset.Length - 1; i++)
+            {
+                tempObjTransform[i] = new Vector3(objectsToReset[i].transform.position.x, objectsToReset[i].transform.position.y, objectsToReset[i].transform.position.z);
+
+            }
+        }
+
+        if (puzzleResetLock)
+        {
+            for (int i = 0; i <= objectsToReset.Length - 1; i++)
+            {
+                tempObjTransform[i] = new Vector3(objectsToReset[i].transform.position.x, objectsToReset[i].transform.position.y, objectsToReset[i].transform.position.z);
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "PlayerBall" || other.gameObject.tag == "PlayerHumanoid")
         {
-            for(int i = 0; i <= objectsToReset.Length - 1; i++)
+            if (!puzzleResetLock)
             {
-                objectsToReset[i].transform.position = tempObjectsToReset[i].transform.position;
-                objectsToReset[i].transform.rotation = tempObjectsToReset[i].transform.rotation;
+                for (int i = 0; i <= objectsToReset.Length - 1; i++)
+                {
+                    objectsToReset[i].transform.position = tempObjTransform[i];
+                    // objectsToReset[i].transform.rotation = tempObjTransform[i].transform.rotation;
 
+                }
+            }
+
+            if (puzzleResetLock)
+            {
+                for (int i = 0; i <= objectsToReset.Length - 1; i++)
+                {
+                    objectsToReset[i].transform.position = tempObjTransform[i];
+                    objectsToReset[i].GetComponent<PushingBox>().enabled = true;
+
+                }
             }
         }
     }

@@ -49,11 +49,23 @@ MonoBehaviour:
   defaultPoolSize: 4096
   EventWwu:
   - Guid: '{71D570BE-A59C-4095-A926-4EA71D22E8C2}'
-    m_lastTimePart2: -1999189156
-    m_lastTimePsrt1: -1811900928
+    m_lastTimePart2: -1999183734
+    m_lastTimePsrt1: -540986026
     ParentPhysicalPath: 
     PhysicalPath: Events\Default Work Unit.wwu
-    List: []
+    List:
+    - Guid: 1584b66834acb64fbdf37d3c75a02e27
+      ID: 452547817
+      Name: Stop_All
+      Path: Default Work Unit\Stop_All
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Stop_All
+        ObjectType: 3
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
   - Guid: '{7434DC02-F725-44AB-8E82-3593AD2642FE}'
     m_lastTimePart2: -1999185284
     m_lastTimePsrt1: -1105271040
@@ -201,6 +213,7 @@ MonoBehaviour:
   ExpandedItems:
   - /CorinnePhilippon5
   - /CorinnePhilippon5/Events
+  - /CorinnePhilippon5/Events/Default Work Unit
   - /CorinnePhilippon5/Events/Music
   - /CorinnePhilippon5/Events/Music/BOSS
   language: English(US)
