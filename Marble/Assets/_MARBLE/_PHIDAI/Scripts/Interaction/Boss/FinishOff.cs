@@ -11,6 +11,14 @@ public class FinishOff : MonoBehaviour
         bm_ = GameObject.FindObjectOfType<BossManager>();
     }
 
+    private void Update()
+    {
+        if (bm_.canFinishOff)
+        {
+            gameObject.GetComponent<BoxCollider>().enabled = true;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "PlayerBall" && bm_.canFinishOff)

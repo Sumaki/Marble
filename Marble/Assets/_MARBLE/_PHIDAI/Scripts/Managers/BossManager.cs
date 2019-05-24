@@ -5,7 +5,6 @@ using UnityEngine;
 public class BossManager : MonoBehaviour
 {
     public Animator ani;
-
     // amount of chains hit onto the boss (3)
     public int hits = 0;
     public bool canFinishOff = false;
@@ -23,13 +22,14 @@ public class BossManager : MonoBehaviour
     {
         AnimationCheck();
         CheckBossStatus();
+
     }
 
     void CheckBossStatus()
     {
         if (hits >= 3)
         {
-            Debug.Log("Boss has all chains");
+          //  Debug.Log("Boss has all chains");
             canFinishOff = true;
         }
 
