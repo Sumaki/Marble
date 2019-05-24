@@ -31,7 +31,7 @@ public class Funnel : MonoBehaviour
     bool launch = false;
     bool spin;
 
-    public float emitSpeed = -10f;
+    public float emitSpeed = -9f;
 
     private void Update()
     {
@@ -53,7 +53,7 @@ public class Funnel : MonoBehaviour
 
         //Debug.Log("Spin variable: " + spin);
         //Debug.Log("Launch Variable: " + launch);
-        Debug.Log("Emit Speed: " + emitSpeed);
+        //Debug.Log("Emit Speed: " + emitSpeed);
 
     }
 
@@ -81,7 +81,7 @@ public class Funnel : MonoBehaviour
         if(other.gameObject.tag == "PlayerBall")
         {
             currentTimer = 0;
-            emitSpeed = -10f;
+            emitSpeed = -9f;
            
         }
     }
@@ -95,7 +95,7 @@ public class Funnel : MonoBehaviour
         {
             currentTimer += 1 * Time.deltaTime;
 
-            if (emitSpeed >= -10 && emitSpeed <= 10)
+            if (emitSpeed > -10 && emitSpeed < 10)
             {
                 playerBallMesh.GetComponent<SkinnedMeshRenderer>().material.SetFloat("_funnelColor", emitSpeed += 1);
             }
@@ -105,7 +105,7 @@ public class Funnel : MonoBehaviour
         {
             currentTimer -= 1 * Time.deltaTime;
 
-            if (emitSpeed >= -10 && emitSpeed <= 10)
+            if (emitSpeed > -10 && emitSpeed < 10)
             {
                 playerBallMesh.GetComponent<SkinnedMeshRenderer>().material.SetFloat("_funnelColor", emitSpeed -= 1);
             }
